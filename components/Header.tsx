@@ -1,0 +1,154 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { MenuIcon as Menu, XIcon as X, GitHubIcon as GitHub, LinkedInIcon as Linkedin, MailIcon as Mail } from './Icons'
+
+const navLinks = [
+  { href: '#services', label: 'Services' },
+  { href: '#case-studies', label: 'Work' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#process', label: 'Process' },
+  { href: '#pricing', label: 'Pricing' },
+  { href: '#contact', label: 'Contact' },
+]
+
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-primary-950/90 backdrop-blur-lg border-b border-glass-border'
+          : 'bg-transparent'
+      }`}
+    >
+      <nav className="container-custom flex items-center justify-between px-4 py-4 md:px-6">
+        {/* Logo */}
+        <a
+          href="#"
+          className="font-poppins text-xl font-bold text-white hover:text-accent transition-colors"
+          aria-label="Shubam Padha - Home"
+        >
+          SP<span className="text-accent">.</span>
+        </a>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="font-inter text-sm text-primary-300 hover:text-accent transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        {/* Social Links */}
+        <div className="hidden md:flex items-center gap-4">
+          <a
+            href="https://github.com/shubampadha"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary-400 hover:text-accent transition-colors"
+            aria-label="GitHub Profile"
+          >
+            <GitHub size={20} />
+          </a>
+          <a
+            href="https://linkedin.com/in/shubampadha"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary-400 hover:text-accent transition-colors"
+            aria-label="LinkedIn Profile"
+          >
+            <Linkedin size={20} />
+          </a>
+          <a
+            href="mailto:shubam@example.com"
+            className="text-primary-400 hover:text-accent transition-colors"
+            aria-label="Email Contact"
+          >
+            <Mail size={20} />
+          </a>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-white p-2"
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isOpen}
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-primary-950/95 backdrop-blur-lg border-b border-glass-border"
+          >
+            <div className="container-custom px-4 py-6">
+              <div className="flex flex-col gap-4">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="font-inter text-lg text-primary-200 hover:text-accent transition-colors py-2"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+              <div className="flex items-center gap-6 mt-6 pt-6 border-t border-primary-700">
+                <a
+            href="https://github.com/Padha06"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-400 hover:text-accent transition-colors"
+                  aria-label="GitHub Profile"
+                >
+                  <GitHub size={24} />
+                </a>
+                <a
+                  href="https://linkedin.com/in/shubampadha"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-400 hover:text-accent transition-colors"
+                  aria-label="LinkedIn Profile"
+                >
+                  <Linkedin size={24} />
+                </a>
+                <a
+                  href="mailto:shubam@example.com"
+                  className="text-primary-400 hover:text-accent transition-colors"
+                  aria-label="Email Contact"
+                >
+                  <Mail size={24} />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  )
+}
