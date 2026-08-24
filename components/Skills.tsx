@@ -72,21 +72,18 @@ const categoryVariants = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-padding bg-primary-900">
+    <section id="skills" className="srv-section">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="srv-header"
         >
-          <div className="flex items-center gap-3 mb-4">
-            <span className="srv-card-system-label">TECH STACK</span>
-            <span className="srv-card-status">ACTIVE</span>
-          </div>
-          <h2 className="cs-section-title">Skills & <span className="gradient-text">Technologies</span></h2>
-          <p className="cs-section-desc">
+          <span className="srv-eyebrow">TECH STACK</span>
+          <h2 className="srv-title">Skills & Technologies</h2>
+          <p className="srv-desc">
             A modern tech stack spanning frontend, backend, mobile,
             and enterprise systems.
           </p>
@@ -97,31 +94,39 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="space-y-4 max-w-5xl mx-auto"
+          className="srv-grid"
         >
-          {techCategories.map((category) => (
+          {techCategories.map((category, index) => (
             <motion.div
               key={category.name}
               variants={categoryVariants}
-              className="srv-card group"
+              className="srv-card srv-card--small"
             >
               <div className="srv-card-content">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="srv-card-number">{String(index + 1).padStart(2, '0')}</div>
+
+                <div className="srv-card-system">
                   <span className="srv-card-system-label">MODULE / {category.name.toUpperCase()}</span>
                   <span className="srv-card-status">ACTIVE</span>
                 </div>
 
-                <div className="flex flex-wrap gap-3">
+                <div className="srv-card-category">{category.name}</div>
+
+                <div className="flex flex-wrap gap-3 mt-4">
                   {category.items.map((item) => (
                     <div
                       key={item.name}
-                      className="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-800/50 border border-primary-700 hover:border-accent/30 transition-all duration-300 group/item"
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group/item"
+                      style={{
+                        background: 'rgba(255, 255, 255, 0.03)',
+                        border: '1px solid rgba(255, 255, 255, 0.06)',
+                      }}
                     >
                       <div
                         className="w-3 h-3 rounded-full group-hover/item:scale-125 transition-transform"
                         style={{ backgroundColor: item.color }}
                       />
-                      <span className="font-inter text-sm font-medium text-primary-200 group-hover/item:text-white transition-colors">
+                      <span className="font-inter text-sm font-medium" style={{ color: '#a3a3a3' }}>
                         {item.name}
                       </span>
                     </div>
