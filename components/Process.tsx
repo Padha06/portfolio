@@ -59,7 +59,6 @@ export default function Process() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="srv-card-system-label">PROCESS</span>
-            <span className="srv-card-status">ACTIVE</span>
           </div>
           <h2 className="cs-section-title">From Idea to <span className="text-accent">Launch</span></h2>
           <p className="cs-section-desc">
@@ -87,7 +86,6 @@ export default function Process() {
                   <div>
                     <div className="flex items-center gap-3 mb-3">
                       <span className="srv-card-system-label">STEP / {step.number}</span>
-                      <span className="srv-card-status">ACTIVE</span>
                     </div>
                     <h3 className="srv-card-title">{step.title}</h3>
                     <p className="font-dm text-sm text-accent">{step.subtitle}</p>

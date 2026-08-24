@@ -447,7 +447,7 @@ footer a:focus-visible {
 }
 
 .hero-arrow {
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
   transition: transform 0.3s ease;
 }
 
@@ -456,7 +456,7 @@ footer a:focus-visible {
 }
 
 .hero-arrow-down {
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
 }
 
 /* Trust signals */
@@ -493,7 +493,6 @@ footer a:focus-visible {
   font-family: var(--font-dm), 'DM Sans', sans-serif;
   font-size: var(--text-xs);
   color: var(--color-muted);
-  text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
@@ -649,7 +648,7 @@ footer a:focus-visible {
   right: 1rem;
   bottom: 0.5rem;
   font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-size: 3.5rem;
+  font-size: var(--text-4xl);
   font-weight: 800;
   color: rgba(255, 255, 255, 0.06);
 }
@@ -1001,7 +1000,7 @@ footer a:focus-visible {
   right: 1rem;
   top: 1rem;
   font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-size: 4rem;
+  font-size: var(--text-4xl);
   font-weight: 800;
   color: rgba(255, 255, 255, 0.025);
   line-height: 1;
@@ -1011,13 +1010,8 @@ footer a:focus-visible {
 
 @media (min-width: 1024px) {
   .srv-card-number {
-    font-size: 5rem;
     right: 1.5rem;
     top: 1.5rem;
-  }
-
-  .srv-card--large .srv-card-number {
-    font-size: 6rem;
   }
 }
 
@@ -1181,7 +1175,7 @@ footer a:focus-visible {
   .srv-cta {
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    gap: 2rem;
   }
 }
 
@@ -1413,16 +1407,10 @@ footer a:focus-visible {
   bottom: 1.5rem;
   right: 1.5rem;
   font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-size: 5rem;
+  font-size: var(--text-4xl);
   font-weight: 800;
   color: rgba(255, 255, 255, 0.04);
   line-height: 1;
-}
-
-@media (min-width: 768px) {
-  .sp-service-img-number {
-    font-size: 6rem;
-  }
 }
 
 /* Content */

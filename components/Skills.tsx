@@ -48,11 +48,6 @@ const techCategories = [
   },
 ]
 
-const extraTech = [
-  'React Native', 'GraphQL', 'MongoDB', 'Docker', 'CI/CD',
-  'Agile/Scrum', 'Unit Testing', 'OAuth', 'WebSocket', 'Redis',
-]
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -96,7 +91,7 @@ export default function Skills() {
           viewport={{ once: true, margin: '-100px' }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-          {techCategories.slice(0, 3).map((category) => (
+          {techCategories.map((category) => (
             <motion.div
               key={category.name}
               variants={categoryVariants}
@@ -104,7 +99,6 @@ export default function Skills() {
             >
               <div className="flex items-center gap-3 mb-3">
                 <span className="srv-card-system-label">{category.name}</span>
-                <span className="srv-card-status">ACTIVE</span>
               </div>
 
               <h3 className="font-outfit text-[0.95rem] font-semibold text-white mb-3">
@@ -129,25 +123,6 @@ export default function Skills() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-8"
-        >
-          <div className="flex flex-wrap justify-center gap-2">
-            {extraTech.map((tech) => (
-              <span
-                key={tech}
-                className="srv-tech-pill text-[0.7rem] px-3 py-1"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
         </motion.div>
       </div>
     </section>

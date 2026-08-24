@@ -58,7 +58,6 @@ export default function CTA() {
               <div className="srv-card-content">
                 <div className="srv-card-system">
                   <span className="srv-card-system-label">FORM / SUBMIT</span>
-                  <span className="srv-card-status">ACTIVE</span>
                 </div>
 
                 <div className="space-y-5 mt-6">
@@ -129,6 +128,13 @@ export default function CTA() {
                     />
                   </div>
 
+                  <div className="text-center py-2">
+                    <p className="font-dm text-xs text-primary-500">
+                      Typical response time:{' '}
+                      <span className="font-medium text-accent">Within 24 hours</span>
+                    </p>
+                  </div>
+
                   <button type="submit" className="srv-cta-btn w-full justify-center">
                     <Send size={16} />
                     Start Your Project
@@ -152,7 +158,6 @@ export default function CTA() {
                 <div className="srv-card-content">
                   <div className="srv-card-system">
                     <span className="srv-card-system-label">CONTACT / INFO</span>
-                    <span className="srv-card-status">ACTIVE</span>
                   </div>
                   <div className="space-y-4 mt-4">
                     <a href="mailto:shubam@example.com" className="flex items-center gap-3 text-primary-300 hover:text-white transition-colors">
@@ -171,7 +176,6 @@ export default function CTA() {
                 <div className="srv-card-content">
                   <div className="srv-card-system">
                     <span className="srv-card-system-label">BOOKING / CALL</span>
-                    <span className="srv-card-status">ACTIVE</span>
                   </div>
                   <h3 className="font-outfit text-lg font-semibold text-white mb-1 mt-4">
                     Free Consultation
@@ -194,13 +198,6 @@ export default function CTA() {
                     <ArrowRight size={14} />
                   </a>
                 </div>
-              </div>
-
-              <div className="text-center p-4 rounded-lg bg-white/[0.02] border border-white/5">
-                <p className="font-dm text-xs text-primary-500">
-                  Typical response time:{' '}
-                  <span className="font-medium text-accent">Within 24 hours</span>
-                </p>
               </div>
             </div>
           </motion.div>

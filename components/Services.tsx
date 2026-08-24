@@ -141,7 +141,6 @@ export default function Services() {
                 {/* System label */}
                 <div className="srv-card-system">
                   <span className="srv-card-system-label">{service.tag}</span>
-                  <span className="srv-card-status">ACTIVE</span>
                 </div>
 
                 {/* Category */}
