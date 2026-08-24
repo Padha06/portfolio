@@ -33,8 +33,8 @@ export default function SplashScreen() {
             <Image
               src="/vaskoi_logo.png"
               alt="Vaskoi"
-              width={180}
-              height={50}
+              width={216}
+              height={60}
               priority
             />
           </div>
@@ -42,8 +42,8 @@ export default function SplashScreen() {
             <Image
               src="/vaskoi_logo.png"
               alt="Vaskoi"
-              width={180}
-              height={50}
+              width={216}
+              height={60}
               priority
             />
           </div>
