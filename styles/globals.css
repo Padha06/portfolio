@@ -264,47 +264,61 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-tag {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 0.15em;
   color: #dc2626;
   text-transform: uppercase;
 }
 
 .hero-tag-dot {
-  color: #444;
-  font-size: 0.75rem;
+  color: #555;
+  font-size: 0.8rem;
 }
 
 .hero-headline {
   font-family: 'Poppins', sans-serif;
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1.15;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.05;
   color: #ffffff;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   position: relative;
   z-index: 2;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .hero-headline {
+    font-size: 4.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-headline {
+    font-size: 5rem;
+  }
 }
 
 .hero-body {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #d4d4d4;
-  line-height: 1.6;
-  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #dc2626;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
   position: relative;
   z-index: 2;
+  letter-spacing: 0.02em;
 }
 
 .hero-body-sub {
   font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  color: #888;
+  font-size: 1rem;
+  color: #a3a3a3;
   line-height: 1.7;
   max-width: 420px;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   position: relative;
   z-index: 2;
 }
@@ -323,21 +337,22 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 0.5rem;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   color: #ffffff;
   background: #dc2626;
-  padding: 0.85rem 1.8rem;
+  padding: 1rem 2rem;
   border-radius: 2px;
   text-decoration: none;
   transition: all 0.3s ease;
   width: fit-content;
+  box-shadow: 0 0 30px rgba(220, 38, 38, 0.3);
 }
 
 .hero-btn-primary:hover {
   background: #ef4444;
-  box-shadow: 0 0 30px rgba(220, 38, 38, 0.4);
+  box-shadow: 0 0 50px rgba(220, 38, 38, 0.5);
   transform: translateX(4px);
 }
 
@@ -346,12 +361,13 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 0.5rem;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #888;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #a3a3a3;
   text-decoration: none;
   transition: color 0.3s ease;
   width: fit-content;
+  letter-spacing: 0.05em;
 }
 
 .hero-btn-secondary:hover {
@@ -376,10 +392,10 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 0.5rem;
   font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 600;
   letter-spacing: 0.12em;
-  color: #888;
+  color: #a3a3a3;
   text-transform: uppercase;
   position: relative;
   z-index: 2;
@@ -403,23 +419,23 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 38%;
   left: 10%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.2);
   border-radius: 10px;
-  padding: 1.4rem 1.8rem;
-  min-width: 220px;
+  padding: 1.6rem 2rem;
+  min-width: 240px;
   z-index: 3;
   animation: floatCard 6s ease-in-out infinite;
 }
 
 .hero-status-header {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  font-weight: 400;
   letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.5);
   margin-bottom: 1rem;
   text-transform: uppercase;
 }
@@ -428,67 +444,67 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.4rem 0;
+  padding: 0.5rem 0;
 }
 
 .hero-status-label {
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .hero-status-badge {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Courier New', monospace;
   font-size: 0.6rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.1em;
-  padding: 0.25rem 0.7rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 4px;
   text-transform: uppercase;
 }
 
 .hero-status-badge.live {
-  background: rgba(220, 38, 38, 0.15);
+  background: rgba(220, 38, 38, 0.2);
   color: #ef4444;
-  border: 1px solid rgba(220, 38, 38, 0.3);
+  border: 1px solid rgba(220, 38, 38, 0.35);
 }
 
 .hero-status-badge.synced {
-  background: rgba(34, 197, 94, 0.12);
+  background: rgba(34, 197, 94, 0.15);
   color: #22c55e;
-  border: 1px solid rgba(34, 197, 94, 0.25);
+  border: 1px solid rgba(34, 197, 94, 0.3);
 }
 
 .hero-project-card {
   position: absolute;
   bottom: 22%;
   right: 12%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.2);
   border-radius: 10px;
-  padding: 1.2rem 1.6rem;
+  padding: 1.4rem 1.8rem;
   z-index: 3;
   animation: floatCard 6s ease-in-out infinite;
   animation-delay: -3s;
 }
 
 .hero-project-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.55rem;
-  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  font-weight: 400;
   letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.4);
   text-transform: uppercase;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero-project-name {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: #ffffff;
 }
 
@@ -514,7 +530,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-headline {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .hero-status-card {
@@ -536,7 +552,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-headline {
-    font-size: 2.2rem;
+    font-size: 3rem;
   }
 }
 
