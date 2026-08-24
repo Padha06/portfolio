@@ -621,19 +621,19 @@ h1, h2, h3, h4, h5, h6 {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
-  filter: grayscale(80%) brightness(0.5);
+  filter: grayscale(50%) brightness(0.5);
   transition: all 0.5s ease;
 }
 
 .cs-card:hover .cs-card-img {
-  filter: grayscale(40%) brightness(0.6);
+  filter: grayscale(20%) brightness(0.6);
   transform: scale(1.05);
 }
 
 .cs-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(220, 38, 38, 0.08) 0%, rgba(0, 0, 0, 0.4) 100%);
+  background: linear-gradient(180deg, rgba(220, 38, 38, 0.06) 0%, rgba(0, 0, 0, 0.3) 100%);
 }
 
 .cs-card-number {
@@ -943,19 +943,19 @@ h1, h2, h3, h4, h5, h6 {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
-  filter: grayscale(90%) brightness(0.2);
+  filter: grayscale(60%) brightness(0.45);
   transition: all 0.6s ease;
 }
 
 .srv-card:hover .srv-card-bg-img {
-  filter: grayscale(70%) brightness(0.25);
+  filter: grayscale(30%) brightness(0.55);
   transform: scale(1.03);
 }
 
 .srv-card-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 10, 10, 0.7) 0%, rgba(10, 10, 10, 0.9) 100%);
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.65) 100%);
 }
 
 .srv-card-content {
@@ -1381,19 +1381,19 @@ h1, h2, h3, h4, h5, h6 {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
-  filter: grayscale(90%) brightness(0.35);
+  filter: grayscale(60%) brightness(0.45);
   transition: all 0.6s ease;
 }
 
 .sp-service:hover .sp-service-img {
-  filter: grayscale(60%) brightness(0.45);
+  filter: grayscale(30%) brightness(0.55);
   transform: scale(1.03);
 }
 
 .sp-service-img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.06) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.08) 0%, rgba(0, 0, 0, 0.3) 100%);
 }
 
 .sp-service-img-number {
