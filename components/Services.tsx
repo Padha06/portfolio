@@ -114,7 +114,7 @@ export default function Services() {
           viewport={{ once: true, margin: '-50px' }}
           className="srv-grid"
         >
-          {services.map((service) => (
+          {services.slice(0, 4).map((service) => (
             <motion.article
               key={service.id}
               variants={cardVariants}

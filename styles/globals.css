@@ -264,84 +264,75 @@ footer a:focus-visible {
 
 /* Hero Section */
 .hero-section {
-  display: flex;
   min-height: 100vh;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.hero-left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 6rem 4rem 4rem;
-  background: #0a0a0a;
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bg-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.3);
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.7) 100%);
+}
+
+.hero-content {
   position: relative;
   z-index: 2;
-  overflow: hidden;
-}
-
-.hero-left-bg {
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
+  padding: 8rem 1.5rem 4rem;
 }
 
-.hero-left-bg-image {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;
-  filter: grayscale(80%) brightness(0.4);
+.hero-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
 }
 
-.hero-left-glass {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.65) 100%);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+@media (min-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+  }
 }
 
-.hero-right {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
+.hero-text {
+  order: 2;
 }
 
-.hero-right-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-bg-image {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;
-  filter: grayscale(100%) brightness(0.5);
-}
-
-.hero-glass-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.2);
+@media (min-width: 1024px) {
+  .hero-text {
+    order: 1;
+  }
 }
 
 .hero-tags {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 2rem;
-  position: relative;
-  z-index: 2;
+  margin-bottom: 1.5rem;
 }
 
 .hero-tag {
   font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   color: #dc2626;
@@ -350,51 +341,50 @@ footer a:focus-visible {
 
 .hero-tag-dot {
   color: #555;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .hero-headline {
   font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-size: 4rem;
-  font-weight: 800;
-  line-height: 1.05;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
   color: #ffffff;
-  margin-bottom: 2rem;
-  position: relative;
-  z-index: 2;
+  margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
 }
 
 @media (min-width: 768px) {
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3rem;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-headline {
-    font-size: 5rem;
+    font-size: 3.5rem;
   }
 }
 
-.hero-body {
-  font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 600;
+.hero-headline-accent {
   color: #dc2626;
-  line-height: 1.5;
+}
+
+.hero-body {
+  font-family: var(--font-dm), 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #a3a3a3;
+  line-height: 1.6;
   margin-bottom: 2rem;
-  position: relative;
-  z-index: 2;
-  letter-spacing: 0.02em;
 }
 
 .hero-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 1rem;
-  position: relative;
-  z-index: 2;
+  margin-bottom: 3rem;
 }
 
 .hero-btn-primary {
@@ -402,23 +392,21 @@ footer a:focus-visible {
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   color: #ffffff;
   background: #dc2626;
-  padding: 1rem 2rem;
-  border-radius: 2px;
+  padding: 0.875rem 1.5rem;
+  border-radius: 4px;
   text-decoration: none;
   transition: all 0.3s ease;
-  width: fit-content;
-  box-shadow: 0 0 30px rgba(220, 38, 38, 0.3);
 }
 
 .hero-btn-primary:hover {
   background: #ef4444;
-  box-shadow: 0 0 50px rgba(220, 38, 38, 0.5);
-  transform: translateX(4px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
 }
 
 .hero-btn-secondary {
@@ -426,13 +414,12 @@ footer a:focus-visible {
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 500;
   color: #a3a3a3;
   text-decoration: none;
   transition: color 0.3s ease;
-  width: fit-content;
-  letter-spacing: 0.05em;
+  padding: 0.875rem 1.5rem;
 }
 
 .hero-btn-secondary:hover {
@@ -440,7 +427,7 @@ footer a:focus-visible {
 }
 
 .hero-arrow {
-  font-size: 1rem;
+  font-size: 0.9rem;
   transition: transform 0.3s ease;
 }
 
@@ -449,37 +436,110 @@ footer a:focus-visible {
 }
 
 .hero-arrow-down {
-  font-size: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Trust signals */
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 480px) {
+  .hero-trust {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+.hero-trust-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hero-trust-number {
+  font-family: var(--font-outfit), 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.hero-trust-label {
+  font-family: var(--font-dm), 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  color: #737373;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-trust-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 480px) {
+  .hero-trust-divider {
+    display: none;
+  }
+}
+
+/* Hero Image */
+.hero-image {
+  order: 1;
+}
+
+@media (min-width: 1024px) {
+  .hero-image {
+    order: 2;
+  }
+}
+
+.hero-image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .hero-image-frame {
+    aspect-ratio: 3/4;
+  }
+}
+
+.hero-image-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  filter: grayscale(60%) brightness(0.7);
+  transition: filter 0.5s ease;
+}
+
+.hero-image-frame:hover .hero-image-img {
+  filter: grayscale(30%) brightness(0.8);
+}
+
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.3) 100%);
 }
 
 /* Hero Responsive */
 @media (max-width: 768px) {
-  .hero-section {
-    flex-direction: column;
+  .hero-content {
+    padding: 7rem 1.5rem 3rem;
   }
-
-  .hero-left {
-    padding: 8rem 1.5rem 3rem;
-    order: 1;
-  }
-
-  .hero-right {
-    order: 2;
-    min-height: 50vh;
-  }
-
+  
   .hero-headline {
-    font-size: 2.5rem;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hero-left {
-    padding: 6rem 2rem 3rem;
-  }
-
-  .hero-headline {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
 
@@ -495,8 +555,8 @@ footer a:focus-visible {
 
 .cs-section-title {
   font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 1.75rem;
+  font-weight: 600;
   color: #ffffff;
   margin-top: 0.5rem;
   margin-bottom: 0.75rem;
@@ -638,6 +698,32 @@ footer a:focus-visible {
   transform: translateX(4px);
 }
 
+/* View All Link */
+.cs-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-outfit), 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #a3a3a3;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.cs-view-all:hover {
+  color: #dc2626;
+}
+
+.cs-view-all-arrow {
+  transition: transform 0.3s ease;
+}
+
+.cs-view-all:hover .cs-view-all-arrow {
+  transform: translateX(4px);
+}
+
 /* Modal */
 .cs-modal {
   background: #111;
@@ -750,8 +836,8 @@ footer a:focus-visible {
 
 .srv-title {
   font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: 600;
   color: #ffffff;
   line-height: 1.1;
   margin-bottom: 1rem;
@@ -760,13 +846,13 @@ footer a:focus-visible {
 
 @media (min-width: 768px) {
   .srv-title {
-    font-size: 4rem;
+    font-size: 2.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .srv-title {
-    font-size: 4.5rem;
+    font-size: 3rem;
   }
 }
 

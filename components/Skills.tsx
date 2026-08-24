@@ -96,7 +96,7 @@ export default function Skills() {
           viewport={{ once: true, margin: '-100px' }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-          {techCategories.map((category) => (
+          {techCategories.slice(0, 3).map((category) => (
             <motion.div
               key={category.name}
               variants={categoryVariants}
