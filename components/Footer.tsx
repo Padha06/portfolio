@@ -4,30 +4,17 @@ import { motion } from 'framer-motion'
 import { GitHubIcon as GitHub, LinkedInIcon as Linkedin, MailIcon as Mail, HeartIcon as Heart, ArrowUpIcon as ArrowUp } from './Icons'
 
 const navLinks = [
-  { href: '#services', label: 'Services' },
-  { href: '#case-studies', label: 'Work' },
+  { href: '#case-studies', label: 'Portfolio' },
   { href: '#skills', label: 'Skills' },
   { href: '#process', label: 'Process' },
-  { href: '#pricing', label: 'Pricing' },
+  { href: '#stats', label: 'Results' },
   { href: '#contact', label: 'Contact' },
 ]
 
 const socialLinks = [
-  {
-    href: 'https://github.com/Padha06',
-    label: 'GitHub',
-    icon: GitHub,
-  },
-  {
-    href: 'https://linkedin.com/in/shubampadha',
-    label: 'LinkedIn',
-    icon: Linkedin,
-  },
-  {
-    href: 'mailto:shubam@example.com',
-    label: 'Email',
-    icon: Mail,
-  },
+  { href: 'https://github.com/Padha06', label: 'GitHub', icon: GitHub },
+  { href: 'https://linkedin.com/in/shubampadha', label: 'LinkedIn', icon: Linkedin },
+  { href: 'mailto:shubam@example.com', label: 'Email', icon: Mail },
 ]
 
 export default function Footer() {
@@ -39,12 +26,8 @@ export default function Footer() {
     <footer className="bg-primary-950 border-t border-primary-800">
       <div className="container-custom px-4 md:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Brand */}
           <div>
-            <a
-              href="#"
-              className="font-poppins text-2xl font-bold text-white hover:text-accent transition-colors inline-block mb-4"
-            >
+            <a href="#" className="font-poppins text-2xl font-bold text-white hover:text-accent transition-colors inline-block mb-4">
               SP<span className="text-accent">.</span>
             </a>
             <p className="font-inter text-primary-400 text-sm leading-relaxed">
@@ -53,7 +36,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="font-poppins text-sm font-semibold text-white uppercase tracking-wider mb-4">
               Quick Links
@@ -62,10 +44,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {navLinks.map((link) => (
                   <li key={link.href}>
-                    <a
-                      href={link.href}
-                      className="font-inter text-sm text-primary-400 hover:text-accent transition-colors"
-                    >
+                    <a href={link.href} className="font-inter text-sm text-primary-400 hover:text-accent transition-colors">
                       {link.label}
                     </a>
                   </li>
@@ -74,7 +53,6 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Social */}
           <div>
             <h3 className="font-poppins text-sm font-semibold text-white uppercase tracking-wider mb-4">
               Connect
@@ -96,7 +74,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="pt-8 border-t border-primary-800 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-inter text-sm text-primary-500 flex items-center gap-1">
             © 2024-2026 Shubam Padha. Built with{' '}

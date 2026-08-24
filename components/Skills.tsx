@@ -2,46 +2,48 @@
 
 import { motion } from 'framer-motion'
 
-const skillCategories = [
+const techCategories = [
   {
-    title: 'Languages',
-    skills: [
-      { name: 'JavaScript', level: 95 },
-      { name: 'TypeScript', level: 90 },
-      { name: 'Python', level: 85 },
-      { name: 'AL (Business Central)', level: 92 },
-      { name: 'C#', level: 80 },
-      { name: 'Kotlin', level: 88 },
+    name: 'Frontend',
+    items: [
+      { name: 'React', color: '#61DAFB' },
+      { name: 'Next.js', color: '#FFFFFF' },
+      { name: 'TypeScript', color: '#3178C6' },
+      { name: 'Tailwind CSS', color: '#06B6D4' },
     ],
   },
   {
-    title: 'Web & Mobile',
-    skills: [
-      { name: 'React', level: 95 },
-      { name: 'Next.js', level: 92 },
-      { name: 'Tailwind CSS', level: 90 },
-      { name: 'Kotlin/Android', level: 88 },
-      { name: 'REST APIs', level: 95 },
+    name: 'Backend',
+    items: [
+      { name: 'Node.js', color: '#339933' },
+      { name: 'Python', color: '#3776AB' },
+      { name: 'C#', color: '#239120' },
+      { name: '.NET', color: '#512BD4' },
     ],
   },
   {
-    title: 'ERP & Business',
-    skills: [
-      { name: 'Dynamics 365 BC', level: 92 },
-      { name: 'AL Development', level: 90 },
-      { name: 'Power Apps', level: 85 },
-      { name: 'Dataverse', level: 82 },
-      { name: 'OData', level: 88 },
+    name: 'Mobile',
+    items: [
+      { name: 'Kotlin', color: '#7F52FF' },
+      { name: 'Android SDK', color: '#3DDC84' },
     ],
   },
   {
-    title: 'Tools & Platforms',
-    skills: [
-      { name: 'GitHub', level: 95 },
-      { name: 'Azure', level: 85 },
-      { name: 'VS Code', level: 95 },
-      { name: 'Power Automate', level: 80 },
-      { name: 'SQL Server', level: 88 },
+    name: 'ERP & Cloud',
+    items: [
+      { name: 'Dynamics 365 BC', color: '#002050' },
+      { name: 'Power Apps', color: '#742774' },
+      { name: 'Azure', color: '#0089D6' },
+      { name: 'Dataverse', color: '#002050' },
+    ],
+  },
+  {
+    name: 'Data & Tools',
+    items: [
+      { name: 'SQL Server', color: '#CC2927' },
+      { name: 'REST APIs', color: '#00D9FF' },
+      { name: 'Power Automate', color: '#0066FF' },
+      { name: 'GitHub', color: '#FFFFFF' },
     ],
   },
 ]
@@ -50,9 +52,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
+    transition: { staggerChildren: 0.1 },
   },
 }
 
@@ -61,18 +61,14 @@ const categoryVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
-    },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   },
 }
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-padding bg-primary-950">
+    <section id="skills" className="section-padding bg-primary-900">
       <div className="container-custom">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -81,56 +77,48 @@ export default function Skills() {
           className="text-center mb-16"
         >
           <span className="font-inter text-sm text-accent uppercase tracking-wider">
-            Expertise
+            Tech Stack
           </span>
           <h2 className="font-poppins text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">
             Skills & <span className="gradient-text">Technologies</span>
           </h2>
           <p className="font-inter text-lg text-primary-300 max-w-2xl mx-auto">
-            A comprehensive toolkit spanning frontend, backend, mobile,
-            and enterprise ERP systems.
+            A modern tech stack spanning frontend, backend, mobile,
+            and enterprise systems.
           </p>
         </motion.div>
 
-        {/* Skills Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="space-y-6 max-w-5xl mx-auto"
         >
-          {skillCategories.map((category) => (
+          {techCategories.map((category) => (
             <motion.div
-              key={category.title}
+              key={category.name}
               variants={categoryVariants}
-              className="glass-card p-6 lg:p-8"
+              className="glass-card p-6"
             >
-              <h3 className="font-poppins text-xl font-semibold text-white mb-6 flex items-center gap-3">
+              <h3 className="font-poppins text-lg font-semibold text-white mb-4 flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-accent" />
-                {category.title}
+                {category.name}
               </h3>
 
-              <div className="space-y-4">
-                {category.skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-inter text-sm text-primary-200">
-                        {skill.name}
-                      </span>
-                      <span className="font-inter text-xs text-primary-400">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="h-2 bg-primary-700 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
-                        className="h-full bg-gradient-accent rounded-full"
-                      />
-                    </div>
+              <div className="flex flex-wrap gap-3">
+                {category.items.map((item) => (
+                  <div
+                    key={item.name}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-800/50 border border-primary-700 hover:border-accent/30 transition-all duration-300 group"
+                  >
+                    <div
+                      className="w-3 h-3 rounded-full group-hover:scale-125 transition-transform"
+                      style={{ backgroundColor: item.color }}
+                    />
+                    <span className="font-inter text-sm font-medium text-primary-200 group-hover:text-white transition-colors">
+                      {item.name}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -138,7 +126,7 @@ export default function Skills() {
           ))}
         </motion.div>
 
-        {/* Skill Pills */}
+        {/* Additional Tech Pills */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -146,9 +134,6 @@ export default function Skills() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-12"
         >
-          <h3 className="font-poppins text-lg font-semibold text-white mb-6 text-center">
-            Additional Technologies
-          </h3>
           <div className="flex flex-wrap justify-center gap-3">
             {[
               'React Native', 'GraphQL', 'MongoDB', 'Docker', 'CI/CD',

@@ -2,20 +2,20 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Shubam Padha | Full-Stack Developer | BC Customization & Integrations',
-  description: 'Building web, mobile, and ERP solutions for startups & enterprises. Dynamics 365 BC expert.',
-  keywords: ['Business Central development', 'ERP customization', 'web development', 'mobile apps', 'API integrations', 'Power Apps'],
+  title: 'Shubam Padha | Full-Stack Developer | Portfolio',
+  description: 'Building digital products that scale. Web, mobile, and ERP solutions for startups & enterprises.',
+  keywords: ['full-stack developer', 'web development', 'mobile apps', 'Business Central', 'ERP customization', 'API integrations'],
   openGraph: {
-    title: 'Shubam Padha | Full-Stack Developer | BC Customization & Integrations',
-    description: 'Building web, mobile, and ERP solutions for startups & enterprises. Dynamics 365 BC expert.',
+    title: 'Shubam Padha | Full-Stack Developer | Portfolio',
+    description: 'Building digital products that scale. Web, mobile, and ERP solutions for startups & enterprises.',
     type: 'website',
     locale: 'en_US',
     siteName: 'Shubam Padha Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shubam Padha | Full-Stack Developer | BC Customization & Integrations',
-    description: 'Building web, mobile, and ERP solutions for startups & enterprises. Dynamics 365 BC expert.',
+    title: 'Shubam Padha | Full-Stack Developer | Portfolio',
+    description: 'Building digital products that scale. Web, mobile, and ERP solutions for startups & enterprises.',
   },
 }
 

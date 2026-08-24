@@ -5,11 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { MenuIcon as Menu, XIcon as X, GitHubIcon as GitHub, LinkedInIcon as Linkedin, MailIcon as Mail } from './Icons'
 
 const navLinks = [
+  { href: '#case-studies', label: 'Portfolio' },
   { href: '#services', label: 'Services' },
-  { href: '#case-studies', label: 'Work' },
   { href: '#skills', label: 'Skills' },
   { href: '#process', label: 'Process' },
-  { href: '#pricing', label: 'Pricing' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -34,7 +33,6 @@ export default function Header() {
       }`}
     >
       <nav className="container-custom flex items-center justify-between px-4 py-4 md:px-6">
-        {/* Logo */}
         <a
           href="#"
           className="font-poppins text-xl font-bold text-white hover:text-accent transition-colors"
@@ -43,7 +41,6 @@ export default function Header() {
           SP<span className="text-accent">.</span>
         </a>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
@@ -56,10 +53,9 @@ export default function Header() {
           ))}
         </div>
 
-        {/* Social Links */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="https://github.com/shubampadha"
+            href="https://github.com/Padha06"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary-400 hover:text-accent transition-colors"
@@ -85,7 +81,6 @@ export default function Header() {
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-white p-2"
@@ -96,7 +91,6 @@ export default function Header() {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -120,7 +114,7 @@ export default function Header() {
               </div>
               <div className="flex items-center gap-6 mt-6 pt-6 border-t border-primary-700">
                 <a
-            href="https://github.com/Padha06"
+                  href="https://github.com/Padha06"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary-400 hover:text-accent transition-colors"
