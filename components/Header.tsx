@@ -6,11 +6,9 @@ import Image from 'next/image'
 import { MenuIcon as Menu, XIcon as X, GitHubIcon as GitHub, LinkedInIcon as Linkedin, MailIcon as Mail } from './Icons'
 
 const navLinks = [
-  { href: '#case-studies', label: 'Portfolio' },
-  { href: '#services', label: 'Services' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#process', label: 'Process' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#case-studies', label: 'WORK' },
+  { href: '#services', label: 'SERVICES' },
+  { href: '#skills', label: 'ABOUT' },
 ]
 
 export default function Header() {
@@ -53,38 +51,16 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="font-inter text-sm text-primary-300 hover:text-accent transition-colors"
+              className="font-inter text-xs font-medium tracking-widest text-primary-300 hover:text-white transition-colors"
             >
               {link.label}
             </a>
           ))}
-        </div>
-
-        <div className="hidden md:flex items-center gap-4">
           <a
-            href="https://github.com/Padha06"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary-400 hover:text-accent transition-colors"
-            aria-label="GitHub Profile"
+            href="#contact"
+            className="font-poppins text-xs font-semibold tracking-wider text-primary-950 bg-white px-5 py-2.5 rounded-sm hover:bg-accent transition-colors"
           >
-            <GitHub size={20} />
-          </a>
-          <a
-            href="https://linkedin.com/in/shubampadha"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary-400 hover:text-accent transition-colors"
-            aria-label="LinkedIn Profile"
-          >
-            <Linkedin size={20} />
-          </a>
-          <a
-            href="mailto:shubam@example.com"
-            className="text-primary-400 hover:text-accent transition-colors"
-            aria-label="Email Contact"
-          >
-            <Mail size={20} />
+            LET&apos;S TALK <span className="ml-1">&rarr;</span>
           </a>
         </div>
 
@@ -113,11 +89,18 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="font-inter text-lg text-primary-200 hover:text-accent transition-colors py-2"
+                    className="font-inter text-sm font-medium tracking-widest text-primary-200 hover:text-white transition-colors py-2"
                   >
                     {link.label}
                   </a>
                 ))}
+                <a
+                  href="#contact"
+                  onClick={() => setIsOpen(false)}
+                  className="font-poppins text-sm font-semibold tracking-wider text-primary-950 bg-white px-5 py-2.5 rounded-sm text-center hover:bg-accent transition-colors mt-2"
+                >
+                  LET&apos;S TALK &rarr;
+                </a>
               </div>
               <div className="flex items-center gap-6 mt-6 pt-6 border-t border-primary-700">
                 <a
