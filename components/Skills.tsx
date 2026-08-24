@@ -74,15 +74,14 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <span className="font-inter text-sm text-accent uppercase tracking-wider">
-            Tech Stack
-          </span>
-          <h2 className="font-poppins text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">
-            Skills & <span className="gradient-text">Technologies</span>
-          </h2>
-          <p className="font-inter text-lg text-primary-300 max-w-2xl mx-auto">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="srv-card-system-label">TECH STACK</span>
+            <span className="srv-card-status">ACTIVE</span>
+          </div>
+          <h2 className="cs-section-title">Skills & <span className="gradient-text">Technologies</span></h2>
+          <p className="cs-section-desc">
             A modern tech stack spanning frontend, backend, mobile,
             and enterprise systems.
           </p>
@@ -93,34 +92,37 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="space-y-6 max-w-5xl mx-auto"
+          className="space-y-4 max-w-5xl mx-auto"
         >
           {techCategories.map((category) => (
             <motion.div
               key={category.name}
               variants={categoryVariants}
-              className="glass-card p-6"
+              className="srv-card group"
+              style={{ flexDirection: 'row', minHeight: 'auto' }}
             >
-              <h3 className="font-poppins text-lg font-semibold text-white mb-4 flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-accent" />
-                {category.name}
-              </h3>
+              <div className="srv-card-content" style={{ flex: 1 }}>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="srv-card-system-label">MODULE / {category.name.toUpperCase()}</span>
+                  <span className="srv-card-status">ACTIVE</span>
+                </div>
 
-              <div className="flex flex-wrap gap-3">
-                {category.items.map((item) => (
-                  <div
-                    key={item.name}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-800/50 border border-primary-700 hover:border-accent/30 transition-all duration-300 group"
-                  >
+                <div className="flex flex-wrap gap-3">
+                  {category.items.map((item) => (
                     <div
-                      className="w-3 h-3 rounded-full group-hover:scale-125 transition-transform"
-                      style={{ backgroundColor: item.color }}
-                    />
-                    <span className="font-inter text-sm font-medium text-primary-200 group-hover:text-white transition-colors">
-                      {item.name}
-                    </span>
-                  </div>
-                ))}
+                      key={item.name}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-800/50 border border-primary-700 hover:border-accent/30 transition-all duration-300 group/item"
+                    >
+                      <div
+                        className="w-3 h-3 rounded-full group-hover/item:scale-125 transition-transform"
+                        style={{ backgroundColor: item.color }}
+                      />
+                      <span className="font-inter text-sm font-medium text-primary-200 group-hover/item:text-white transition-colors">
+                        {item.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
@@ -140,7 +142,8 @@ export default function Skills() {
             ].map((tech) => (
               <span
                 key={tech}
-                className="px-4 py-2 text-sm font-medium text-primary-200 bg-primary-800 rounded-full border border-primary-600 hover:border-accent hover:text-accent transition-colors cursor-default"
+                className="srv-tech-pill"
+                style={{ fontSize: '0.75rem', padding: '0.5rem 1rem' }}
               >
                 {tech}
               </span>

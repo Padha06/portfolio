@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { GitHubIcon as GitHub, LinkedInIcon as Linkedin, MailIcon as Mail, HeartIcon as Heart, ArrowUpIcon as ArrowUp } from './Icons'
+import { GitHubIcon as GitHub, LinkedInIcon as Linkedin, MailIcon as Mail, ArrowUpIcon as ArrowUp } from './Icons'
 
 const navLinks = [
   { href: '#case-studies', label: 'Portfolio' },
@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-poppins text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h3 className="font-inter text-xs font-semibold text-primary-500 uppercase tracking-wider mb-4">
               Quick Links
             </h3>
             <nav aria-label="Footer navigation">
@@ -54,10 +54,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-poppins text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h3 className="font-inter text-xs font-semibold text-primary-500 uppercase tracking-wider mb-4">
               Connect
             </h3>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -75,9 +75,8 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-primary-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-inter text-sm text-primary-500 flex items-center gap-1">
-            © 2024-2026 Shubam Padha. Built with{' '}
-            <Heart size={14} className="text-red-500 fill-red-500" /> and lots of coffee.
+          <p className="font-inter text-xs text-primary-600">
+            © 2024-2026 Shubam Padha. Built with lots of coffee.
           </p>
 
           <button
