@@ -61,7 +61,7 @@ export default function Process() {
             <span className="srv-card-system-label">PROCESS</span>
             <span className="srv-card-status">ACTIVE</span>
           </div>
-          <h2 className="cs-section-title">From Idea to <span className="gradient-text">Launch</span></h2>
+          <h2 className="cs-section-title">From Idea to <span className="text-accent">Launch</span></h2>
           <p className="cs-section-desc">
             A proven three-step methodology that ensures quality delivery
             and transparent communication at every stage.

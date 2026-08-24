@@ -40,7 +40,7 @@ export default function CTA() {
           className="srv-header"
         >
           <span className="srv-eyebrow">CONTACT</span>
-          <h2 className="srv-title">Let&apos;s Build Together</h2>
+          <h2 className="srv-title">Let&apos;s Build <span className="text-accent">Together</span></h2>
           <p className="srv-desc">
             Have a project in mind? Let&apos;s discuss your goals and build
             something remarkable together.

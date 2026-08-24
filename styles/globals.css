@@ -55,14 +55,9 @@ h1, h2, h3, h4, h5, h6 {
   border-color: rgba(220, 38, 38, 0.3);
 }
 
-/* Gradient Text */
-.gradient-text {
-  background: linear-gradient(90deg, #dc2626 0%, #ef4444 50%, #dc2626 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradientShift 8s ease infinite;
+/* Accent Text - emphasis via color, not gradient */
+.text-accent {
+  color: #dc2626;
 }
 
 /* Buttons */
@@ -159,12 +154,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Animations */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -184,10 +173,6 @@ h1, h2, h3, h4, h5, h6 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-  
-  .gradient-text {
-    animation: none;
   }
   
   .glass-card:hover {
@@ -570,8 +555,8 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 2.5rem;
   font-weight: 700;
   color: #ffffff;
-  margin-top: 0.75rem;
-  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
   line-height: 1.2;
 }
 
@@ -784,7 +769,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Services Section */
 .srv-section {
-  padding: 8rem 1.5rem;
+  padding: 6rem 1.5rem;
   background: #0a0a0a;
   position: relative;
   overflow: hidden;
@@ -792,13 +777,13 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 768px) {
   .srv-section {
-    padding: 10rem 2rem;
+    padding: 8rem 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .srv-section {
-    padding: 12rem 4rem;
+    padding: 10rem 4rem;
   }
 }
 
@@ -816,7 +801,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Header */
 .srv-header {
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
   position: relative;
   z-index: 2;
 }
@@ -829,7 +814,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #dc2626;
   text-transform: uppercase;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .srv-title {
@@ -838,7 +823,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: #ffffff;
   line-height: 1.1;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
   max-width: 700px;
 }
 
@@ -915,16 +900,16 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  min-height: 320px;
+  min-height: 280px;
 }
 
 @media (min-width: 1024px) {
   .srv-card {
-    min-height: 380px;
+    min-height: 320px;
   }
 
   .srv-card--large {
-    min-height: 420px;
+    min-height: 360px;
   }
 }
 
@@ -961,7 +946,7 @@ h1, h2, h3, h4, h5, h6 {
 .srv-card-content {
   position: relative;
   z-index: 2;
-  padding: 2rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -969,17 +954,17 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 1024px) {
   .srv-card-content {
-    padding: 2.5rem;
+    padding: 2rem;
   }
 }
 
 /* Background number */
 .srv-card-number {
   position: absolute;
-  right: 1.5rem;
-  top: 1.5rem;
+  right: 1rem;
+  top: 1rem;
   font-family: 'Poppins', sans-serif;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.025);
   line-height: 1;
@@ -989,13 +974,13 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 1024px) {
   .srv-card-number {
-    font-size: 7rem;
-    right: 2rem;
-    top: 2rem;
+    font-size: 5rem;
+    right: 1.5rem;
+    top: 1.5rem;
   }
 
   .srv-card--large .srv-card-number {
-    font-size: 8rem;
+    font-size: 6rem;
   }
 }
 
@@ -1009,7 +994,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .srv-card-system-label {
@@ -1077,7 +1062,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.85rem;
   color: #666;
   line-height: 1.7;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   position: relative;
   z-index: 2;
   flex: 1;
@@ -1092,7 +1077,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   position: relative;
   z-index: 2;
   opacity: 0.5;
@@ -1148,8 +1133,8 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   gap: 2rem;
   align-items: flex-start;
-  margin-top: 5rem;
-  padding-top: 4rem;
+  margin-top: 4rem;
+  padding-top: 3rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   position: relative;
   z-index: 2;

@@ -91,7 +91,7 @@ export default function Stats() {
             <span className="srv-card-system-label">TRACK RECORD</span>
             <span className="srv-card-status">ACTIVE</span>
           </div>
-          <h2 className="cs-section-title">Client <span className="gradient-text">Outcomes</span></h2>
+          <h2 className="cs-section-title">Client <span className="text-accent">Outcomes</span></h2>
           <p className="cs-section-desc">
             Measurable results that demonstrate the impact of
             tailored development solutions.

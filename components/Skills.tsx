@@ -82,7 +82,7 @@ export default function Skills() {
           className="srv-header"
         >
           <span className="srv-eyebrow">TECH STACK</span>
-          <h2 className="srv-title">Skills & Technologies</h2>
+          <h2 className="srv-title">Skills & <span className="text-accent">Technologies</span></h2>
           <p className="srv-desc">
             A modern tech stack spanning frontend, backend, mobile,
             and enterprise systems.

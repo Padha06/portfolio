@@ -106,7 +106,7 @@ module.exports = {
         'gradient-accent': 'linear-gradient(135deg, #dc2626 0%, #ef4444 100%)',
         'gradient-hero': 'linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #1a1a1a 100%)',
         'gradient-glass': 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
-        'gradient-text': 'linear-gradient(90deg, #dc2626 0%, #ef4444 50%, #dc2626 100%)',
+        'gradient-text': 'none',
         'mesh': 'radial-gradient(at 40% 20%, hsla(0, 72%, 51%, 0.15) 0px, transparent 50%), radial-gradient(at 80% 0%, hsla(0, 72%, 51%, 0.1) 0px, transparent 50%), radial-gradient(at 0% 50%, hsla(0, 72%, 51%, 0.05) 0px, transparent 50%)',
       },
       backdropBlur: {

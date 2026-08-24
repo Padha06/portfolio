@@ -93,7 +93,7 @@ export default function CaseStudiesPage() {
             Portfolio
           </span>
           <h1 className="font-poppins text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
-            Case <span className="gradient-text">Studies</span>
+            Case <span className="text-accent">Studies</span>
           </h1>
           <p className="font-inter text-lg text-primary-300 max-w-2xl mx-auto">
             Anonymized project examples showcasing problem-solving
