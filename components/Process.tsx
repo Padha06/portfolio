@@ -80,10 +80,10 @@ export default function Process() {
               key={step.number}
               variants={stepVariants}
               className="srv-card group"
-              style={{ flexDirection: 'row', minHeight: 'auto' }}
             >
-              <div className="srv-card-content" style={{ flex: 1 }}>
-                <div className="flex items-start justify-between mb-6">
+              <div className="srv-card-content">
+                {/* Header row */}
+                <div className="flex items-center justify-between mb-6">
                   <div>
                     <div className="flex items-center gap-3 mb-3">
                       <span className="srv-card-system-label">STEP / {step.number}</span>
@@ -92,15 +92,17 @@ export default function Process() {
                     <h3 className="srv-card-title" style={{ marginBottom: '0.25rem' }}>{step.title}</h3>
                     <p className="font-inter text-sm text-accent">{step.subtitle}</p>
                   </div>
-                  <div className="srv-card-number" style={{ position: 'relative', right: 'auto', top: 'auto' }}>
+                  <div className="font-poppins text-6xl font-bold text-accent/10 group-hover:text-accent/20 transition-colors">
                     {step.number}
                   </div>
                 </div>
 
+                {/* Description */}
                 <p className="srv-card-desc">{step.description}</p>
 
-                <div className="flex items-center justify-between mt-auto">
-                  <div className="srv-card-tech">
+                {/* Footer row */}
+                <div className="flex items-center justify-between mt-4 pt-4 border-t border-primary-800">
+                  <div className="flex flex-wrap gap-2">
                     {step.tags.map((tag) => (
                       <span key={tag} className="srv-tech-pill">{tag}</span>
                     ))}

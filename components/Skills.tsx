@@ -48,6 +48,11 @@ const techCategories = [
   },
 ]
 
+const extraTech = [
+  'React Native', 'GraphQL', 'MongoDB', 'Docker', 'CI/CD',
+  'Agile/Scrum', 'Unit Testing', 'OAuth', 'WebSocket', 'Redis',
+]
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -99,9 +104,8 @@ export default function Skills() {
               key={category.name}
               variants={categoryVariants}
               className="srv-card group"
-              style={{ flexDirection: 'row', minHeight: 'auto' }}
             >
-              <div className="srv-card-content" style={{ flex: 1 }}>
+              <div className="srv-card-content">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="srv-card-system-label">MODULE / {category.name.toUpperCase()}</span>
                   <span className="srv-card-status">ACTIVE</span>
@@ -136,10 +140,7 @@ export default function Skills() {
           className="mt-12"
         >
           <div className="flex flex-wrap justify-center gap-3">
-            {[
-              'React Native', 'GraphQL', 'MongoDB', 'Docker', 'CI/CD',
-              'Agile/Scrum', 'Unit Testing', 'OAuth', 'WebSocket', 'Redis',
-            ].map((tech) => (
+            {extraTech.map((tech) => (
               <span
                 key={tech}
                 className="srv-tech-pill"
