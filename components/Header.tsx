@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import { MenuIcon as Menu, XIcon as X, GitHubIcon as GitHub, LinkedInIcon as Linkedin, MailIcon as Mail } from './Icons'
 
 const navLinks = [
@@ -35,10 +36,16 @@ export default function Header() {
       <nav className="container-custom flex items-center justify-between px-4 py-4 md:px-6">
         <a
           href="#"
-          className="font-poppins text-xl font-bold text-white hover:text-accent transition-colors"
-          aria-label="Shubam Padha - Home"
+          className="flex items-center"
+          aria-label="Vaskoi - Home"
         >
-          SP<span className="text-accent">.</span>
+          <Image
+            src="/vaskoi_logo.png"
+            alt="Vaskoi"
+            width={108}
+            height={30}
+            priority
+          />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
