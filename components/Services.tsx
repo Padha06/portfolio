@@ -1,36 +1,61 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CodeIcon as Code, SmartphoneIcon as Smartphone, DatabaseIcon as Database, GitBranchIcon as GitBranch, ArrowRightIcon as ArrowRight } from './Icons'
 
 const services = [
   {
-    icon: Code,
-    title: 'Web Development',
-    description: 'Modern, responsive web applications built with React, Next.js, and Tailwind CSS. SPA architectures optimized for performance.',
-    technologies: ['React', 'Next.js', 'Tailwind', 'TypeScript'],
-    color: 'from-blue-500 to-cyan-400',
+    id: '01',
+    tag: 'SERVICE / 01',
+    category: 'WEB SYSTEM',
+    title: 'Websites that do more than look good.',
+    description: 'High-performance websites and digital experiences built for businesses, startups, and products — responsive, scalable, SEO-friendly, and designed to convert.',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind'],
+    size: 'large' as const,
   },
   {
-    icon: Smartphone,
-    title: 'Mobile Apps',
-    description: 'Native Android development with Kotlin, offline-first architecture, and seamless user experiences.',
-    technologies: ['Kotlin', 'Android SDK', 'Offline-First'],
-    color: 'from-purple-500 to-pink-400',
+    id: '02',
+    tag: 'SERVICE / 02',
+    category: 'WEB APPLICATION',
+    title: 'Software built around your workflow.',
+    description: 'Custom web applications that turn complex processes into simple, intuitive experiences — from dashboards and portals to complete business platforms.',
+    tech: ['React', 'Node.js', 'Python', '.NET', 'SQL'],
+    size: 'small' as const,
   },
   {
-    icon: Database,
-    title: 'ERP & Business Central',
-    description: 'Custom AL development, extensions, module design, and report builder for Dynamics 365 Business Central.',
-    technologies: ['BC AL', 'Extensions', 'Report Builder'],
-    color: 'from-emerald-500 to-teal-400',
+    id: '03',
+    tag: 'SERVICE / 03',
+    category: 'MOBILE APPLICATION',
+    title: 'Your product, wherever your users are.',
+    description: 'Native and cross-platform mobile applications designed for performance, reliability, and real-world use — including field operations, workforce apps, and internal tools.',
+    tech: ['React Native', 'Kotlin', 'Android', 'REST APIs'],
+    size: 'small' as const,
   },
   {
-    icon: GitBranch,
-    title: 'Integrations',
-    description: 'Seamless system connectivity between BC, Dataverse, Power Apps, and third-party REST APIs.',
-    technologies: ['REST APIs', 'Power Apps', 'Dataverse'],
-    color: 'from-amber-500 to-orange-400',
+    id: '04',
+    tag: 'SERVICE / 04',
+    category: 'ERP & BUSINESS',
+    title: 'Make your business systems work harder.',
+    description: 'Custom ERP development, extensions, workflows, and business logic that adapt enterprise systems to your exact processes.',
+    tech: ['Dynamics 365 BC', 'AL', 'Power Apps', 'Dataverse'],
+    size: 'large' as const,
+  },
+  {
+    id: '05',
+    tag: 'SERVICE / 05',
+    category: 'INTEGRATIONS',
+    title: 'Connect the systems that power your business.',
+    description: 'We connect websites, apps, ERP platforms, databases, cloud services, and third-party tools so your data moves where it needs to — automatically.',
+    tech: ['REST APIs', 'GraphQL', 'Webhooks', 'Azure', 'Dataverse'],
+    size: 'large' as const,
+  },
+  {
+    id: '06',
+    tag: 'SERVICE / 06',
+    category: 'AUTOMATION',
+    title: 'Replace repetitive work with intelligent systems.',
+    description: 'From data automation to custom internal tools, we turn manual processes into reliable digital workflows that save time and reduce errors.',
+    tech: ['Power Automate', 'Python', 'SQL', 'APIs', 'Automation'],
+    size: 'small' as const,
   },
 ]
 
@@ -38,98 +63,106 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.08 },
   },
 }
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
-    },
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
   },
 }
 
 export default function Services() {
   return (
-    <section id="services" className="section-padding bg-primary-950">
+    <section id="services" className="srv-section">
       <div className="container-custom">
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="srv-header"
         >
-          <span className="font-inter text-sm text-accent uppercase tracking-wider">
-            What I Do
-          </span>
-          <h2 className="font-poppins text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">
-            Core <span className="gradient-text">Services</span>
+          <span className="srv-eyebrow">SERVICES</span>
+          <h2 className="srv-title">
+            We build more than websites.
           </h2>
-          <p className="font-inter text-lg text-primary-300 max-w-2xl mx-auto">
-            End-to-end development solutions for startups and enterprises,
-            from web applications to ERP customization.
+          <p className="srv-desc">
+            From polished digital experiences to complex business systems, we
+            design, develop, integrate, and scale software around the way your
+            business actually works.
           </p>
         </motion.div>
 
-        {/* Services Grid */}
+        {/* Asymmetric Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+          viewport={{ once: true, margin: '-50px' }}
+          className="srv-grid"
         >
           {services.map((service) => (
-            <motion.div
-              key={service.title}
+            <motion.article
+              key={service.id}
               variants={cardVariants}
-              className="glass-card p-6 lg:p-8 group cursor-pointer"
+              className={`srv-card srv-card--${service.size}`}
             >
-              {/* Icon */}
-              <div
-                className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-              >
-                <service.icon size={28} className="text-white" />
+              {/* Background number */}
+              <div className="srv-card-number">{service.id}</div>
+
+              {/* System label */}
+              <div className="srv-card-system">
+                <span className="srv-card-system-label">{service.tag}</span>
+                <span className="srv-card-status">ACTIVE</span>
               </div>
 
+              {/* Category */}
+              <div className="srv-card-category">{service.category}</div>
+
               {/* Title */}
-              <h3 className="font-poppins text-xl font-semibold text-white mb-3">
-                {service.title}
-              </h3>
+              <h3 className="srv-card-title">{service.title}</h3>
 
               {/* Description */}
-              <p className="font-inter text-primary-300 mb-6 leading-relaxed">
-                {service.description}
-              </p>
+              <p className="srv-card-desc">{service.description}</p>
 
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {service.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-xs font-medium text-accent bg-accent/10 rounded-full border border-accent/20"
-                  >
-                    {tech}
-                  </span>
+              {/* Tech */}
+              <div className="srv-card-tech">
+                {service.tech.map((t) => (
+                  <span key={t} className="srv-tech-pill">{t}</span>
                 ))}
               </div>
 
-              {/* Learn More */}
-              <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-3 transition-all duration-300">
-                <span className="font-inter text-sm">Learn More</span>
-                <ArrowRight size={16} />
+              {/* Arrow */}
+              <div className="srv-card-arrow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
+        </motion.div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="srv-cta"
+        >
+          <div className="srv-cta-text">
+            <span className="srv-cta-label">Have a system in mind?</span>
+            <span className="srv-cta-heading">Let&apos;s build it.</span>
+          </div>
+          <a href="#contact" className="srv-cta-btn">
+            START A PROJECT <span>&rarr;</span>
+          </a>
         </motion.div>
       </div>
     </section>
