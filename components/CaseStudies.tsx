@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { XIcon as X } from './Icons'
@@ -82,6 +82,16 @@ const cardVariants = {
 export default function CaseStudies() {
   const [selected, setSelected] = useState<typeof caseStudies[0] | null>(null)
 
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent, study: typeof caseStudies[0]) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
+        setSelected(study)
+      }
+    },
+    []
+  )
+
   return (
     <>
       <section id="case-studies" className="section-padding" style={{ background: '#0a0a0a' }}>
@@ -118,7 +128,11 @@ export default function CaseStudies() {
                 key={study.id}
                 variants={cardVariants}
                 className="cs-card"
+                role="button"
+                tabIndex={0}
+                aria-label={`View case study: ${study.title}`}
                 onClick={() => setSelected(study)}
+                onKeyDown={(e) => handleKeyDown(e, study)}
               >
                 <div className="cs-card-image">
                   <Image
@@ -157,6 +171,9 @@ export default function CaseStudies() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
             style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)' }}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
             onClick={() => setSelected(null)}
           >
             <motion.div
@@ -170,12 +187,12 @@ export default function CaseStudies() {
               <div className="cs-modal-header">
                 <div>
                   <span className="cs-card-category">{selected.categoryLabel}</span>
-                  <h3 className="cs-modal-title">{selected.title}</h3>
+                  <h3 id="modal-title" className="cs-modal-title">{selected.title}</h3>
                 </div>
                 <button
                   onClick={() => setSelected(null)}
                   className="cs-modal-close"
-                  aria-label="Close"
+                  aria-label="Close dialog"
                 >
                   <X size={20} />
                 </button>
