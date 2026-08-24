@@ -910,7 +910,6 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 6px;
-  padding: 2rem;
   overflow: hidden;
   cursor: default;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -921,7 +920,6 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 1024px) {
   .srv-card {
-    padding: 2.5rem;
     min-height: 380px;
   }
 
@@ -932,8 +930,47 @@ h1, h2, h3, h4, h5, h6 {
 
 .srv-card:hover {
   border-color: rgba(220, 38, 38, 0.25);
-  background: rgba(220, 38, 38, 0.03);
   box-shadow: 0 0 60px rgba(220, 38, 38, 0.06);
+}
+
+/* Card background image */
+.srv-card-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.srv-card-bg-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  filter: grayscale(90%) brightness(0.2);
+  transition: all 0.6s ease;
+}
+
+.srv-card:hover .srv-card-bg-img {
+  filter: grayscale(70%) brightness(0.25);
+  transform: scale(1.03);
+}
+
+.srv-card-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.7) 0%, rgba(10, 10, 10, 0.9) 100%);
+}
+
+.srv-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@media (min-width: 1024px) {
+  .srv-card-content {
+    padding: 2.5rem;
+  }
 }
 
 /* Background number */

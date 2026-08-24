@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const services = [
   {
@@ -10,6 +11,7 @@ const services = [
     title: 'Websites that do more than look good.',
     description: 'High-performance websites and digital experiences built for businesses, startups, and products — responsive, scalable, SEO-friendly, and designed to convert.',
     tech: ['Next.js', 'React', 'TypeScript', 'Tailwind'],
+    image: '/svc-web.jpg',
     size: 'large' as const,
   },
   {
@@ -19,6 +21,7 @@ const services = [
     title: 'Software built around your workflow.',
     description: 'Custom web applications that turn complex processes into simple, intuitive experiences — from dashboards and portals to complete business platforms.',
     tech: ['React', 'Node.js', 'Python', '.NET', 'SQL'],
+    image: '/svc-app.jpg',
     size: 'small' as const,
   },
   {
@@ -28,6 +31,7 @@ const services = [
     title: 'Your product, wherever your users are.',
     description: 'Native and cross-platform mobile applications designed for performance, reliability, and real-world use — including field operations, workforce apps, and internal tools.',
     tech: ['React Native', 'Kotlin', 'Android', 'REST APIs'],
+    image: '/svc-mobile.jpg',
     size: 'small' as const,
   },
   {
@@ -37,6 +41,7 @@ const services = [
     title: 'Make your business systems work harder.',
     description: 'Custom ERP development, extensions, workflows, and business logic that adapt enterprise systems to your exact processes.',
     tech: ['Dynamics 365 BC', 'AL', 'Power Apps', 'Dataverse'],
+    image: '/svc-erp.jpg',
     size: 'large' as const,
   },
   {
@@ -46,6 +51,7 @@ const services = [
     title: 'Connect the systems that power your business.',
     description: 'We connect websites, apps, ERP platforms, databases, cloud services, and third-party tools so your data moves where it needs to — automatically.',
     tech: ['REST APIs', 'GraphQL', 'Webhooks', 'Azure', 'Dataverse'],
+    image: '/svc-integration.jpg',
     size: 'large' as const,
   },
   {
@@ -55,6 +61,7 @@ const services = [
     title: 'Replace repetitive work with intelligent systems.',
     description: 'From data automation to custom internal tools, we turn manual processes into reliable digital workflows that save time and reduce errors.',
     tech: ['Power Automate', 'Python', 'SQL', 'APIs', 'Automation'],
+    image: '/svc-automation.jpg',
     size: 'small' as const,
   },
 ]
@@ -113,36 +120,52 @@ export default function Services() {
               variants={cardVariants}
               className={`srv-card srv-card--${service.size}`}
             >
-              {/* Background number */}
-              <div className="srv-card-number">{service.id}</div>
-
-              {/* System label */}
-              <div className="srv-card-system">
-                <span className="srv-card-system-label">{service.tag}</span>
-                <span className="srv-card-status">ACTIVE</span>
+              {/* Background image */}
+              <div className="srv-card-bg">
+                <Image
+                  src={service.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="srv-card-bg-img"
+                  priority={false}
+                />
+                <div className="srv-card-bg-overlay" />
               </div>
 
-              {/* Category */}
-              <div className="srv-card-category">{service.category}</div>
+              {/* Content */}
+              <div className="srv-card-content">
+                {/* Background number */}
+                <div className="srv-card-number">{service.id}</div>
 
-              {/* Title */}
-              <h3 className="srv-card-title">{service.title}</h3>
+                {/* System label */}
+                <div className="srv-card-system">
+                  <span className="srv-card-system-label">{service.tag}</span>
+                  <span className="srv-card-status">ACTIVE</span>
+                </div>
 
-              {/* Description */}
-              <p className="srv-card-desc">{service.description}</p>
+                {/* Category */}
+                <div className="srv-card-category">{service.category}</div>
 
-              {/* Tech */}
-              <div className="srv-card-tech">
-                {service.tech.map((t) => (
-                  <span key={t} className="srv-tech-pill">{t}</span>
-                ))}
-              </div>
+                {/* Title */}
+                <h3 className="srv-card-title">{service.title}</h3>
 
-              {/* Arrow */}
-              <div className="srv-card-arrow">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
+                {/* Description */}
+                <p className="srv-card-desc">{service.description}</p>
+
+                {/* Tech */}
+                <div className="srv-card-tech">
+                  {service.tech.map((t) => (
+                    <span key={t} className="srv-tech-pill">{t}</span>
+                  ))}
+                </div>
+
+                {/* Arrow */}
+                <div className="srv-card-arrow">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
               </div>
             </motion.article>
           ))}
