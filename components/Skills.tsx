@@ -72,7 +72,7 @@ const categoryVariants = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="srv-section" style={{ padding: '6rem 1.5rem' }}>
+    <section id="skills" className="srv-section px-6 py-24">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -94,56 +94,34 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '1rem',
-          }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-          {techCategories.map((category, index) => (
+          {techCategories.map((category) => (
             <motion.div
               key={category.name}
               variants={categoryVariants}
-              style={{
-                background: 'rgba(255, 255, 255, 0.02)',
-                border: '1px solid rgba(255, 255, 255, 0.06)',
-                borderRadius: '6px',
-                padding: '1.25rem',
-                transition: 'all 0.4s ease',
-              }}
+              className="bg-white/[0.02] border border-white/5 rounded-md p-5 transition-all duration-400"
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+              <div className="flex items-center gap-3 mb-3">
                 <span className="srv-card-system-label">MODULE / {category.name.toUpperCase()}</span>
                 <span className="srv-card-status">ACTIVE</span>
               </div>
 
-              <h3 className="font-outfit" style={{ fontSize: '0.95rem', fontWeight: 600, color: '#ffffff', marginBottom: '0.75rem' }}>
+              <h3 className="font-outfit text-[0.95rem] font-semibold text-white mb-3">
                 {category.name}
               </h3>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <div className="flex flex-wrap gap-2">
                 {category.items.map((item) => (
                   <div
                     key={item.name}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem',
-                      padding: '0.4rem 0.75rem',
-                      borderRadius: '4px',
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid rgba(255, 255, 255, 0.06)',
-                    }}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded bg-white/[0.03] border border-white/5"
                   >
                     <div
-                      style={{
-                        width: '6px',
-                        height: '6px',
-                        borderRadius: '50%',
-                        backgroundColor: item.color,
-                      }}
+                      className="w-1.5 h-1.5 rounded-full"
+                      style={{ backgroundColor: item.color }}
                     />
-                    <span className="font-dm" style={{ fontSize: '0.75rem', fontWeight: 500, color: '#a3a3a3' }}>
+                    <span className="font-dm text-xs font-medium text-primary-300">
                       {item.name}
                     </span>
                   </div>
@@ -158,14 +136,13 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          style={{ marginTop: '2rem' }}
+          className="mt-8"
         >
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.5rem' }}>
+          <div className="flex flex-wrap justify-center gap-2">
             {extraTech.map((tech) => (
               <span
                 key={tech}
-                className="srv-tech-pill"
-                style={{ fontSize: '0.7rem', padding: '0.35rem 0.75rem' }}
+                className="srv-tech-pill text-[0.7rem] px-3 py-1"
               >
                 {tech}
               </span>

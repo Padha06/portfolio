@@ -23,8 +23,8 @@ export default function Footer() {
   }
 
   return (
-    <footer style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
-      <div className="container-custom" style={{ padding: '3rem 1.5rem' }}>
+    <footer className="bg-primary-950 border-t border-white/5">
+      <div className="container-custom px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div>
             <a href="#" className="inline-block mb-5">
@@ -33,24 +33,24 @@ export default function Footer() {
                 alt="Vaskoi"
                 width={120}
                 height={32}
-                style={{ height: '32px', width: 'auto' }}
+                className="h-8 w-auto"
               />
             </a>
-            <p className="font-dm text-sm leading-relaxed" style={{ color: '#737373', maxWidth: '280px' }}>
+            <p className="font-dm text-sm leading-relaxed text-primary-400 max-w-[280px]">
               Full-Stack Developer specializing in web, mobile, and ERP
               solutions for growing businesses.
             </p>
           </div>
 
           <div>
-            <h3 className="font-dm text-xs font-semibold uppercase tracking-wider mb-5" style={{ color: '#525252' }}>
+            <h3 className="font-dm text-xs font-semibold uppercase tracking-wider mb-5 text-primary-500">
               Quick Links
             </h3>
             <nav aria-label="Footer navigation">
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <ul className="flex flex-col gap-3">
                 {navLinks.map((link) => (
                   <li key={link.href}>
-                    <a href={link.href} className="font-dm text-sm transition-colors" style={{ color: '#737373' }}>
+                    <a href={link.href} className="font-dm text-sm transition-colors text-primary-400 hover:text-white">
                       {link.label}
                     </a>
                   </li>
@@ -60,25 +60,17 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-dm text-xs font-semibold uppercase tracking-wider mb-5" style={{ color: '#525252' }}>
+            <h3 className="font-dm text-xs font-semibold uppercase tracking-wider mb-5 text-primary-500">
               Connect
             </h3>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <div className="flex items-center gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center transition-colors"
-                  style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '8px',
-                    background: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid rgba(255, 255, 255, 0.06)',
-                    color: '#737373',
-                  }}
+                  className="flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/5 text-primary-400 hover:text-white hover:border-accent/30 transition-colors"
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -88,21 +80,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4" style={{ paddingTop: '2rem', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
-          <p className="font-dm text-xs" style={{ color: '#404040' }}>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/5">
+          <p className="font-dm text-xs text-primary-600">
             © 2024-2026 Shubam Padha. Built with lots of coffee.
           </p>
 
           <button
             onClick={scrollToTop}
-            className="flex items-center justify-center transition-colors"
-            style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '8px',
-              border: '1px solid rgba(255, 255, 255, 0.06)',
-              color: '#737373',
-            }}
+            className="flex items-center justify-center w-9 h-9 rounded-lg border border-white/5 text-primary-400 hover:text-white hover:border-accent/30 transition-colors"
             aria-label="Scroll to top"
           >
             <ArrowUp size={18} />
