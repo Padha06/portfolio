@@ -99,13 +99,13 @@ export default function Pricing() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-inter text-sm text-accent uppercase tracking-wider">
+          <span className="font-dm text-sm text-accent uppercase tracking-wider">
             Pricing
           </span>
-          <h2 className="font-poppins text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">
+          <h2 className="font-outfit text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">
             Growth <span className="gradient-text">Packages</span>
           </h2>
-          <p className="font-inter text-lg text-primary-300 max-w-2xl mx-auto">
+          <p className="font-dm text-lg text-primary-300 max-w-2xl mx-auto">
             Flexible pricing options designed to scale with your business.
             All packages include source code ownership.
           </p>
@@ -130,7 +130,7 @@ export default function Pricing() {
               {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-accent rounded-full">
-                  <span className="font-inter text-xs font-semibold text-black uppercase tracking-wider">
+                  <span className="font-dm text-xs font-semibold text-black uppercase tracking-wider">
                     Most Popular
                   </span>
                 </div>
@@ -144,21 +144,21 @@ export default function Pricing() {
               </div>
 
               {/* Plan Name */}
-              <h3 className="font-poppins text-2xl font-bold text-white mb-2">
+              <h3 className="font-outfit text-2xl font-bold text-white mb-2">
                 {plan.name}
               </h3>
 
               {/* Description */}
-              <p className="font-inter text-primary-400 mb-6">
+              <p className="font-dm text-primary-400 mb-6">
                 {plan.description}
               </p>
 
               {/* Price */}
               <div className="mb-6">
-                <span className="font-inter text-sm text-primary-400 block">
+                <span className="font-dm text-sm text-primary-400 block">
                   {plan.priceNote}
                 </span>
-                <span className="font-poppins text-4xl font-bold text-white">
+                <span className="font-outfit text-4xl font-bold text-white">
                   {plan.price}
                 </span>
               </div>
@@ -172,7 +172,7 @@ export default function Pricing() {
                       className="text-success mt-0.5 shrink-0"
                      
                     />
-                    <span className="font-inter text-sm text-primary-300">
+                    <span className="font-dm text-sm text-primary-300">
                       {feature}
                     </span>
                   </li>
@@ -182,7 +182,7 @@ export default function Pricing() {
               {/* CTA */}
               <a
                 href="#contact"
-                className={`w-full flex items-center justify-center gap-2 py-3 px-6 rounded-lg font-poppins font-semibold transition-all duration-300 ${
+                className={`w-full flex items-center justify-center gap-2 py-3 px-6 rounded-lg font-outfit font-semibold transition-all duration-300 ${
                   plan.popular
                     ? 'bg-gradient-accent text-black hover:shadow-glow-lg hover:-translate-y-1'
                     : 'border border-primary-600 text-white hover:border-accent hover:text-accent'
@@ -203,7 +203,7 @@ export default function Pricing() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mt-12"
         >
-          <p className="font-inter text-primary-400 mb-4">
+          <p className="font-dm text-primary-400 mb-4">
             Need a custom solution? Let&apos;s discuss your specific requirements.
           </p>
           <a

@@ -37,8 +37,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-        inter: ['Inter', 'sans-serif'],
+        outfit: ['Outfit', 'sans-serif'],
+        dm: ['DM Sans', 'sans-serif'],
       },
       spacing: {
         '18': '4.5rem',

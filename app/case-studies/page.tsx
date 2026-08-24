@@ -89,13 +89,13 @@ export default function CaseStudiesPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-inter text-sm text-accent uppercase tracking-wider">
+          <span className="font-dm text-sm text-accent uppercase tracking-wider">
             Portfolio
           </span>
-          <h1 className="font-poppins text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+          <h1 className="font-outfit text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
             Case <span className="text-accent">Studies</span>
           </h1>
-          <p className="font-inter text-lg text-primary-300 max-w-2xl mx-auto">
+          <p className="font-dm text-lg text-primary-300 max-w-2xl mx-auto">
             Anonymized project examples showcasing problem-solving
             approaches and measurable results.
           </p>
@@ -127,10 +127,10 @@ export default function CaseStudiesPage() {
           transition={{ delay: 0.5 }}
           className="mt-16 p-6 glass-card"
         >
-          <h2 className="font-poppins text-lg font-semibold text-white mb-4">
+          <h2 className="font-outfit text-lg font-semibold text-white mb-4">
             Usage Instructions
           </h2>
-          <div className="font-inter text-sm text-primary-400 space-y-2">
+          <div className="font-dm text-sm text-primary-400 space-y-2">
             <p>• <strong className="text-primary-200">Desktop:</strong> Hover over cards to see video crossfade effect</p>
             <p>• <strong className="text-primary-200">Mobile:</strong> Cards autoplay video when 60% in viewport</p>
             <p>• <strong className="text-primary-200">Click:</strong> Opens modal with full case study details</p>
@@ -138,13 +138,13 @@ export default function CaseStudiesPage() {
           </div>
           
           <div className="mt-4 pt-4 border-t border-primary-700">
-            <h3 className="font-poppins text-sm font-semibold text-accent mb-2">
+            <h3 className="font-outfit text-sm font-semibold text-accent mb-2">
               Video Compression Guide
             </h3>
             <code className="block p-3 bg-primary-800 rounded-lg text-xs text-primary-300 font-mono overflow-x-auto">
               ffmpeg -i input.mp4 -c:v libvpx-vp9 -crf 30 -b:v 0 -an -t 8 output.webm
             </code>
-            <p className="font-inter text-xs text-primary-500 mt-2">
+            <p className="font-dm text-xs text-primary-500 mt-2">
               Target: Under 2MB per clip • Resolution: 640x360 or 800x450 • Duration: 5-10 seconds
             </p>
           </div>

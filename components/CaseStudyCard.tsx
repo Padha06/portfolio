@@ -234,11 +234,11 @@ export default function CaseStudyCard({
 
         {/* Content */}
         <div className="p-5">
-          <h3 className="font-poppins text-lg font-semibold text-white mb-2 group-hover:text-accent transition-colors line-clamp-1">
+          <h3 className="font-outfit text-lg font-semibold text-white mb-2 group-hover:text-accent transition-colors line-clamp-1">
             {title}
           </h3>
           
-          <p className="font-inter text-sm text-primary-400 mb-4 line-clamp-2">
+          <p className="font-dm text-sm text-primary-400 mb-4 line-clamp-2">
             {challenge}
           </p>
 
@@ -306,33 +306,33 @@ export default function CaseStudyCard({
 
               {/* Modal Content */}
               <div className="p-6 space-y-6">
-                <h2 className="font-poppins text-2xl font-bold text-white">
+                <h2 className="font-outfit text-2xl font-bold text-white">
                   {title}
                 </h2>
 
                 {/* Challenge */}
                 <div>
-                  <h3 className="font-poppins text-sm font-semibold text-accent uppercase tracking-wider mb-2">
+                  <h3 className="font-outfit text-sm font-semibold text-accent uppercase tracking-wider mb-2">
                     Challenge
                   </h3>
-                  <p className="font-inter text-primary-300 leading-relaxed">
+                  <p className="font-dm text-primary-300 leading-relaxed">
                     {challenge}
                   </p>
                 </div>
 
                 {/* Solution */}
                 <div>
-                  <h3 className="font-poppins text-sm font-semibold text-accent uppercase tracking-wider mb-2">
+                  <h3 className="font-outfit text-sm font-semibold text-accent uppercase tracking-wider mb-2">
                     Solution
                   </h3>
-                  <p className="font-inter text-primary-300 leading-relaxed">
+                  <p className="font-dm text-primary-300 leading-relaxed">
                     {solution}
                   </p>
                 </div>
 
                 {/* Tech Stack */}
                 <div>
-                  <h3 className="font-poppins text-sm font-semibold text-accent uppercase tracking-wider mb-3">
+                  <h3 className="font-outfit text-sm font-semibold text-accent uppercase tracking-wider mb-3">
                     Tech Stack
                   </h3>
                   <div className="flex flex-wrap gap-2">
@@ -349,7 +349,7 @@ export default function CaseStudyCard({
 
                 {/* Results */}
                 <div>
-                  <h3 className="font-poppins text-sm font-semibold text-accent uppercase tracking-wider mb-3">
+                  <h3 className="font-outfit text-sm font-semibold text-accent uppercase tracking-wider mb-3">
                     Results
                   </h3>
                   <div className="grid grid-cols-3 gap-4">
@@ -358,10 +358,10 @@ export default function CaseStudyCard({
                         key={idx}
                         className="text-center p-4 rounded-xl bg-success/10 border border-success/20"
                       >
-                        <div className="font-poppins text-2xl font-bold text-success">
+                        <div className="font-outfit text-2xl font-bold text-success">
                           {result.value}
                         </div>
-                        <div className="font-inter text-xs text-primary-400 mt-1">
+                        <div className="font-dm text-xs text-primary-400 mt-1">
                           {result.label}
                         </div>
                       </div>

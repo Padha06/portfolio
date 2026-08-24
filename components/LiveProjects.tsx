@@ -62,13 +62,13 @@ export default function LiveProjects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-inter text-sm text-accent uppercase tracking-wider">
+          <span className="font-dm text-sm text-accent uppercase tracking-wider">
             Live Projects
           </span>
-          <h2 className="font-poppins text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">
+          <h2 className="font-outfit text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">
             Recent <span className="gradient-text">Work</span>
           </h2>
-          <p className="font-inter text-lg text-primary-300 max-w-2xl mx-auto">
+          <p className="font-dm text-lg text-primary-300 max-w-2xl mx-auto">
             Explore some of my recently launched projects
             with live demos and technical details.
           </p>
@@ -106,11 +106,11 @@ export default function LiveProjects() {
 
               {/* Project Content */}
               <div className="p-6">
-                <h3 className="font-poppins text-xl font-semibold text-white mb-3 group-hover:text-accent transition-colors">
+                <h3 className="font-outfit text-xl font-semibold text-white mb-3 group-hover:text-accent transition-colors">
                   {project.title}
                 </h3>
 
-                <p className="font-inter text-primary-300 mb-4 leading-relaxed">
+                <p className="font-dm text-primary-300 mb-4 leading-relaxed">
                   {project.description}
                 </p>
 

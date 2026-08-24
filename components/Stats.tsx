@@ -117,11 +117,11 @@ export default function Stats() {
                   <span className="srv-card-status">ACTIVE</span>
                 </div>
 
-                <div className="font-poppins text-5xl md:text-6xl font-bold text-white mb-3">
+                <div className="font-outfit text-5xl md:text-6xl font-bold text-white mb-3">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </div>
 
-                <h3 className="font-poppins text-lg font-semibold text-white mb-2">
+                <h3 className="font-outfit text-lg font-semibold text-white mb-2">
                   {stat.label}
                 </h3>
 

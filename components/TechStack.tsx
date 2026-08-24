@@ -80,13 +80,13 @@ export default function TechStack() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-inter text-sm text-accent uppercase tracking-wider">
+          <span className="font-dm text-sm text-accent uppercase tracking-wider">
             Technology Stack
           </span>
-          <h2 className="font-poppins text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">
+          <h2 className="font-outfit text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">
             Tools & <span className="gradient-text">Technologies</span>
           </h2>
-          <p className="font-inter text-lg text-primary-300 max-w-2xl mx-auto">
+          <p className="font-dm text-lg text-primary-300 max-w-2xl mx-auto">
             A modern tech stack spanning frontend, backend, mobile,
             and enterprise systems.
           </p>
@@ -106,7 +106,7 @@ export default function TechStack() {
               variants={categoryVariants}
               className="glass-card p-6"
             >
-              <h3 className="font-poppins text-lg font-semibold text-white mb-4 flex items-center gap-3">
+              <h3 className="font-outfit text-lg font-semibold text-white mb-4 flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-accent" />
                 {category.name}
               </h3>
@@ -121,7 +121,7 @@ export default function TechStack() {
                       className="w-3 h-3 rounded-full group-hover:scale-125 transition-transform"
                       style={{ backgroundColor: item.color }}
                     />
-                    <span className="font-inter text-sm font-medium text-primary-200 group-hover:text-white transition-colors">
+                    <span className="font-dm text-sm font-medium text-primary-200 group-hover:text-white transition-colors">
                       {item.name}
                     </span>
                   </div>

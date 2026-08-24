@@ -64,7 +64,7 @@ export default function CTA() {
 
                 <div className="space-y-5 mt-6">
                   <div>
-                    <label htmlFor="name" className="block font-inter text-xs font-medium mb-2 uppercase tracking-wider" style={{ color: '#737373' }}>
+                    <label htmlFor="name" className="block font-dm text-xs font-medium mb-2 uppercase tracking-wider" style={{ color: '#737373' }}>
                       Your Name
                     </label>
                     <input
@@ -74,7 +74,7 @@ export default function CTA() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg font-inter text-white transition-colors text-sm"
+                      className="w-full px-4 py-3 rounded-lg font-dm text-white transition-colors text-sm"
                       style={{
                         background: 'rgba(255, 255, 255, 0.03)',
                         border: '1px solid rgba(255, 255, 255, 0.06)',
@@ -84,7 +84,7 @@ export default function CTA() {
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block font-inter text-xs font-medium mb-2 uppercase tracking-wider" style={{ color: '#737373' }}>
+                    <label htmlFor="email" className="block font-dm text-xs font-medium mb-2 uppercase tracking-wider" style={{ color: '#737373' }}>
                       Email Address
                     </label>
                     <input
@@ -94,7 +94,7 @@ export default function CTA() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg font-inter text-white transition-colors text-sm"
+                      className="w-full px-4 py-3 rounded-lg font-dm text-white transition-colors text-sm"
                       style={{
                         background: 'rgba(255, 255, 255, 0.03)',
                         border: '1px solid rgba(255, 255, 255, 0.06)',
@@ -104,7 +104,7 @@ export default function CTA() {
                   </div>
 
                   <div>
-                    <label htmlFor="projectType" className="block font-inter text-xs font-medium mb-2 uppercase tracking-wider" style={{ color: '#737373' }}>
+                    <label htmlFor="projectType" className="block font-dm text-xs font-medium mb-2 uppercase tracking-wider" style={{ color: '#737373' }}>
                       Project Type
                     </label>
                     <select
@@ -113,7 +113,7 @@ export default function CTA() {
                       value={formData.projectType}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg font-inter text-white transition-colors appearance-none cursor-pointer text-sm"
+                      className="w-full px-4 py-3 rounded-lg font-dm text-white transition-colors appearance-none cursor-pointer text-sm"
                       style={{
                         background: 'rgba(255, 255, 255, 0.03)',
                         border: '1px solid rgba(255, 255, 255, 0.06)',
@@ -127,7 +127,7 @@ export default function CTA() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block font-inter text-xs font-medium mb-2 uppercase tracking-wider" style={{ color: '#737373' }}>
+                    <label htmlFor="message" className="block font-dm text-xs font-medium mb-2 uppercase tracking-wider" style={{ color: '#737373' }}>
                       Project Details
                     </label>
                     <textarea
@@ -137,7 +137,7 @@ export default function CTA() {
                       onChange={handleChange}
                       required
                       rows={4}
-                      className="w-full px-4 py-3 rounded-lg font-inter text-white transition-colors resize-none text-sm"
+                      className="w-full px-4 py-3 rounded-lg font-dm text-white transition-colors resize-none text-sm"
                       style={{
                         background: 'rgba(255, 255, 255, 0.03)',
                         border: '1px solid rgba(255, 255, 255, 0.06)',
@@ -174,11 +174,11 @@ export default function CTA() {
                   <div className="space-y-4 mt-4">
                     <a href="mailto:shubam@example.com" className="flex items-center gap-3 transition-colors" style={{ color: '#a3a3a3' }}>
                       <Mail size={18} />
-                      <span className="font-inter text-sm">shubam@example.com</span>
+                      <span className="font-dm text-sm">shubam@example.com</span>
                     </a>
                     <a href="tel:+1234567890" className="flex items-center gap-3 transition-colors" style={{ color: '#a3a3a3' }}>
                       <Phone size={18} />
-                      <span className="font-inter text-sm">+1 (234) 567-890</span>
+                      <span className="font-dm text-sm">+1 (234) 567-890</span>
                     </a>
                   </div>
                 </div>
@@ -190,13 +190,13 @@ export default function CTA() {
                     <span className="srv-card-system-label">BOOKING / CALL</span>
                     <span className="srv-card-status">ACTIVE</span>
                   </div>
-                  <h3 className="font-poppins text-lg font-semibold text-white mb-1 mt-4">
+                  <h3 className="font-outfit text-lg font-semibold text-white mb-1 mt-4">
                     Free Consultation
                   </h3>
-                  <p className="font-inter text-xs mb-3" style={{ color: '#525252' }}>
+                  <p className="font-dm text-xs mb-3" style={{ color: '#525252' }}>
                     30-minute discovery call
                   </p>
-                  <p className="font-inter mb-4 text-sm leading-relaxed" style={{ color: '#737373' }}>
+                  <p className="font-dm mb-4 text-sm leading-relaxed" style={{ color: '#737373' }}>
                     Let&apos;s discuss your project goals, technical requirements,
                     and how I can help bring your vision to life.
                   </p>
@@ -214,7 +214,7 @@ export default function CTA() {
               </div>
 
               <div className="text-center p-4 rounded-lg" style={{ background: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                <p className="font-inter text-xs" style={{ color: '#525252' }}>
+                <p className="font-dm text-xs" style={{ color: '#525252' }}>
                   Typical response time:{' '}
                   <span style={{ color: '#dc2626' }} className="font-medium">Within 24 hours</span>
                 </p>

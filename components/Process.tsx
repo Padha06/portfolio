@@ -90,9 +90,9 @@ export default function Process() {
                       <span className="srv-card-status">ACTIVE</span>
                     </div>
                     <h3 className="srv-card-title" style={{ marginBottom: '0.25rem' }}>{step.title}</h3>
-                    <p className="font-inter text-sm text-accent">{step.subtitle}</p>
+                    <p className="font-dm text-sm text-accent">{step.subtitle}</p>
                   </div>
-                  <div className="font-poppins text-6xl font-bold text-accent/10 group-hover:text-accent/20 transition-colors">
+                  <div className="font-outfit text-6xl font-bold text-accent/10 group-hover:text-accent/20 transition-colors">
                     {step.number}
                   </div>
                 </div>
@@ -108,8 +108,8 @@ export default function Process() {
                     ))}
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="font-inter text-xs text-primary-500">Duration:</span>
-                    <span className="font-inter text-xs font-medium text-accent">{step.duration}</span>
+                    <span className="font-dm text-xs text-primary-500">Duration:</span>
+                    <span className="font-dm text-xs font-medium text-accent">{step.duration}</span>
                   </div>
                 </div>
               </div>

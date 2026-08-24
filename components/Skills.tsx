@@ -117,7 +117,7 @@ export default function Skills() {
                 <span className="srv-card-status">ACTIVE</span>
               </div>
 
-              <h3 className="font-poppins" style={{ fontSize: '0.95rem', fontWeight: 600, color: '#ffffff', marginBottom: '0.75rem' }}>
+              <h3 className="font-outfit" style={{ fontSize: '0.95rem', fontWeight: 600, color: '#ffffff', marginBottom: '0.75rem' }}>
                 {category.name}
               </h3>
 
@@ -143,7 +143,7 @@ export default function Skills() {
                         backgroundColor: item.color,
                       }}
                     />
-                    <span className="font-inter" style={{ fontSize: '0.75rem', fontWeight: 500, color: '#a3a3a3' }}>
+                    <span className="font-dm" style={{ fontSize: '0.75rem', fontWeight: 500, color: '#a3a3a3' }}>
                       {item.name}
                     </span>
                   </div>

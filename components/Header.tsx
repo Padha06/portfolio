@@ -51,14 +51,14 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="font-inter text-xs font-medium tracking-widest text-primary-300 hover:text-white transition-colors"
+              className="font-dm text-xs font-medium tracking-widest text-primary-300 hover:text-white transition-colors"
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="font-poppins text-xs font-semibold tracking-wider text-white bg-[#dc2626] px-5 py-2.5 rounded-sm hover:bg-[#ef4444] transition-colors"
+            className="font-outfit text-xs font-semibold tracking-wider text-white bg-[#dc2626] px-5 py-2.5 rounded-sm hover:bg-[#ef4444] transition-colors"
           >
             LET&apos;S TALK <span className="ml-1">&rarr;</span>
           </a>
@@ -89,7 +89,7 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="font-inter text-sm font-medium tracking-widest text-primary-200 hover:text-white transition-colors py-2"
+                    className="font-dm text-sm font-medium tracking-widest text-primary-200 hover:text-white transition-colors py-2"
                   >
                     {link.label}
                   </a>
@@ -97,7 +97,7 @@ export default function Header() {
                 <a
                   href="#contact"
                   onClick={() => setIsOpen(false)}
-                  className="font-poppins text-sm font-semibold tracking-wider text-white bg-[#dc2626] px-5 py-2.5 rounded-sm text-center hover:bg-[#ef4444] transition-colors mt-2"
+                  className="font-outfit text-sm font-semibold tracking-wider text-white bg-[#dc2626] px-5 py-2.5 rounded-sm text-center hover:bg-[#ef4444] transition-colors mt-2"
                 >
                   LET&apos;S TALK &rarr;
                 </a>

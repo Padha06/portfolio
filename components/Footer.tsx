@@ -36,21 +36,21 @@ export default function Footer() {
                 style={{ height: '32px', width: 'auto' }}
               />
             </a>
-            <p className="font-inter text-sm leading-relaxed" style={{ color: '#737373', maxWidth: '280px' }}>
+            <p className="font-dm text-sm leading-relaxed" style={{ color: '#737373', maxWidth: '280px' }}>
               Full-Stack Developer specializing in web, mobile, and ERP
               solutions for growing businesses.
             </p>
           </div>
 
           <div>
-            <h3 className="font-inter text-xs font-semibold uppercase tracking-wider mb-5" style={{ color: '#525252' }}>
+            <h3 className="font-dm text-xs font-semibold uppercase tracking-wider mb-5" style={{ color: '#525252' }}>
               Quick Links
             </h3>
             <nav aria-label="Footer navigation">
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {navLinks.map((link) => (
                   <li key={link.href}>
-                    <a href={link.href} className="font-inter text-sm transition-colors" style={{ color: '#737373' }}>
+                    <a href={link.href} className="font-dm text-sm transition-colors" style={{ color: '#737373' }}>
                       {link.label}
                     </a>
                   </li>
@@ -60,7 +60,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-inter text-xs font-semibold uppercase tracking-wider mb-5" style={{ color: '#525252' }}>
+            <h3 className="font-dm text-xs font-semibold uppercase tracking-wider mb-5" style={{ color: '#525252' }}>
               Connect
             </h3>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -89,7 +89,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4" style={{ paddingTop: '2rem', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
-          <p className="font-inter text-xs" style={{ color: '#404040' }}>
+          <p className="font-dm text-xs" style={{ color: '#404040' }}>
             © 2024-2026 Shubam Padha. Built with lots of coffee.
           </p>
 
