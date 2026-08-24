@@ -164,25 +164,104 @@ h1, h2, h3, h4, h5, h6 {
   50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.5); }
 }
 
-/* Reduced Motion */
+/* Reduced Motion - preserve state changes, remove decorative motion */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
   }
   
-  .glass-card:hover {
-    transform: none;
+  /* Preserve color/opacity transitions for state changes */
+  a, button, input, textarea, select {
+    transition: color 0.01ms, background-color 0.01ms, border-color 0.01ms, opacity 0.01ms !important;
   }
   
+  /* Remove decorative transforms only */
+  .glass-card:hover,
   .btn-primary:hover,
-  .btn-secondary:hover {
-    transform: none;
+  .btn-secondary:hover,
+  .cs-card:hover,
+  .srv-card:hover,
+  .hero-btn-primary:hover,
+  .hero-btn-secondary:hover {
+    transform: none !important;
   }
+  
+  /* Keep focus indicators visible */
+  *:focus-visible {
+    outline: 2px solid #dc2626 !important;
+    outline-offset: 2px !important;
+  }
+}
+
+/* Focus Visible States - all interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+}
+
+/* Hero buttons */
+.hero-btn-primary:focus-visible,
+.hero-btn-secondary:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 3px;
+}
+
+/* Header navigation */
+header a:focus-visible,
+header button:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Case study cards */
+.cs-card:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+  border-color: rgba(220, 38, 38, 0.5);
+}
+
+/* Service cards */
+.srv-card:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+  border-color: rgba(220, 38, 38, 0.5);
+}
+
+/* Form inputs */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 1px #dc2626;
+}
+
+/* Footer links */
+footer a:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip nav link */
+.skip-nav:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
 }
 
 /* Hero Section */
@@ -1575,12 +1654,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .skip-nav:focus {
   top: 0;
-}
-
-/* Focus Visible */
-:focus-visible {
-  outline: 2px solid #dc2626;
-  outline-offset: 2px;
 }
 
 /* Scrollbar Styling */
