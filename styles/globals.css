@@ -583,38 +583,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.7;
 }
 
-.cs-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 3rem;
-}
-
-.cs-filter-btn {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  padding: 0.5rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
-  background: transparent;
-  color: #666;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.cs-filter-btn:hover {
-  color: #fff;
-  border-color: rgba(220, 38, 38, 0.4);
-}
-
-.cs-filter-active {
-  color: #fff;
-  background: rgba(220, 38, 38, 0.15);
-  border-color: #dc2626;
-}
-
 .cs-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -644,21 +612,38 @@ h1, h2, h3, h4, h5, h6 {
 
 .cs-card-image {
   position: relative;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 200px;
+  overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.cs-card-number {
-  font-family: 'Poppins', sans-serif;
-  font-size: 4rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.04);
+.cs-card-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  filter: grayscale(80%) brightness(0.5);
+  transition: all 0.5s ease;
+}
+
+.cs-card:hover .cs-card-img {
+  filter: grayscale(40%) brightness(0.6);
+  transform: scale(1.05);
+}
+
+.cs-card-overlay {
   position: absolute;
-  right: 1.5rem;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(220, 38, 38, 0.08) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+.cs-card-number {
+  position: absolute;
+  right: 1rem;
   bottom: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.06);
 }
 
 .cs-card-body {

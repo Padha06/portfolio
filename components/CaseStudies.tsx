@@ -2,71 +2,63 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import { XIcon as X } from './Icons'
-
-const categories = ['ALL', 'WEB', 'APPS', 'MOBILE', 'ERP', 'INTEGRATIONS'] as const
-type Category = typeof categories[number]
 
 const caseStudies = [
   {
     id: 1,
     number: '01',
-    category: 'WEB' as Category,
     categoryLabel: 'WEB DEVELOPMENT',
     title: 'E-commerce Experience for a Growing Retail Brand',
     description: 'A high-performance storefront designed to improve the customer journey, simplify product discovery, and connect seamlessly with backend systems.',
     tech: ['Next.js', 'React', 'Node.js', 'REST API'],
-    gradient: 'from-red-900/40 to-black',
+    image: '/cs-web.jpg',
   },
   {
     id: 2,
     number: '02',
-    category: 'APPS' as Category,
     categoryLabel: 'WEB APPLICATION',
     title: 'Business Operations Platform',
     description: 'A custom web application that brings daily operations, workflows, reporting, and team collaboration into one centralized platform.',
     tech: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
-    gradient: 'from-red-800/30 to-black',
+    image: '/cs-app.jpg',
   },
   {
     id: 3,
     number: '03',
-    category: 'MOBILE' as Category,
     categoryLabel: 'MOBILE DEVELOPMENT',
     title: 'Mobile Workforce Application',
     description: 'A mobile-first application built for teams working in the field, with task management, real-time updates, and offline capabilities.',
     tech: ['React Native', 'Android', 'REST API'],
-    gradient: 'from-red-700/25 to-black',
+    image: '/cs-mobile.jpg',
   },
   {
     id: 4,
     number: '04',
-    category: 'ERP' as Category,
     categoryLabel: 'ERP & BUSINESS SYSTEMS',
     title: 'Business Central Customization',
     description: 'Custom ERP functionality built around complex finance, inventory, warehouse, and business workflows.',
     tech: ['Dynamics 365 BC', 'AL', 'Power Automate'],
-    gradient: 'from-red-600/20 to-black',
+    image: '/cs-erp.jpg',
   },
   {
     id: 5,
     number: '05',
-    category: 'INTEGRATIONS' as Category,
     categoryLabel: 'INTEGRATION',
     title: 'Connected Business Ecosystem',
     description: 'Connecting ERP, Power Apps, Dataverse, and custom applications into a unified data flow.',
     tech: ['Business Central', 'Dataverse', 'Power Apps', 'APIs'],
-    gradient: 'from-red-900/35 to-black',
+    image: '/cs-integration.jpg',
   },
   {
     id: 6,
     number: '06',
-    category: 'APPS' as Category,
     categoryLabel: 'CUSTOM SOFTWARE',
     title: 'Data & Process Automation Platform',
     description: 'A tailored solution that replaces repetitive manual processes with automated workflows, validation, and centralized data management.',
     tech: ['Python', 'SQL', 'APIs', 'Automation'],
-    gradient: 'from-red-800/25 to-black',
+    image: '/cs-custom.jpg',
   },
 ]
 
@@ -88,10 +80,7 @@ const cardVariants = {
 }
 
 export default function CaseStudies() {
-  const [active, setActive] = useState<Category>('ALL')
   const [selected, setSelected] = useState<typeof caseStudies[0] | null>(null)
-
-  const filtered = active === 'ALL' ? caseStudies : caseStudies.filter(s => s.category === active)
 
   return (
     <>
@@ -116,25 +105,6 @@ export default function CaseStudies() {
             </p>
           </motion.div>
 
-          {/* Filter Tabs */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="cs-filters"
-          >
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActive(cat)}
-                className={`cs-filter-btn ${active === cat ? 'cs-filter-active' : ''}`}
-              >
-                {cat}
-              </button>
-            ))}
-          </motion.div>
-
           {/* Cards Grid */}
           <motion.div
             variants={containerVariants}
@@ -143,33 +113,37 @@ export default function CaseStudies() {
             viewport={{ once: true, margin: '-50px' }}
             className="cs-grid"
           >
-            <AnimatePresence mode="popLayout">
-              {filtered.map((study) => (
-                <motion.article
-                  key={study.id}
-                  variants={cardVariants}
-                  layout
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  className="cs-card"
-                  onClick={() => setSelected(study)}
-                >
-                  <div className={`cs-card-image bg-gradient-to-br ${study.gradient}`}>
-                    <div className="cs-card-number">{study.number}</div>
+            {caseStudies.map((study) => (
+              <motion.article
+                key={study.id}
+                variants={cardVariants}
+                className="cs-card"
+                onClick={() => setSelected(study)}
+              >
+                <div className="cs-card-image">
+                  <Image
+                    src={study.image}
+                    alt={study.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="cs-card-img"
+                  />
+                  <div className="cs-card-overlay" />
+                  <div className="cs-card-number">{study.number}</div>
+                </div>
+                <div className="cs-card-body">
+                  <div className="cs-card-category">{study.categoryLabel}</div>
+                  <h3 className="cs-card-title">{study.title}</h3>
+                  <p className="cs-card-desc">{study.description}</p>
+                  <div className="cs-card-tech">
+                    {study.tech.map((t) => (
+                      <span key={t} className="cs-tech-tag">{t}</span>
+                    ))}
+                    <span className="cs-card-arrow">&rarr;</span>
                   </div>
-                  <div className="cs-card-body">
-                    <div className="cs-card-category">{study.categoryLabel}</div>
-                    <h3 className="cs-card-title">{study.title}</h3>
-                    <p className="cs-card-desc">{study.description}</p>
-                    <div className="cs-card-tech">
-                      {study.tech.map((t) => (
-                        <span key={t} className="cs-tech-tag">{t}</span>
-                      ))}
-                      <span className="cs-card-arrow">&rarr;</span>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
-            </AnimatePresence>
+                </div>
+              </motion.article>
+            ))}
           </motion.div>
         </div>
       </section>
