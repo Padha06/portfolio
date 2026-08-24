@@ -230,14 +230,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-bg-image {
   object-fit: cover;
-  filter: grayscale(100%) brightness(0.6);
+  filter: grayscale(100%) brightness(0.7);
 }
 
 .hero-glass-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.15);
 }
 
 .hero-tags {
