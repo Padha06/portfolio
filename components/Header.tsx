@@ -6,9 +6,9 @@ import Image from 'next/image'
 import { MenuIcon as Menu, XIcon as X, GitHubIcon as GitHub, LinkedInIcon as Linkedin, MailIcon as Mail } from './Icons'
 
 const navLinks = [
-  { href: '#case-studies', label: 'WORK' },
-  { href: '#services', label: 'SERVICES' },
-  { href: '#skills', label: 'ABOUT' },
+  { href: '/#case-studies', label: 'WORK' },
+  { href: '/services', label: 'SERVICES' },
+  { href: '/#skills', label: 'ABOUT' },
 ]
 
 export default function Header() {

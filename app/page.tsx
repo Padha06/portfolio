@@ -1,6 +1,7 @@
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import CaseStudies from '@/components/CaseStudies'
+import Services from '@/components/Services'
 import Process from '@/components/Process'
 import Stats from '@/components/Stats'
 import Testimonials from '@/components/Testimonials'
@@ -15,6 +16,7 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <CaseStudies />
+        <Services />
         <Process />
         <Stats />
         <Testimonials />
