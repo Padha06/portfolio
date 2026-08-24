@@ -240,6 +240,7 @@ h1, h2, h3, h4, h5, h6 {
   flex: 1;
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 .hero-right-bg {
@@ -248,6 +249,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-bg-image {
+  width: 100% !important;
+  height: 100% !important;
   object-fit: cover;
   filter: grayscale(100%) brightness(0.7);
 }

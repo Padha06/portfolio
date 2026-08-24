@@ -96,11 +96,12 @@ export default function Hero() {
 
       {/* Right Panel */}
       <div className="hero-right">
-        <div className="hero-right-bg">
+        <div className="hero-right-bg" style={{ position: 'relative', width: '100%', height: '100%' }}>
           <Image
             src="/hero-bg.jpg"
-            alt=""
+            alt="Background"
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="hero-bg-image"
             priority
           />
