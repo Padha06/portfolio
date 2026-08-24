@@ -732,18 +732,6 @@ footer a:focus-visible {
   }
 }
 
-/* Subtle grid background */
-.srv-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-}
-
 /* Header */
 .srv-header {
   margin-bottom: 4rem;
@@ -1160,18 +1148,6 @@ footer a:focus-visible {
   .sp-hero {
     padding: 12rem 2rem 6rem;
   }
-}
-
-/* Grid overlay */
-.sp-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(220, 38, 38, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(220, 38, 38, 0.03) 1px, transparent 1px);
-  background-size: 80px 80px;
-  pointer-events: none;
 }
 
 .sp-eyebrow {
