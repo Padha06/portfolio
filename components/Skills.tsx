@@ -72,7 +72,7 @@ const categoryVariants = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="srv-section px-6 py-24">
+    <section id="skills" className="srv-section">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -103,7 +103,7 @@ export default function Skills() {
               className="bg-white/[0.02] border border-white/5 rounded-md p-5 transition-all duration-400"
             >
               <div className="flex items-center gap-3 mb-3">
-                <span className="srv-card-system-label">MODULE / {category.name.toUpperCase()}</span>
+                <span className="srv-card-system-label">{category.name}</span>
                 <span className="srv-card-status">ACTIVE</span>
               </div>
 

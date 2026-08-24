@@ -94,7 +94,7 @@ export default function CaseStudies() {
 
   return (
     <>
-      <section id="case-studies" className="section-padding" style={{ background: '#0a0a0a' }}>
+      <section id="case-studies" className="section-padding bg-primary-950">
         <div className="container-custom">
           {/* Header */}
           <motion.div
@@ -102,7 +102,7 @@ export default function CaseStudies() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-10"
           >
             <span className="cs-section-tag">CASE STUDIES</span>
             <h2 className="cs-section-title">
@@ -182,8 +182,7 @@ export default function CaseStudies() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)' }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-lg"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"

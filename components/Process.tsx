@@ -55,7 +55,7 @@ export default function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10"
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="srv-card-system-label">PROCESS</span>
@@ -89,7 +89,7 @@ export default function Process() {
                       <span className="srv-card-system-label">STEP / {step.number}</span>
                       <span className="srv-card-status">ACTIVE</span>
                     </div>
-                    <h3 className="srv-card-title" style={{ marginBottom: '0.25rem' }}>{step.title}</h3>
+                    <h3 className="srv-card-title">{step.title}</h3>
                     <p className="font-dm text-sm text-accent">{step.subtitle}</p>
                   </div>
                   <div className="font-outfit text-6xl font-bold text-accent/10 group-hover:text-accent/20 transition-colors">
