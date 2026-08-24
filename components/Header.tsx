@@ -42,8 +42,8 @@ export default function Header() {
           <Image
             src="/vaskoi_logo.png"
             alt="Vaskoi"
-            width={108}
-            height={30}
+            width={162}
+            height={45}
             priority
           />
         </a>
