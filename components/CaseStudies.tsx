@@ -2,83 +2,71 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRightIcon as ArrowRight, ExternalLinkIcon as ExternalLink, XIcon as X, TrendingUpIcon as TrendingUp, ClockIcon as Clock, UsersIcon as Users } from './Icons'
+import { XIcon as X } from './Icons'
+
+const categories = ['ALL', 'WEB', 'APPS', 'MOBILE', 'ERP', 'INTEGRATIONS'] as const
+type Category = typeof categories[number]
 
 const caseStudies = [
   {
     id: 1,
-    title: 'E-Commerce Platform for Retail Startup',
-    clientType: 'Startup',
-    domain: 'Web + Integration',
-    coverColor: 'from-blue-500 to-cyan-400',
-    challenge: 'A retail startup needed a complete e-commerce solution with real-time inventory synchronization across multiple sales channels.',
-    solution: 'Built a Next.js frontend with Node.js backend, integrated with Business Central for inventory management via REST APIs.',
-    results: [
-      { icon: TrendingUp, value: '40%', label: 'Faster Load Time' },
-      { icon: Users, value: '10K+', label: 'Monthly Users' },
-      { icon: Clock, value: '3 months', label: 'Time to Market' },
-    ],
-    techStack: ['Next.js', 'Node.js', 'BC AL', 'REST APIs'],
+    number: '01',
+    category: 'WEB' as Category,
+    categoryLabel: 'WEB DEVELOPMENT',
+    title: 'E-commerce Experience for a Growing Retail Brand',
+    description: 'A high-performance storefront designed to improve the customer journey, simplify product discovery, and connect seamlessly with backend systems.',
+    tech: ['Next.js', 'React', 'Node.js', 'REST API'],
+    gradient: 'from-red-900/40 to-black',
   },
   {
     id: 2,
-    title: 'Warehouse Management System',
-    clientType: 'Mid-Market SMB',
-    domain: 'Mobile + ERP',
-    coverColor: 'from-purple-500 to-pink-400',
-    challenge: 'A logistics company needed a mobile-first WMS with offline capability and real-time sync to Business Central.',
-    solution: 'Developed Kotlin-based Android app with offline-first architecture, barcode scanning, and bi-directional BC integration.',
-    results: [
-      { icon: TrendingUp, value: '60%', label: 'Efficiency Gain' },
-      { icon: Users, value: '50+', label: 'Daily Users' },
-      { icon: Clock, value: '99.9%', label: 'Uptime' },
-    ],
-    techStack: ['Kotlin', 'Android SDK', 'BC AL', 'OData'],
+    number: '02',
+    category: 'APPS' as Category,
+    categoryLabel: 'WEB APPLICATION',
+    title: 'Business Operations Platform',
+    description: 'A custom web application that brings daily operations, workflows, reporting, and team collaboration into one centralized platform.',
+    tech: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
+    gradient: 'from-red-800/30 to-black',
   },
   {
     id: 3,
-    title: 'Treasury Module Customization',
-    clientType: 'Enterprise',
-    domain: 'ERP',
-    coverColor: 'from-emerald-500 to-teal-400',
-    challenge: 'An enterprise client needed custom treasury management features within Business Central that were not available in standard modules.',
-    solution: 'Designed and implemented custom AL extensions for treasury operations, including automated reconciliation and reporting.',
-    results: [
-      { icon: TrendingUp, value: '80%', label: 'Time Saved' },
-      { icon: Users, value: '25+', label: 'Daily Users' },
-      { icon: Clock, value: '2 weeks', label: 'Implementation' },
-    ],
-    techStack: ['BC AL', 'Report Builder', 'Power Automate'],
+    number: '03',
+    category: 'MOBILE' as Category,
+    categoryLabel: 'MOBILE DEVELOPMENT',
+    title: 'Mobile Workforce Application',
+    description: 'A mobile-first application built for teams working in the field, with task management, real-time updates, and offline capabilities.',
+    tech: ['React Native', 'Android', 'REST API'],
+    gradient: 'from-red-700/25 to-black',
   },
   {
     id: 4,
-    title: 'Dataverse/Power Apps Integration',
-    clientType: 'Mid-Market SMB',
-    domain: 'Integration',
-    coverColor: 'from-amber-500 to-orange-400',
-    challenge: 'A company needed to sync data between multiple systems including Business Central, Dataverse, and custom applications.',
-    solution: 'Architected a multi-system integration layer using REST APIs, webhooks, and Power Automate for real-time data synchronization.',
-    results: [
-      { icon: TrendingUp, value: '100%', label: 'Data Accuracy' },
-      { icon: Users, value: '5', label: 'Systems Connected' },
-      { icon: Clock, value: 'Real-time', label: 'Sync Speed' },
-    ],
-    techStack: ['REST APIs', 'Dataverse', 'Power Apps', 'Webhooks'],
+    number: '04',
+    category: 'ERP' as Category,
+    categoryLabel: 'ERP & BUSINESS SYSTEMS',
+    title: 'Business Central Customization',
+    description: 'Custom ERP functionality built around complex finance, inventory, warehouse, and business workflows.',
+    tech: ['Dynamics 365 BC', 'AL', 'Power Automate'],
+    gradient: 'from-red-600/20 to-black',
   },
   {
     id: 5,
-    title: 'Bulk Data Import Solution',
-    clientType: 'Mid-Market SMB',
-    domain: 'Integration',
-    coverColor: 'from-rose-500 to-red-400',
-    challenge: 'A client needed to import large volumes of historical data into Business Central while maintaining data integrity.',
-    solution: 'Built a Python-based data pipeline with validation, transformation, and batch processing capabilities for BC import.',
-    results: [
-      { icon: TrendingUp, value: '1M+', label: 'Records Processed' },
-      { icon: Users, value: '99.8%', label: 'Accuracy Rate' },
-      { icon: Clock, value: '70%', label: 'Time Saved' },
-    ],
-    techStack: ['Python', 'BC AL', 'SQL Server', 'REST APIs'],
+    number: '05',
+    category: 'INTEGRATIONS' as Category,
+    categoryLabel: 'INTEGRATION',
+    title: 'Connected Business Ecosystem',
+    description: 'Connecting ERP, Power Apps, Dataverse, and custom applications into a unified data flow.',
+    tech: ['Business Central', 'Dataverse', 'Power Apps', 'APIs'],
+    gradient: 'from-red-900/35 to-black',
+  },
+  {
+    id: 6,
+    number: '06',
+    category: 'APPS' as Category,
+    categoryLabel: 'CUSTOM SOFTWARE',
+    title: 'Data & Process Automation Platform',
+    description: 'A tailored solution that replaces repetitive manual processes with automated workflows, validation, and centralized data management.',
+    tech: ['Python', 'SQL', 'APIs', 'Automation'],
+    gradient: 'from-red-800/25 to-black',
   },
 ]
 
@@ -86,7 +74,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.1 },
   },
 }
 
@@ -100,89 +88,88 @@ const cardVariants = {
 }
 
 export default function CaseStudies() {
+  const [active, setActive] = useState<Category>('ALL')
   const [selected, setSelected] = useState<typeof caseStudies[0] | null>(null)
+
+  const filtered = active === 'ALL' ? caseStudies : caseStudies.filter(s => s.category === active)
 
   return (
     <>
-      <section id="case-studies" className="section-padding bg-primary-900">
+      <section id="case-studies" className="section-padding" style={{ background: '#0a0a0a' }}>
         <div className="container-custom">
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="mb-16"
           >
-            <span className="font-inter text-sm text-accent uppercase tracking-wider">
-              Portfolio
-            </span>
-            <h2 className="font-poppins text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">
-              Case <span className="gradient-text">Studies</span>
+            <span className="cs-section-tag">CASE STUDIES</span>
+            <h2 className="cs-section-title">
+              From websites to enterprise systems.
             </h2>
-            <p className="font-inter text-lg text-primary-300 max-w-2xl mx-auto">
-              Anonymized project examples showcasing problem-solving
-              approaches and measurable results.
+            <p className="cs-section-desc">
+              A selection of digital products, applications, business platforms,
+              and integrations we&apos;ve designed and built — solving real problems
+              across different industries.
             </p>
           </motion.div>
 
+          {/* Filter Tabs */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="cs-filters"
+          >
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActive(cat)}
+                className={`cs-filter-btn ${active === cat ? 'cs-filter-active' : ''}`}
+              >
+                {cat}
+              </button>
+            ))}
+          </motion.div>
+
+          {/* Cards Grid */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8"
+            viewport={{ once: true, margin: '-50px' }}
+            className="cs-grid"
           >
-            {caseStudies.map((study) => (
-              <motion.article
-                key={study.id}
-                variants={cardVariants}
-                className="glass-card overflow-hidden group cursor-pointer"
-                onClick={() => setSelected(study)}
-              >
-                {/* Cover Image Placeholder */}
-                <div className={`h-48 bg-gradient-to-br ${study.coverColor} relative overflow-hidden`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-poppins text-6xl font-bold text-white/10">
-                      {String(study.id).padStart(2, '0')}
-                    </span>
+            <AnimatePresence mode="popLayout">
+              {filtered.map((study) => (
+                <motion.article
+                  key={study.id}
+                  variants={cardVariants}
+                  layout
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="cs-card"
+                  onClick={() => setSelected(study)}
+                >
+                  <div className={`cs-card-image bg-gradient-to-br ${study.gradient}`}>
+                    <div className="cs-card-number">{study.number}</div>
                   </div>
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <span className="px-3 py-1 text-xs font-medium text-black bg-white rounded-full">
-                      {study.clientType}
-                    </span>
-                    <span className="px-3 py-1 text-xs font-medium text-white bg-black/30 rounded-full backdrop-blur-sm">
-                      {study.domain}
-                    </span>
+                  <div className="cs-card-body">
+                    <div className="cs-card-category">{study.categoryLabel}</div>
+                    <h3 className="cs-card-title">{study.title}</h3>
+                    <p className="cs-card-desc">{study.description}</p>
+                    <div className="cs-card-tech">
+                      {study.tech.map((t) => (
+                        <span key={t} className="cs-tech-tag">{t}</span>
+                      ))}
+                      <span className="cs-card-arrow">&rarr;</span>
+                    </div>
                   </div>
-                </div>
-
-                <div className="p-6 lg:p-8">
-                  <h3 className="font-poppins text-xl font-semibold text-white group-hover:text-accent transition-colors mb-3">
-                    {study.title}
-                  </h3>
-
-                  <p className="font-inter text-sm text-primary-300 leading-relaxed mb-4 line-clamp-2">
-                    {study.challenge}
-                  </p>
-
-                  {/* Metric Chips */}
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    {study.results.map((result, idx) => (
-                      <div key={idx} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-800/50 border border-primary-700">
-                        <result.icon className="w-3.5 h-3.5 text-accent" />
-                        <span className="font-poppins text-sm font-bold text-white">{result.value}</span>
-                        <span className="font-inter text-xs text-primary-400">{result.label}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-3 transition-all duration-300">
-                    <span className="font-inter text-sm">Case Study</span>
-                    <ArrowRight size={16} />
-                  </div>
-                </div>
-              </motion.article>
-            ))}
+                </motion.article>
+              ))}
+            </AnimatePresence>
           </motion.div>
         </div>
       </section>
@@ -194,7 +181,8 @@ export default function CaseStudies() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)' }}
             onClick={() => setSelected(null)}
           >
             <motion.div
@@ -202,84 +190,31 @@ export default function CaseStudies() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3 }}
-              className="glass-card max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8"
+              className="cs-modal"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-start justify-between mb-6">
+              <div className="cs-modal-header">
                 <div>
-                  <div className="flex gap-2 mb-3">
-                    <span className="px-3 py-1 text-xs font-medium text-accent bg-accent/10 rounded-full border border-accent/20">
-                      {selected.clientType}
-                    </span>
-                    <span className="px-3 py-1 text-xs font-medium text-primary-300 bg-primary-700 rounded-full">
-                      {selected.domain}
-                    </span>
-                  </div>
-                  <h3 className="font-poppins text-2xl font-bold text-white">
-                    {selected.title}
-                  </h3>
+                  <span className="cs-card-category">{selected.categoryLabel}</span>
+                  <h3 className="cs-modal-title">{selected.title}</h3>
                 </div>
                 <button
                   onClick={() => setSelected(null)}
-                  className="p-2 text-primary-400 hover:text-white transition-colors"
+                  className="cs-modal-close"
                   aria-label="Close"
                 >
-                  <X size={24} />
+                  <X size={20} />
                 </button>
               </div>
 
-              <div className="space-y-6">
-                <div>
-                  <h4 className="font-poppins text-sm font-semibold text-accent uppercase tracking-wider mb-2">
-                    Challenge
-                  </h4>
-                  <p className="font-inter text-primary-300 leading-relaxed">
-                    {selected.challenge}
-                  </p>
-                </div>
+              <p className="cs-modal-desc">{selected.description}</p>
 
-                <div>
-                  <h4 className="font-poppins text-sm font-semibold text-accent uppercase tracking-wider mb-2">
-                    Solution
-                  </h4>
-                  <p className="font-inter text-primary-300 leading-relaxed">
-                    {selected.solution}
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-poppins text-sm font-semibold text-accent uppercase tracking-wider mb-3">
-                    Results
-                  </h4>
-                  <div className="grid grid-cols-3 gap-4">
-                    {selected.results.map((result, idx) => (
-                      <div key={idx} className="text-center p-4 rounded-xl bg-primary-800/50">
-                        <result.icon className="w-5 h-5 text-accent mx-auto mb-2" />
-                        <div className="font-poppins text-xl font-bold text-white">
-                          {result.value}
-                        </div>
-                        <div className="font-inter text-xs text-primary-400">
-                          {result.label}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="font-poppins text-sm font-semibold text-accent uppercase tracking-wider mb-2">
-                    Tech Stack
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selected.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 text-xs font-medium text-primary-300 bg-primary-700 rounded-full border border-primary-600"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+              <div className="cs-modal-tech">
+                <span className="cs-modal-tech-label">Tech Stack</span>
+                <div className="cs-modal-tech-tags">
+                  {selected.tech.map((t) => (
+                    <span key={t} className="cs-tech-tag">{t}</span>
+                  ))}
                 </div>
               </div>
             </motion.div>
