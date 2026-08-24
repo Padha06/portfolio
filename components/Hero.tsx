@@ -15,6 +15,16 @@ export default function Hero() {
     <section className="hero-section">
       {/* Left Panel */}
       <div className="hero-left">
+        <div className="hero-left-bg">
+          <Image
+            src="/hero-left-bg.jpg"
+            alt=""
+            fill
+            className="hero-left-bg-image"
+            priority
+          />
+          <div className="hero-left-glass" />
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -215,6 +215,25 @@ h1, h2, h3, h4, h5, h6 {
   background: #0d1f1f;
   position: relative;
   z-index: 2;
+  overflow: hidden;
+}
+
+.hero-left-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-left-bg-image {
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.35);
+}
+
+.hero-left-glass {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(13, 31, 31, 0.85) 0%, rgba(13, 31, 31, 0.6) 100%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .hero-right {
@@ -244,6 +263,8 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-tag {
@@ -267,6 +288,8 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.15;
   color: #ffffff;
   margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-body {
@@ -276,6 +299,8 @@ h1, h2, h3, h4, h5, h6 {
   color: #b8c8c7;
   line-height: 1.6;
   margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-body-sub {
@@ -285,6 +310,8 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.7;
   max-width: 420px;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-buttons {
@@ -292,6 +319,8 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-btn-primary {
@@ -357,6 +386,8 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.12em;
   color: #819895;
   text-transform: uppercase;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-dot {
