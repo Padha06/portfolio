@@ -58,7 +58,7 @@ export default function Header() {
           ))}
           <a
             href="#contact"
-            className="font-poppins text-xs font-semibold tracking-wider text-primary-950 bg-white px-5 py-2.5 rounded-sm hover:bg-accent transition-colors"
+            className="font-poppins text-xs font-semibold tracking-wider text-white bg-[#dc2626] px-5 py-2.5 rounded-sm hover:bg-[#ef4444] transition-colors"
           >
             LET&apos;S TALK <span className="ml-1">&rarr;</span>
           </a>
@@ -97,7 +97,7 @@ export default function Header() {
                 <a
                   href="#contact"
                   onClick={() => setIsOpen(false)}
-                  className="font-poppins text-sm font-semibold tracking-wider text-primary-950 bg-white px-5 py-2.5 rounded-sm text-center hover:bg-accent transition-colors mt-2"
+                  className="font-poppins text-sm font-semibold tracking-wider text-white bg-[#dc2626] px-5 py-2.5 rounded-sm text-center hover:bg-[#ef4444] transition-colors mt-2"
                 >
                   LET&apos;S TALK &rarr;
                 </a>
