@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
+import SplashScreen from '@/components/SplashScreen'
 
 export const metadata: Metadata = {
   title: 'Shubam Padha | Full-Stack Developer | Portfolio',
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <SplashScreen />
         <a href="#main-content" className="skip-nav">
           Skip to main content
         </a>
