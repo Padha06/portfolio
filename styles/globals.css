@@ -250,8 +250,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .splash-logo-ghost {
-  opacity: 0.15;
+  opacity: 0;
   filter: grayscale(1);
+  transition: opacity 0.8s ease;
+}
+
+.splash-logo-ghost.splash-logo-visible {
+  opacity: 0.15;
 }
 
 .splash-logo-top {
@@ -285,7 +290,7 @@ h1, h2, h3, h4, h5, h6 {
 .splash-text {
   text-transform: uppercase;
   font-family: 'Poppins', sans-serif;
-  font-size: 1em;
+  font-size: 0.5em;
   font-weight: 500;
   letter-spacing: 0.15em;
   color: #ffffff;

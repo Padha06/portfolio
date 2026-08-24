@@ -29,7 +29,7 @@ export default function SplashScreen() {
 
       <div className="splash-content">
         <div className="splash-logo-wrap">
-          <div className="splash-logo-ghost">
+          <div className={`splash-logo-ghost ${phase !== 'logo' ? 'splash-logo-visible' : ''}`}>
             <Image
               src="/vaskoi_logo.png"
               alt="Vaskoi"
