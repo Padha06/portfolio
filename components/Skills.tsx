@@ -126,7 +126,6 @@ export default function Skills() {
           ))}
         </motion.div>
 
-        {/* Additional Tech Pills */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
