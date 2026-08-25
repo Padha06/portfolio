@@ -104,7 +104,7 @@ export default function Hero() {
           >
             <div className="hero-image-frame">
               <Image
-                src="/hero-left-bg-new.jpg"
+                src="/hero-left-bg-new.png"
                 alt="Full-stack developer workspace"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
