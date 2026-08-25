@@ -22,6 +22,22 @@ const artworks = [
       { value: '0', label: 'Dependencies added' },
     ],
   },
+  {
+    title: 'E-Signature Workflow — Business Central Integration',
+    clientType: 'Enterprise' as const,
+    domain: 'Integration' as const,
+    challenge:
+      'Vendors needed to sign documents on-site using Wacom signature pads, but Business Central had no native way to capture, embed, and attach signatures to purchase documents in real time.',
+    solution:
+      'Built a seamless e-signature pipeline — one click generates a PDF from Business Central, the vendor signs on a Wacom pad, and the signed PDF plus a signature image are automatically attached to the document and saved in the media section.',
+    staticImage: '/videos/esign-poster.jpg',
+    techStack: ['Dynamics 365 BC', 'Wacom SDK', 'PDF Generation', 'AL'],
+    results: [
+      { value: '100%', label: 'Paperless signing' },
+      { value: '0', label: 'Manual uploads' },
+      { value: '< 5s', label: 'Capture to attach' },
+    ],
+  },
 ]
 
 const containerVariants = {
