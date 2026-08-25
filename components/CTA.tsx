@@ -36,6 +36,12 @@ export default function CTA() {
     e.preventDefault()
 
     if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      const missing = [
+        !EMAILJS_SERVICE_ID ? 'SERVICE_ID' : null,
+        !EMAILJS_TEMPLATE_ID ? 'TEMPLATE_ID' : null,
+        !EMAILJS_PUBLIC_KEY ? 'PUBLIC_KEY' : null,
+      ].filter(Boolean).join(', ')
+      setErrorDetail(`[missing env vars: ${missing}]`)
       setStatus('error')
       return
     }
