@@ -123,7 +123,7 @@ export default function CaseStudies() {
             viewport={{ once: true, margin: '-50px' }}
             className="cs-grid"
           >
-            {caseStudies.slice(0, 3).map((study) => (
+            {caseStudies.slice(0, 4).map((study) => (
               <motion.article
                 key={study.id}
                 variants={cardVariants}
@@ -158,19 +158,6 @@ export default function CaseStudies() {
                 </div>
               </motion.article>
             ))}
-          </motion.div>
-
-          {/* View All Link */}
-          <motion.div
-            initial={{ opacity: 0, transform: "translateY(20px)" }}
-            whileInView={{ opacity: 1, transform: "translateY(0px)" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-            className="mt-12 text-center"
-          >
-            <a href="/case-studies" className="cs-view-all">
-              View All Projects <span className="cs-view-all-arrow">&rarr;</span>
-            </a>
           </motion.div>
         </div>
       </section>
