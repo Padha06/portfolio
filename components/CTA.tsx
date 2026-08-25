@@ -21,6 +21,7 @@ export default function CTA() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     projectType: '',
     message: '',
   })
@@ -41,9 +42,10 @@ export default function CTA() {
     setStatus('sending')
 
     const templateParams = {
-      from_name: formData.name,
-      reply_to: formData.email,
-      project_type: formData.projectType,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: formData.projectType,
       message: formData.message,
     }
 
@@ -55,7 +57,7 @@ export default function CTA() {
         { publicKey: EMAILJS_PUBLIC_KEY }
       )
       setStatus('success')
-      setFormData({ name: '', email: '', projectType: '', message: '' })
+      setFormData({ name: '', email: '', phone: '', projectType: '', message: '' })
       setTimeout(() => setStatus('idle'), 4000)
     } catch (error) {
       console.error('EmailJS error:', error)
@@ -126,6 +128,21 @@ export default function CTA() {
                       required
                       className="w-full px-4 py-3 rounded-lg font-dm text-white text-sm bg-white/[0.03] border border-white/5 focus:border-accent focus:outline-none transition-colors"
                       placeholder="john@company.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="phone" className="block font-dm text-xs font-medium mb-2 uppercase tracking-wider text-primary-400">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg font-dm text-white text-sm bg-white/[0.03] border border-white/5 focus:border-accent focus:outline-none transition-colors"
+                      placeholder="+91 98765 43210"
                     />
                   </div>
 
