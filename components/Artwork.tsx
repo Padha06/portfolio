@@ -38,6 +38,23 @@ const artworks = [
       { value: '< 5s', label: 'Capture to attach' },
     ],
   },
+  {
+    title: 'AfterLight — Creative Portfolio Website',
+    clientType: 'SMB' as const,
+    domain: 'Web' as const,
+    challenge:
+      'A food and product styling studio needed a visual-first website that showcased their portfolio with the same level of craft they bring to their styling work — elegant, immersive, and easy to update.',
+    solution:
+      'Designed and built a premium portfolio experience with filterable gallery, video reel integration, smooth scroll animations, and a dark aesthetic that lets the food photography take centre stage.',
+    staticImage: '/videos/afterlight-poster.png',
+    techStack: ['WordPress', 'PHP', 'JavaScript', 'GSAP'],
+    liveUrl: 'https://afterlight.in',
+    results: [
+      { value: '3x', label: 'Portfolio engagement' },
+      { value: '100%', label: 'Client satisfaction' },
+      { value: '0', label: 'Plugin bloat' },
+    ],
+  },
 ]
 
 const containerVariants = {
