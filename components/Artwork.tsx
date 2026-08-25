@@ -55,6 +55,22 @@ const artworks = [
       { value: '0', label: 'Plugin bloat' },
     ],
   },
+  {
+    title: 'DAP Canada — Construction & Renovation Website',
+    clientType: 'SMB' as const,
+    domain: 'Web' as const,
+    challenge:
+      'DAP Canada needed a modern, conversion-focused website to showcase their construction and renovation services, completed projects, and brand credibility — while making it easy for potential clients to request a quote.',
+    solution:
+      'Built a clean, responsive website with service pages, project showcase, quote/enquiry integration, and SEO optimization — designed to turn visitors into leads.',
+    staticImage: '/videos/dapcanada-poster.png',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+    results: [
+      { value: '100%', label: 'Mobile responsive' },
+      { value: '< 2s', label: 'Load time' },
+      { value: 'A+', label: 'SEO score' },
+    ],
+  },
 ]
 
 const containerVariants = {
