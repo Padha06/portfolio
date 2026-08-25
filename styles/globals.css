@@ -1875,6 +1875,7 @@ footer a:focus-visible {
 
 .aw-grid article .aspect-video {
   aspect-ratio: 16 / 10 !important;
+  background: #f5f5f5 !important;
 }
 
 .aw-grid article .p-5 {
