@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Background image with overlay */}
       <div className="hero-bg">
         <Image
-          src="/hero-bg.jpg"
+          src="/hero-bg-new.jpg"
           alt="Full-stack developer workspace"
           fill
           sizes="100vw"
@@ -104,7 +104,7 @@ export default function Hero() {
           >
             <div className="hero-image-frame">
               <Image
-                src="/hero-left-bg.jpg"
+                src="/hero-left-bg-new.jpg"
                 alt="Full-stack developer workspace"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

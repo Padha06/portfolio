@@ -568,13 +568,13 @@ footer a:focus-visible {
   height: 100% !important;
   object-fit: cover;
   object-position: center top;
-  filter: grayscale(40%) brightness(0.75);
+  filter: brightness(0.85);
   transition: filter 200ms ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .hero-image-frame:hover .hero-image-img {
-    filter: grayscale(20%) brightness(0.85);
+    filter: brightness(0.95);
   }
 }
 
