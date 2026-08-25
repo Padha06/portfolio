@@ -33,16 +33,16 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.06 },
   },
 }
 
 const stepVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, transform: "translateY(40px)" },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+    transform: "translateY(0px)",
+    transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1] },
   },
 }
 
@@ -51,10 +51,10 @@ export default function Process() {
     <section id="process" className="section-padding bg-primary-950">
       <div className="container-custom">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, transform: "translateY(20px)" }}
+          whileInView={{ opacity: 1, transform: "translateY(0px)" }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
           className="mb-10"
         >
           <div className="flex items-center gap-3 mb-4">

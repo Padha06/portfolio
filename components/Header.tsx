@@ -80,6 +80,7 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
             className="md:hidden bg-primary-950/95 backdrop-blur-lg border-b border-glass-border"
           >
             <div className="container-custom px-4 py-6">

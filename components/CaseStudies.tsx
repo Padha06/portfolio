@@ -66,16 +66,16 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 },
+    transition: { staggerChildren: 0.06 },
   },
 }
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, transform: "translateY(30px)" },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+    transform: "translateY(0px)",
+    transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1] },
   },
 }
 
@@ -98,10 +98,10 @@ export default function CaseStudies() {
         <div className="container-custom">
           {/* Header */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, transform: "translateY(20px)" }}
+            whileInView={{ opacity: 1, transform: "translateY(0px)" }}
             viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
             className="mb-10"
           >
             <span className="cs-section-tag">CASE STUDIES</span>
@@ -162,10 +162,10 @@ export default function CaseStudies() {
 
           {/* View All Link */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, transform: "translateY(20px)" }}
+            whileInView={{ opacity: 1, transform: "translateY(0px)" }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
             className="mt-12 text-center"
           >
             <a href="/case-studies" className="cs-view-all">
@@ -189,10 +189,10 @@ export default function CaseStudies() {
             onClick={() => setSelected(null)}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, transform: "scale(0.95) translateY(20px)" }}
+              animate={{ opacity: 1, transform: "scale(1) translateY(0px)" }}
+              exit={{ opacity: 0, transform: "scale(0.97) translateY(10px)" }}
+              transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
               className="cs-modal"
               onClick={(e) => e.stopPropagation()}
             >
