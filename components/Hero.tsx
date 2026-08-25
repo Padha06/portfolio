@@ -107,7 +107,7 @@ export default function Hero() {
                 src="/hero-left-bg-new.jpg"
                 alt="Full-stack developer workspace"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 40vw"
                 className="hero-image-img"
                 priority
               />
