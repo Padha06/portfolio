@@ -246,13 +246,9 @@ export default function CTA() {
                     <span className="srv-card-system-label">CONTACT / INFO</span>
                   </div>
                   <div className="space-y-4 mt-4">
-                    <a href="mailto:shubham@scango.it.com" className="flex items-center gap-3 text-primary-300 hover:text-white transition-colors">
+                    <a href="mailto:contact@vaskoi.in" className="flex items-center gap-3 text-primary-300 hover:text-white transition-colors">
                       <Mail size={18} />
-                      <span className="font-dm text-sm">shubham@scango.it.com</span>
-                    </a>
-                    <a href="mailto:samarth@scango.it.com" className="flex items-center gap-3 text-primary-300 hover:text-white transition-colors">
-                      <Mail size={18} />
-                      <span className="font-dm text-sm">samarth@scango.it.com</span>
+                      <span className="font-dm text-sm">contact@vaskoi.in</span>
                     </a>
                     <a href="tel:+916005791807" className="flex items-center gap-3 text-primary-300 hover:text-white transition-colors">
                       <Phone size={18} />
