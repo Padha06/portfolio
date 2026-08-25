@@ -71,6 +71,22 @@ const artworks = [
       { value: 'A+', label: 'SEO score' },
     ],
   },
+  {
+    title: 'One Stop Computer Shop — Local Service Platform',
+    clientType: 'SMB' as const,
+    domain: 'Web' as const,
+    challenge:
+      'A neighbourhood service shop in Jammu needed a website that clearly communicates their four core services — government forms, travel tickets, printing, and IGNOU support — while making it effortless for walk-in and remote customers to reach them.',
+    solution:
+      'Designed a conversion-first website with service cards, real case studies with outcomes, WhatsApp integration, budget printing rates, and a "how it works" flow that turns visitors into customers.',
+    staticImage: '/videos/onestop-poster.png',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+    results: [
+      { value: '4', label: 'Services unified' },
+      { value: '7', label: 'Days open' },
+      { value: '0', label: 'Missed leads' },
+    ],
+  },
 ]
 
 const containerVariants = {
