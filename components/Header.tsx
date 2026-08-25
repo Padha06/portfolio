@@ -25,7 +25,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`site-header transition-all duration-300 ${
         isScrolled
           ? 'bg-primary-950/90 backdrop-blur-lg border-b border-glass-border'
           : 'bg-transparent'
