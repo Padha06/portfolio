@@ -1713,7 +1713,6 @@ footer a:focus-visible {
 .splash-logo-wrap {
   position: relative;
   width: 100%;
-  max-width: 64rem;
   display: flex;
   align-items: center;
   justify-content: center;
