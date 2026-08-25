@@ -1,23 +1,23 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function ScanGoCard() {
   const [isHovered, setIsHovered] = useState(false)
   const [isInView, setIsInView] = useState(false)
+  const [videoLoaded, setVideoLoaded] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
 
-  // Lazy load video
+  // Lazy load video source when in view or hovered
   useEffect(() => {
-    if (!videoRef.current) return
-    if (isInView) {
-      videoRef.current.preload = 'metadata'
+    if (!videoLoaded && (isInView || isHovered)) {
+      setVideoLoaded(true)
     }
-  }, [isInView])
+  }, [isInView, isHovered, videoLoaded])
 
-  // Intersection observer for mobile
+  // Intersection observer for mobile autoplay
   useEffect(() => {
     if (!videoRef.current) return
     const observer = new IntersectionObserver(
@@ -37,14 +37,14 @@ export default function ScanGoCard() {
 
   // Hover play/pause
   useEffect(() => {
-    if (!videoRef.current) return
+    if (!videoRef.current || !videoLoaded) return
     if (isHovered) {
       videoRef.current.play().catch(() => {})
     } else {
       videoRef.current.pause()
       videoRef.current.currentTime = 0
     }
-  }, [isHovered])
+  }, [isHovered, videoLoaded])
 
   return (
     <motion.article
@@ -59,15 +59,42 @@ export default function ScanGoCard() {
     >
       {/* Video Container */}
       <div className="sc-video-wrap">
-        <video
-          ref={videoRef}
-          src="/videos/scango-wms.mp4"
-          muted
-          loop
-          playsInline
-          preload="none"
-          className="sc-video"
-        />
+        {/* Poster Image */}
+        <AnimatePresence>
+          {!isHovered && (
+            <motion.img
+              src="/videos/scango-poster.jpg"
+              alt="ScanGo WMS preview"
+              className="sc-poster"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
+            />
+          )}
+        </AnimatePresence>
+
+        {/* Video */}
+        {videoLoaded && (
+          <AnimatePresence>
+            {isHovered && (
+              <motion.video
+                ref={videoRef}
+                src="/videos/scango-wms.mp4"
+                className="sc-video"
+                muted
+                loop
+                playsInline
+                preload="none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35, ease: 'easeInOut' }}
+              />
+            )}
+          </AnimatePresence>
+        )}
+
         {/* Gradient Overlay */}
         <div className="sc-video-overlay" />
         {/* Tags */}
