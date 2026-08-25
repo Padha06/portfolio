@@ -1713,9 +1713,9 @@ footer a:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   height: 100%;
-  padding: 0 1em;
+  padding: 0 1em 6em;
 }
 
 .splash-logo-wrap {
@@ -1725,6 +1725,7 @@ footer a:focus-visible {
   align-items: center;
   justify-content: center;
   transform: translateX(2px);
+  margin-bottom: 1.5rem;
 }
 
 .splash-logo-ghost {
@@ -1756,8 +1757,6 @@ footer a:focus-visible {
 }
 
 .splash-text-wrap {
-  position: absolute;
-  bottom: 4em;
   display: flex;
   align-items: center;
   justify-content: center;
