@@ -1716,6 +1716,7 @@ footer a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateX(1px);
 }
 
 .splash-logo-ghost {
