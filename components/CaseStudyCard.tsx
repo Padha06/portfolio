@@ -174,7 +174,7 @@ export default function CaseStudyCard({
               <motion.img
                 src={staticImage}
                 alt={`${title} preview`}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-contain"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -190,7 +190,7 @@ export default function CaseStudyCard({
                 <motion.video
                   ref={videoRef}
                   src={previewVideo}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-contain"
                   muted
                   loop
                   playsInline
