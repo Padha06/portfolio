@@ -26,6 +26,7 @@ export default function CTA() {
     message: '',
   })
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [errorDetail, setErrorDetail] = useState<string>('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -61,8 +62,12 @@ export default function CTA() {
       setTimeout(() => setStatus('idle'), 4000)
     } catch (error) {
       console.error('EmailJS error:', error)
+      const err = error as { status?: number; message?: string; text?: string }
+      setErrorDetail(
+        `[${err.status || 'unknown'}] ${err.message || ''} ${err.text || ''}`.trim()
+      )
       setStatus('error')
-      setTimeout(() => setStatus('idle'), 4000)
+      setTimeout(() => setStatus('idle'), 8000)
     }
   }
 
@@ -201,6 +206,11 @@ export default function CTA() {
                       <p className="font-dm text-sm text-accent">
                         Sorry, something went wrong. Please email us directly at shubham@scango.it.com
                       </p>
+                      {errorDetail && (
+                        <p className="font-dm text-xs text-primary-500 mt-1 break-all">
+                          {errorDetail}
+                        </p>
+                      )}
                     </div>
                   )}
 
