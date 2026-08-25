@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { MenuIcon as Menu, XIcon as X, GitHubIcon as GitHub, LinkedInIcon as Linkedin, MailIcon as Mail } from './Icons'
+import { MenuIcon as Menu, XIcon as X, GitHubIcon as GitHub, MailIcon as Mail } from './Icons'
 
 const navLinks = [
   { href: '/#case-studies', label: 'WORK' },
@@ -112,15 +112,6 @@ export default function Header() {
                   aria-label="GitHub Profile"
                 >
                   <GitHub size={24} />
-                </a>
-                <a
-                  href="https://linkedin.com/in/shubampadha"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary-400 hover:text-accent transition-colors"
-                  aria-label="LinkedIn Profile"
-                >
-                  <Linkedin size={24} />
                 </a>
                 <a
                   href="mailto:shubham@scango.it.com"

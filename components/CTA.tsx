@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import emailjs from '@emailjs/browser'
-import { SendIcon as Send, ArrowRightIcon as ArrowRight, CalendarIcon as Calendar, MailIcon as Mail, PhoneIcon as Phone } from './Icons'
+import { SendIcon as Send, ArrowRightIcon as ArrowRight, MailIcon as Mail, PhoneIcon as Phone } from './Icons'
 import { EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY } from '../lib/emailConfig'
 
 const projectTypes = [
@@ -265,26 +265,26 @@ export default function CTA() {
               <div className="srv-card srv-card--small">
                 <div className="srv-card-content">
                   <div className="srv-card-system">
-                    <span className="srv-card-system-label">BOOKING / CALL</span>
+                    <span className="srv-card-system-label">WEBSITE / 02</span>
                   </div>
                   <h3 className="font-outfit text-lg font-semibold text-white mb-1 mt-4">
-                    Free Consultation
+                    ScanGo WMS
                   </h3>
-                  <p className="font-dm text-xs mb-3 text-primary-500">
-                    30-minute discovery call
+                  <p className="font-dm text-xs mb-3 text-accent">
+                    Mobile Warehouse Scanning
                   </p>
                   <p className="font-dm mb-4 text-sm leading-relaxed text-primary-400">
-                    Let&apos;s discuss your project goals, technical requirements,
-                    and how I can help bring your vision to life.
+                    Offline-first mobile warehouse app for Microsoft Dynamics 365
+                    Business Central — scan, move, pick, pack, and produce with
+                    one-scan workflows, even without Wi-Fi.
                   </p>
                   <a
-                    href="https://calendly.com/shubampadha"
+                    href="https://scango.it.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="srv-cta-btn w-full justify-center"
                   >
-                    <Calendar size={16} />
-                    Book a Call
+                    Visit scango.it.com
                     <ArrowRight size={14} />
                   </a>
                 </div>

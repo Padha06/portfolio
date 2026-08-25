@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { GitHubIcon as GitHub, LinkedInIcon as Linkedin, MailIcon as Mail, ArrowUpIcon as ArrowUp } from './Icons'
+import { GitHubIcon as GitHub, MailIcon as Mail, ArrowUpIcon as ArrowUp } from './Icons'
 
 const navLinks = [
   { href: '#case-studies', label: 'Portfolio' },
@@ -13,7 +13,6 @@ const navLinks = [
 
 const socialLinks = [
   { href: 'https://github.com/Padha06', label: 'GitHub', icon: GitHub },
-  { href: 'https://linkedin.com/in/shubampadha', label: 'LinkedIn', icon: Linkedin },
   { href: 'mailto:shubham@scango.it.com', label: 'Email', icon: Mail },
 ]
 
