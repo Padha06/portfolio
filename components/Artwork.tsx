@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import CaseStudyCard from './CaseStudyCard'
+import ScanGoCard from './ScanGoCard'
 
 const artworks = [
   {
@@ -19,24 +20,6 @@ const artworks = [
       { value: '40%', label: 'Faster data access' },
       { value: '100%', label: 'Client satisfaction' },
       { value: '0', label: 'Dependencies added' },
-    ],
-  },
-  {
-    title: 'ScanGo WMS — Mobile Warehouse App',
-    clientType: 'Enterprise' as const,
-    domain: 'Mobile' as const,
-    challenge:
-      'Warehouse teams using Business Central relied on paper-based workflows and desktop-only interfaces — slow, error-prone, and impossible to use offline in cold storage or dead zones.',
-    solution:
-      'Designed a modern mobile WMS interface for ScanGo — 18 modules covering inbound, outbound, inventory, and production. Offline-first architecture with license plating, one-scan workflows, and real-time sync to Business Central.',
-    staticImage: '/videos/scango-poster.png',
-    previewVideo: '/videos/scango-wms.mp4',
-    techStack: ['Kotlin', 'Jetpack Compose', 'Room DB', 'Business Central'],
-    liveUrl: 'https://scango.it.com',
-    results: [
-      { value: '70%', label: 'Faster scanning' },
-      { value: '18', label: 'Modules shipped' },
-      { value: '99.9%', label: 'Order accuracy' },
     ],
   },
 ]
@@ -93,6 +76,9 @@ export default function Artwork() {
               <CaseStudyCard {...artwork} />
             </motion.div>
           ))}
+          <motion.div variants={cardVariants}>
+            <ScanGoCard />
+          </motion.div>
         </motion.div>
       </div>
     </section>
