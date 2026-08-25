@@ -79,12 +79,12 @@ export default function Hero() {
               className="hero-trust"
             >
               <div className="hero-trust-item">
-                <span className="hero-trust-number">50+</span>
+                <span className="hero-trust-number">20+</span>
                 <span className="hero-trust-label">Projects Delivered</span>
               </div>
               <div className="hero-trust-divider" />
               <div className="hero-trust-item">
-                <span className="hero-trust-number">5+</span>
+                <span className="hero-trust-number">3+</span>
                 <span className="hero-trust-label">Years Experience</span>
               </div>
               <div className="hero-trust-divider" />
