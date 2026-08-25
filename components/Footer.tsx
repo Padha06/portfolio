@@ -14,7 +14,7 @@ const navLinks = [
 const socialLinks = [
   { href: 'https://github.com/Padha06', label: 'GitHub', icon: GitHub },
   { href: 'https://linkedin.com/in/shubampadha', label: 'LinkedIn', icon: Linkedin },
-  { href: 'mailto:shubam@example.com', label: 'Email', icon: Mail },
+  { href: 'mailto:shubham@scango.it.com', label: 'Email', icon: Mail },
 ]
 
 export default function Footer() {

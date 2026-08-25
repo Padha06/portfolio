@@ -123,7 +123,7 @@ export default function Header() {
                   <Linkedin size={24} />
                 </a>
                 <a
-                  href="mailto:shubam@example.com"
+                  href="mailto:shubham@scango.it.com"
                   className="text-primary-400 hover:text-accent transition-colors"
                   aria-label="Email Contact"
                 >

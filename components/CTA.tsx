@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import emailjs from '@emailjs/browser'
 import { SendIcon as Send, ArrowRightIcon as ArrowRight, CalendarIcon as Calendar, MailIcon as Mail, PhoneIcon as Phone } from './Icons'
 
 const projectTypes = [
@@ -12,6 +13,10 @@ const projectTypes = [
   'Other',
 ]
 
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || ''
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
+
 export default function CTA() {
   const [formData, setFormData] = useState({
     name: '',
@@ -19,13 +24,44 @@ export default function CTA() {
     projectType: '',
     message: '',
   })
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      setStatus('error')
+      return
+    }
+
+    setStatus('sending')
+
+    const templateParams = {
+      from_name: formData.name,
+      reply_to: formData.email,
+      project_type: formData.projectType,
+      message: formData.message,
+    }
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      )
+      setStatus('success')
+      setFormData({ name: '', email: '', projectType: '', message: '' })
+      setTimeout(() => setStatus('idle'), 4000)
+    } catch (error) {
+      console.error('EmailJS error:', error)
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 4000)
+    }
   }
 
   return (
@@ -135,9 +171,29 @@ export default function CTA() {
                     </p>
                   </div>
 
-                  <button type="submit" className="srv-cta-btn w-full justify-center">
+                  {status === 'success' && (
+                    <div className="text-center py-2">
+                      <p className="font-dm text-sm text-success">
+                        Thank you! Your message has been sent. We&apos;ll get back to you shortly.
+                      </p>
+                    </div>
+                  )}
+
+                  {status === 'error' && (
+                    <div className="text-center py-2">
+                      <p className="font-dm text-sm text-accent">
+                        Sorry, something went wrong. Please email us directly at shubham@scango.it.com
+                      </p>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={status === 'sending'}
+                    className="srv-cta-btn w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
                     <Send size={16} />
-                    Start Your Project
+                    {status === 'sending' ? 'Sending...' : 'Start Your Project'}
                     <ArrowRight size={14} />
                   </button>
                 </div>
@@ -160,13 +216,17 @@ export default function CTA() {
                     <span className="srv-card-system-label">CONTACT / INFO</span>
                   </div>
                   <div className="space-y-4 mt-4">
-                    <a href="mailto:shubam@example.com" className="flex items-center gap-3 text-primary-300 hover:text-white transition-colors">
+                    <a href="mailto:shubham@scango.it.com" className="flex items-center gap-3 text-primary-300 hover:text-white transition-colors">
                       <Mail size={18} />
-                      <span className="font-dm text-sm">shubam@example.com</span>
+                      <span className="font-dm text-sm">shubham@scango.it.com</span>
                     </a>
-                    <a href="tel:+1234567890" className="flex items-center gap-3 text-primary-300 hover:text-white transition-colors">
+                    <a href="mailto:samarth@scango.it.com" className="flex items-center gap-3 text-primary-300 hover:text-white transition-colors">
+                      <Mail size={18} />
+                      <span className="font-dm text-sm">samarth@scango.it.com</span>
+                    </a>
+                    <a href="tel:+916005791807" className="flex items-center gap-3 text-primary-300 hover:text-white transition-colors">
                       <Phone size={18} />
-                      <span className="font-dm text-sm">+1 (234) 567-890</span>
+                      <span className="font-dm text-sm">+91 6005791807</span>
                     </a>
                   </div>
                 </div>
