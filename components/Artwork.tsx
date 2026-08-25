@@ -71,14 +71,14 @@ export default function Artwork() {
           viewport={{ once: true, margin: '-50px' }}
           className="aw-grid"
         >
+          <motion.div variants={cardVariants}>
+            <ScanGoCard />
+          </motion.div>
           {artworks.map((artwork, idx) => (
             <motion.div key={idx} variants={cardVariants}>
               <CaseStudyCard {...artwork} />
             </motion.div>
           ))}
-          <motion.div variants={cardVariants}>
-            <ScanGoCard />
-          </motion.div>
         </motion.div>
       </div>
     </section>
