@@ -552,14 +552,18 @@ footer a:focus-visible {
 .hero-image-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 4/5;
   border-radius: 8px;
   overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 @media (min-width: 1024px) {
   .hero-image-frame {
-    aspect-ratio: 4/5;
+    aspect-ratio: 3/4;
+    max-height: 520px;
   }
 }
 
@@ -568,20 +572,20 @@ footer a:focus-visible {
   height: 100% !important;
   object-fit: cover;
   object-position: center center;
-  filter: brightness(0.85);
+  filter: brightness(0.6) saturate(0.7);
   transition: filter 200ms ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .hero-image-frame:hover .hero-image-img {
-    filter: brightness(0.95);
+    filter: brightness(0.7) saturate(0.8);
   }
 }
 
 .hero-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.3) 100%);
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.5) 100%);
 }
 
 /* Hero Responsive */
