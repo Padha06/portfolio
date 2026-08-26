@@ -247,7 +247,7 @@ export default function CrtBackground({ speed = 1, typeSpeed = 1, motion = 1, op
 
   return (
     <div className="crt-wrap" style={{ opacity }}>
-      <canvas ref={canvasRef} className="crt-canvas" />
+      <canvas ref={canvasRef} className="crt-canvas crt-blur" />
       <div className="crt-vignette" />
       <div className="crt-glow" />
     </div>

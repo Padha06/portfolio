@@ -2172,6 +2172,10 @@ footer a:focus-visible {
   height: 100%;
 }
 
+.crt-blur {
+  filter: blur(2px);
+}
+
 .crt-vignette {
   position: absolute;
   inset: 0;

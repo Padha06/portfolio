@@ -22,7 +22,7 @@ export default function Hero() {
 
       {/* Mobile CRT Background — behind text */}
       <div className="hero-crt-mobile">
-        <CrtBackground speed={0.3} typeSpeed={0.5} motion={0.5} opacity={0.35} />
+        <CrtBackground speed={0.9} typeSpeed={1.5} motion={1.5} opacity={0.35} />
       </div>
 
       {/* Content */}
@@ -109,7 +109,7 @@ export default function Hero() {
             className="hero-image"
           >
             <div className="hero-image-frame crt-frame">
-              <CrtBackground speed={0.5} typeSpeed={0.8} motion={0.6} opacity={0.95} />
+              <CrtBackground speed={1.5} typeSpeed={2.4} motion={1.8} opacity={0.95} />
               <div className="hero-image-overlay" />
             </div>
           </motion.div>
