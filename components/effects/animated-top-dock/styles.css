@@ -60,12 +60,12 @@
 
 /* Logo */
 .dock__logo {
-  width: 48px;
+  width: 96px;
   height: 36px;
   overflow: hidden;
   background: transparent;
   border-color: transparent;
-  padding: 0 6px;
+  padding: 0 10px;
 }
 
 .dock__logo-img {
@@ -158,7 +158,7 @@
   }
 
   .dock__logo {
-    width: 40px !important;
+    width: 72px !important;
     height: 32px !important;
   }
 
