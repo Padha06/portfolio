@@ -155,23 +155,27 @@
   }
 
   .dock-nav {
-    top: 50%;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin-left: auto;
     gap: 3px;
-    height: 42px;
-    padding: 4px;
-    border-radius: 12px;
+    height: 38px;
+    padding: 3px;
+    border-radius: 10px;
   }
 
   .dock__item {
-    height: 32px !important;
+    height: 30px !important;
     transform: none !important;
   }
 
   .dock__link {
     width: auto !important;
-    padding: 0 10px;
-    font-size: 9px;
-    letter-spacing: 0.08em;
+    padding: 0 8px;
+    font-size: 8px;
+    letter-spacing: 0.07em;
     gap: 0;
   }
 
