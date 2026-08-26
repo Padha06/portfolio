@@ -1,7 +1,44 @@
+/* Header layout */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: background 0.3s ease;
+}
+
+.header-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+
+.header-scrolled .header-inner {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.header-logo {
+  position: relative;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.header-logo img {
+  height: 36px;
+  width: auto;
+}
+
 /* Animated Top Dock */
 .dock-nav {
   position: absolute;
-  top: clamp(16px, 3vw, 28px);
+  top: 50%;
   left: 50%;
   z-index: 100;
   display: flex;
@@ -16,7 +53,7 @@
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(20px) saturate(80%);
   -webkit-backdrop-filter: blur(20px) saturate(80%);
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   isolation: isolate;
 }
 
@@ -56,27 +93,6 @@
   border-color: rgba(255, 255, 255, 0.12);
   background: rgba(30, 30, 30, 0.92);
   box-shadow: 0 7px 16px rgba(0, 0, 0, 0.3);
-}
-
-/* Logo */
-.dock__logo {
-  width: 48px;
-  height: 36px;
-  overflow: visible;
-  background: transparent;
-  border-color: transparent;
-  padding: 0;
-}
-
-.dock__logo-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  filter: brightness(0) invert(1);
-  transform: scale(3);
-  transform-origin: center center;
 }
 
 /* Nav links */
@@ -128,26 +144,18 @@
   opacity: 1;
 }
 
-/* Header scroll state */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  transition: background 0.3s ease;
-}
-
-.header-scrolled {
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
 /* Mobile */
 @media (max-width: 600px) {
+  .header-inner {
+    padding: 12px 16px;
+  }
+
+  .header-logo img {
+    height: 28px;
+  }
+
   .dock-nav {
-    top: 10px;
+    top: 50%;
     gap: 3px;
     height: 42px;
     padding: 4px;
@@ -157,16 +165,6 @@
   .dock__item {
     height: 32px !important;
     transform: none !important;
-  }
-
-  .dock__logo {
-    width: 40px !important;
-    height: 32px !important;
-    overflow: visible !important;
-  }
-
-  .dock__logo-img {
-    transform: scale(3);
   }
 
   .dock__link {

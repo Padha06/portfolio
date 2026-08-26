@@ -79,14 +79,6 @@ export default function AnimatedTopDock({
   const optionsRef = useRef({ ...DEFAULTS, ...props })
   optionsRef.current = { ...DEFAULTS, ...props }
   const [active, setActive] = useState('work')
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     const root = rootRef.current
@@ -95,47 +87,28 @@ export default function AnimatedTopDock({
   }, [])
 
   return (
-    <header
-      className={`site-header ${scrolled ? 'header-scrolled' : ''}`}
+    <nav
+      ref={rootRef}
+      className={`dock-nav ${className}`}
+      aria-label="Main navigation"
+      data-dock-state="idle"
+      data-dock-max="0.00"
     >
-      <nav
-        ref={rootRef}
-        className={`dock-nav ${className}`}
-        aria-label="Main navigation"
-        data-dock-state="idle"
-        data-dock-max="0.00"
-      >
-        {/* Logo */}
+      {NAV_ITEMS.map((item) => (
         <a
-          href="/"
-          className="dock__item dock__logo"
+          key={item.id}
+          href={item.href}
+          className={`dock__item dock__link ${active === item.id ? 'dock__link--active' : ''}`}
           data-dock-item
-          aria-label="Vaskoi - Home"
+          aria-pressed={active === item.id}
+          onClick={() => setActive(item.id)}
         >
-          <img
-            src="/vaskoi_logo.png"
-            alt="Vaskoi"
-            className="dock__logo-img"
-          />
+          <span className="dock__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16">{item.icon}</svg>
+          </span>
+          <span>{item.label}</span>
         </a>
-
-        {/* Nav items */}
-        {NAV_ITEMS.map((item) => (
-          <a
-            key={item.id}
-            href={item.href}
-            className={`dock__item dock__link ${active === item.id ? 'dock__link--active' : ''}`}
-            data-dock-item
-            aria-pressed={active === item.id}
-            onClick={() => setActive(item.id)}
-          >
-            <span className="dock__icon" aria-hidden="true">
-              <svg viewBox="0 0 16 16">{item.icon}</svg>
-            </span>
-            <span>{item.label}</span>
-          </a>
-        ))}
-      </nav>
-    </header>
+      ))}
+    </nav>
   )
 }
