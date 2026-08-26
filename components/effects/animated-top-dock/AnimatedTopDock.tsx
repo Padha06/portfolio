@@ -112,25 +112,11 @@ export default function AnimatedTopDock({
           data-dock-item
           aria-label="Vaskoi - Home"
         >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect
-              width="24"
-              height="24"
-              rx="4.5"
-              fill="#dc2626"
-            />
-            <text
-              x="12"
-              y="16"
-              textAnchor="middle"
-              fill="white"
-              fontSize="11"
-              fontWeight="700"
-              fontFamily="Outfit, sans-serif"
-            >
-              V
-            </text>
-          </svg>
+          <img
+            src="/vaskoi_logo.png"
+            alt="Vaskoi"
+            className="dock__logo-img"
+          />
         </a>
 
         {/* Nav items */}

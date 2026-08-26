@@ -6,12 +6,12 @@
   z-index: 100;
   display: flex;
   align-items: flex-start;
-  gap: 3px;
-  height: 42px;
+  gap: 4px;
+  height: 46px;
   padding: 5px;
   overflow: visible;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  border-radius: 14px;
   background: rgba(10, 10, 10, 0.75);
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(20px) saturate(80%);
@@ -27,16 +27,16 @@
   flex: none;
   align-items: center;
   justify-content: center;
-  height: 32px;
+  height: 36px;
   min-width: 0;
   padding: 0;
   border: 1px solid transparent;
-  border-radius: 8px;
+  border-radius: 9px;
   outline: none;
   color: #858580;
   background: rgba(20, 20, 20, 0.85);
   font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.1em;
   white-space: nowrap;
@@ -60,24 +60,28 @@
 
 /* Logo */
 .dock__logo {
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 36px;
   overflow: hidden;
-  background: #dc2626;
+  background: transparent;
   border-color: transparent;
+  padding: 0 6px;
 }
 
-.dock__logo svg {
+.dock__logo-img {
   display: block;
   width: 100%;
   height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: brightness(0) invert(1);
 }
 
 /* Nav links */
 .dock__link {
-  gap: 6px;
-  width: 94px;
-  padding: 0 10px;
+  gap: 7px;
+  width: 110px;
+  padding: 0 12px;
 }
 
 .dock__link--active {
@@ -100,8 +104,8 @@
   flex: none;
   align-items: center;
   justify-content: center;
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 14px;
   opacity: 0.55;
   transition: opacity 0.16s;
 }
@@ -138,30 +142,32 @@
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* Mobile: static dock */
+/* Mobile */
 @media (max-width: 600px) {
   .dock-nav {
-    top: 12px;
-    gap: 2px;
-    height: 38px;
+    top: 10px;
+    gap: 3px;
+    height: 42px;
     padding: 4px;
+    border-radius: 12px;
   }
 
   .dock__item {
-    height: 28px !important;
+    height: 32px !important;
     transform: none !important;
   }
 
   .dock__logo {
-    width: 28px !important;
-    height: 28px !important;
+    width: 40px !important;
+    height: 32px !important;
   }
 
   .dock__link {
     width: auto !important;
-    padding: 0 8px;
-    font-size: 8px;
-    letter-spacing: 0.07em;
+    padding: 0 10px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    gap: 0;
   }
 
   .dock__icon {
