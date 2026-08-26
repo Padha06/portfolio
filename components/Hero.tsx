@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import CrtBackground from './CrtBackground'
+import { CrtBackground } from './effects/crt/CrtBackground'
+import './effects/crt/styles.css'
 
 export default function Hero() {
   return (
@@ -104,7 +105,7 @@ export default function Hero() {
             className="hero-image"
           >
             <div className="hero-image-frame crt-frame">
-              <CrtBackground speed={0.8} opacity={0.9} />
+              <CrtBackground speed={0.4} motion={0.6} typeSpeed={0.6} opacity={0.9} />
               <div className="hero-image-overlay" />
             </div>
           </motion.div>
