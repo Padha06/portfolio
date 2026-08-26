@@ -101,7 +101,7 @@ export default function Skills() {
                 <span className="srv-card-system-label">{category.name}</span>
               </div>
 
-              <h3 className="font-outfit text-[0.95rem] font-semibold text-white mb-3">
+              <h3 className="font-outfit text-sm font-semibold text-white mb-3">
                 {category.name}
               </h3>
 

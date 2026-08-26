@@ -257,34 +257,6 @@ export default function CTA() {
                   </div>
                 </div>
               </div>
-
-              <div className="srv-card srv-card--small">
-                <div className="srv-card-content">
-                  <div className="srv-card-system">
-                    <span className="srv-card-system-label">WEBSITE / 02</span>
-                  </div>
-                  <h3 className="font-outfit text-lg font-semibold text-white mb-1 mt-4">
-                    ScanGo WMS
-                  </h3>
-                  <p className="font-dm text-xs mb-3 text-accent">
-                    Mobile Warehouse Scanning
-                  </p>
-                  <p className="font-dm mb-4 text-sm leading-relaxed text-primary-400">
-                    Offline-first mobile warehouse app for Microsoft Dynamics 365
-                    Business Central — scan, move, pick, pack, and produce with
-                    one-scan workflows, even without Wi-Fi.
-                  </p>
-                  <a
-                    href="https://scango.it.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="srv-cta-btn w-full justify-center"
-                  >
-                    Visit scango.it.com
-                    <ArrowRight size={14} />
-                  </a>
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>

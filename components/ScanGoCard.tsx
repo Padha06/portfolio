@@ -127,7 +127,7 @@ export default function ScanGoCard() {
             rel="noopener noreferrer"
             className="sc-link"
           >
-            Visit scango.it.com
+            View Case Study
             <span className="sc-arrow">&rarr;</span>
           </a>
         </div>

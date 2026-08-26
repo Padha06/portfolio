@@ -99,13 +99,14 @@ export default function Process() {
                 <p className="srv-card-desc">{step.description}</p>
 
                 {/* Footer row */}
-                <div className="flex items-center justify-between mt-4 pt-4 border-t border-primary-800">
+                <div className="flex flex-wrap items-center gap-3 mt-4 pt-4 border-t border-primary-800">
                   <div className="flex flex-wrap gap-2">
                     {step.tags.map((tag) => (
                       <span key={tag} className="srv-tech-pill">{tag}</span>
                     ))}
                   </div>
-                  <div className="flex items-center gap-2">
+                  <span className="text-primary-700">·</span>
+                  <div className="flex items-center gap-1.5">
                     <span className="font-dm text-xs text-primary-500">Duration:</span>
                     <span className="font-dm text-xs font-medium text-accent">{step.duration}</span>
                   </div>
