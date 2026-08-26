@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { createTopDockController } from './topDockController'
 
 export type AnimatedTopDockProps = {
@@ -27,6 +27,7 @@ const NAV_ITEMS = [
     id: 'work',
     label: 'WORK',
     href: '/#case-studies',
+    sectionId: 'case-studies',
     icon: (
       <>
         <rect x="2" y="3" width="12" height="10" rx="1.5" />
@@ -38,6 +39,7 @@ const NAV_ITEMS = [
     id: 'services',
     label: 'SERVICES',
     href: '/services',
+    sectionId: null,
     icon: (
       <>
         <circle cx="3" cy="8" r="1.5" />
@@ -51,6 +53,7 @@ const NAV_ITEMS = [
     id: 'about',
     label: 'ABOUT',
     href: '/#skills',
+    sectionId: 'skills',
     icon: (
       <>
         <path d="M4 2.25h5.4L12 4.85v8.9H4z" />
@@ -62,6 +65,7 @@ const NAV_ITEMS = [
     id: 'contact',
     label: "LET'S TALK",
     href: '/#contact',
+    sectionId: 'contact',
     icon: (
       <>
         <path d="m22 2-7 20-4-9-9-4Z" />
@@ -70,6 +74,12 @@ const NAV_ITEMS = [
     ),
   },
 ]
+
+const SECTION_TONavItem: Record<string, string> = {
+  'case-studies': 'work',
+  skills: 'about',
+  contact: 'contact',
+}
 
 export default function AnimatedTopDock({
   className = '',
@@ -80,10 +90,41 @@ export default function AnimatedTopDock({
   optionsRef.current = { ...DEFAULTS, ...props }
   const [active, setActive] = useState('work')
 
+  const handleNavClick = useCallback((id: string) => {
+    setActive(id)
+  }, [])
+
   useEffect(() => {
     const root = rootRef.current
     if (!root) return undefined
     return createTopDockController(root, () => optionsRef.current)
+  }, [])
+
+  useEffect(() => {
+    const sectionIds = NAV_ITEMS
+      .map((item) => item.sectionId)
+      .filter(Boolean) as string[]
+
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[]
+
+    if (elements.length === 0) return undefined
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const navId = SECTION_TONavItem[entry.target.id]
+            if (navId) setActive(navId)
+          }
+        }
+      },
+      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+    )
+
+    for (const el of elements) observer.observe(el)
+    return () => observer.disconnect()
   }, [])
 
   return (
@@ -101,7 +142,7 @@ export default function AnimatedTopDock({
           className={`dock__item dock__link ${active === item.id ? 'dock__link--active' : ''}`}
           data-dock-item
           aria-pressed={active === item.id}
-          onClick={() => setActive(item.id)}
+          onClick={() => handleNavClick(item.id)}
         >
           <span className="dock__icon" aria-hidden="true">
             <svg viewBox="0 0 16 16">{item.icon}</svg>
