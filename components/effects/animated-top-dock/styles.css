@@ -150,6 +150,7 @@
   .header-inner {
     padding: 10px 14px;
     gap: 8px;
+    justify-content: flex-start;
   }
 
   .header-logo img {

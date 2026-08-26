@@ -38,8 +38,8 @@ const NAV_ITEMS = [
   {
     id: 'services',
     label: 'SERVICES',
-    href: '/services',
-    sectionId: null,
+    href: '/#services',
+    sectionId: 'services',
     icon: (
       <>
         <circle cx="3" cy="8" r="1.5" />
@@ -75,8 +75,9 @@ const NAV_ITEMS = [
   },
 ]
 
-const SECTION_TONavItem: Record<string, string> = {
+const SECTION_TO_NAV: Record<string, string> = {
   'case-studies': 'work',
+  services: 'services',
   skills: 'about',
   contact: 'contact',
 }
@@ -88,7 +89,7 @@ export default function AnimatedTopDock({
   const rootRef = useRef<HTMLElement>(null)
   const optionsRef = useRef({ ...DEFAULTS, ...props })
   optionsRef.current = { ...DEFAULTS, ...props }
-  const [active, setActive] = useState('work')
+  const [active, setActive] = useState<string | null>(null)
 
   const handleNavClick = useCallback((id: string) => {
     setActive(id)
@@ -115,12 +116,12 @@ export default function AnimatedTopDock({
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            const navId = SECTION_TONavItem[entry.target.id]
+            const navId = SECTION_TO_NAV[entry.target.id]
             if (navId) setActive(navId)
           }
         }
       },
-      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+      { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
     )
 
     for (const el of elements) observer.observe(el)
