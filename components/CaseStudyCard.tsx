@@ -216,21 +216,6 @@ export default function CaseStudyCard({
               {domain}
             </span>
           </div>
-
-          {/* Live Demo Badge */}
-          {liveUrl && (
-            <a
-              href={liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1.5 bg-black/60 backdrop-blur-sm rounded-full text-xs font-medium text-white hover:bg-accent hover:text-black transition-colors"
-              aria-label="Visit live site"
-            >
-              <ExternalLink size={12} />
-              <span>Visit site</span>
-            </a>
-          )}
         </div>
 
         {/* Content */}
@@ -261,9 +246,22 @@ export default function CaseStudyCard({
           </div>
 
           {/* CTA */}
-          <div className="flex items-center gap-2 text-accent font-medium text-sm group-hover:gap-3 transition-all duration-300">
-            <span>View Case Study</span>
+          <div className="flex items-center gap-3 text-accent font-medium text-sm group-hover:gap-4 transition-all duration-300">
+            <span className="group-hover:gap-3 transition-all">View Case Study</span>
             <ArrowRight size={16} />
+            {liveUrl && (
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/[0.06] border border-white/10 rounded-full text-xs font-medium text-primary-300 hover:text-white hover:border-accent/30 transition-colors"
+                aria-label="Visit live site"
+              >
+                <ExternalLink size={11} />
+                <span>Visit site</span>
+              </a>
+            )}
           </div>
         </div>
       </motion.article>

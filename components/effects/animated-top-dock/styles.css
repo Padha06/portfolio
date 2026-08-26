@@ -71,7 +71,7 @@
   border: 1px solid transparent;
   border-radius: var(--radius-md);
   outline: none;
-  color: #858580;
+  color: var(--color-muted);
   background: rgba(20, 20, 20, 0.85);
   font-family: var(--font-outfit), 'Outfit', sans-serif;
   font-size: 11px;
@@ -90,7 +90,7 @@
 .dock__item[data-dock-near='true'],
 .dock__item:focus-visible {
   z-index: 7;
-  color: #ecece8;
+  color: var(--color-primary);
   border-color: rgba(255, 255, 255, 0.12);
   background: rgba(30, 30, 30, 0.92);
   box-shadow: 0 7px 16px rgba(0, 0, 0, 0.3);
@@ -105,15 +105,15 @@
 
 .dock__link--active {
   color: #0a0a0a;
-  border-color: #dc2626;
-  background: #dc2626;
+  border-color: var(--color-accent);
+  background: var(--color-accent);
   box-shadow: 0 7px 18px rgba(220, 38, 38, 0.25);
 }
 
 .dock__link--active[data-dock-near='true'] {
   color: #0a0a0a;
-  border-color: #ef4444;
-  background: #ef4444;
+  border-color: var(--color-accent);
+  background: var(--color-accent);
   box-shadow: 0 7px 18px rgba(220, 38, 38, 0.35);
 }
 

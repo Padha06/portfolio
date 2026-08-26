@@ -237,7 +237,7 @@ export default function CTA() {
             whileInView={{ opacity: 1, transform: "translateX(0px)" }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
-            className="flex flex-col justify-center"
+            className="flex flex-col justify-start lg:pt-6"
           >
             <div className="space-y-4">
               <div className="srv-card srv-card--small">

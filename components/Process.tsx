@@ -105,7 +105,7 @@ export default function Process() {
                       <span key={tag} className="srv-tech-pill">{tag}</span>
                     ))}
                   </div>
-                  <span className="text-primary-700">·</span>
+                  <span className="text-primary-500">·</span>
                   <div className="flex items-center gap-1.5">
                     <span className="font-dm text-xs text-primary-500">Duration:</span>
                     <span className="font-dm text-xs font-medium text-accent">{step.duration}</span>

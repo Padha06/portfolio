@@ -89,13 +89,13 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="flex flex-wrap justify-center gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {techCategories.map((category) => (
             <motion.div
               key={category.name}
               variants={categoryVariants}
-              className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.6875rem)] bg-white/[0.02] border border-white/5 rounded-md p-5 transition-all duration-400"
+              className="bg-white/[0.02] border border-white/5 rounded-md p-5 transition-all duration-400"
             >
               <div className="flex items-center gap-3 mb-3">
                 <span className="srv-card-system-label">{category.name}</span>

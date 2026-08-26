@@ -153,6 +153,9 @@ export default function CaseStudies() {
                     {study.tech.map((t) => (
                       <span key={t} className="cs-tech-tag">{t}</span>
                     ))}
+                  </div>
+                  <div className="cs-card-cta">
+                    <span className="cs-card-cta-text">View Case Study</span>
                     <span className="cs-card-arrow">&rarr;</span>
                   </div>
                 </div>
