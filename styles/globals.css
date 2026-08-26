@@ -609,9 +609,14 @@ footer a:focus-visible {
     font-size: 2rem;
   }
 
-  .hero-image-frame {
-    aspect-ratio: 16/10;
-    max-height: 280px;
+  .hero-image {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .hero-image {
+    display: none;
   }
 }
 
@@ -2189,4 +2194,20 @@ footer a:focus-visible {
   );
   pointer-events: none;
   mix-blend-mode: screen;
+}
+
+/* Mobile CRT background behind hero text */
+.hero-crt-mobile {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .hero-crt-mobile {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.35;
+  }
 }

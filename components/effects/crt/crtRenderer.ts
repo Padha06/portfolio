@@ -68,10 +68,11 @@ function compile(gl: WebGLRenderingContext, type: number, source: string) {
   if (!shader) throw new Error("Unable to create CRT shader");
   gl.shaderSource(shader, source);
   gl.compileShader(shader);
-  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
-    throw new Error(
-      gl.getShaderInfoLog(shader) ?? "CRT shader compilation failed"
-    );
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    const info = gl.getShaderInfoLog(shader);
+    gl.deleteShader(shader);
+    throw new Error(info ?? "CRT shader compilation failed");
+  }
   return shader;
 }
 
@@ -85,236 +86,187 @@ export function createCrtRenderer(
     alpha: false,
     depth: false,
     premultipliedAlpha: false,
+    preserveDrawingBuffer: false,
   });
   if (!gl) throw new Error("CRT requires WebGL");
 
-  const textCanvas = document.createElement("canvas"),
-    textContext = textCanvas.getContext("2d");
-  if (!textContext) throw new Error("CRT text canvas unavailable");
+  const textCanvas = document.createElement("canvas");
+  const textCtx = textCanvas.getContext("2d");
+  if (!textCtx) throw new Error("CRT text canvas unavailable");
 
-  const vertex = compile(gl, gl.VERTEX_SHADER, CRT_VERTEX_SHADER),
-    fragment = compile(gl, gl.FRAGMENT_SHADER, CRT_FRAGMENT_SHADER),
-    program = gl.createProgram();
-  if (!program) throw new Error("Unable to create CRT program");
-  gl.attachShader(program, vertex);
-  gl.attachShader(program, fragment);
-  gl.linkProgram(program);
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS))
-    throw new Error(gl.getProgramInfoLog(program) ?? "CRT link failed");
-  gl.useProgram(program);
+  const vs = compile(gl, gl.VERTEX_SHADER, CRT_VERTEX_SHADER);
+  const fs = compile(gl, gl.FRAGMENT_SHADER, CRT_FRAGMENT_SHADER);
+  const prog = gl.createProgram();
+  if (!prog) throw new Error("Unable to create CRT program");
+  gl.attachShader(prog, vs);
+  gl.attachShader(prog, fs);
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+    const info = gl.getProgramInfoLog(prog);
+    gl.deleteProgram(prog);
+    throw new Error(info ?? "CRT link failed");
+  }
+  gl.useProgram(prog);
 
-  const buffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-  gl.bufferData(
-    gl.ARRAY_BUFFER,
-    new Float32Array([-1, -1, 3, -1, -1, 3]),
-    gl.STATIC_DRAW
-  );
-  const position = gl.getAttribLocation(program, "aPos");
-  gl.enableVertexAttribArray(position);
-  gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  const aPos = gl.getAttribLocation(prog, "aPos");
+  gl.enableVertexAttribArray(aPos);
+  gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
 
-  const uTexture = gl.getUniformLocation(program, "uTex"),
-    uResolution = gl.getUniformLocation(program, "uRes"),
-    uTime = gl.getUniformLocation(program, "uTime"),
-    uMotion = gl.getUniformLocation(program, "uMotion"),
-    texture = gl.createTexture();
-  gl.bindTexture(gl.TEXTURE_2D, texture);
+  const uTex = gl.getUniformLocation(prog, "uTex");
+  const uRes = gl.getUniformLocation(prog, "uRes");
+  const uTime = gl.getUniformLocation(prog, "uTime");
+  const uMotion = gl.getUniformLocation(prog, "uMotion");
+
+  const tex = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, tex);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-  gl.uniform1i(uTexture, 0);
+  gl.uniform1i(uTex, 0);
 
-  let width = 1,
-    height = 1,
-    fontSize = 14,
-    lineHeight = 20,
-    startY = 0,
-    charWidth = 8,
-    caretX = 0,
-    caretY = 0,
-    typed = 0,
-    done = false,
-    textDirty = true,
-    lastTextAt = 0,
-    lastReveal = -1,
-    lastBlink = -1;
-  const startedAt = performance.now();
+  let W = 1, H = 1;
+  let fontSize = 14, lineHeight = 20, startY = 0, charWidth = 8;
+  let caretX = 0, caretY = 0;
+  let typed = 0, done = false;
+  let textDirty = true, lastReveal = -1, lastBlink = -1;
+  const t0 = performance.now();
 
   const layout = () => {
-    startY = height * 0.135;
-    lineHeight = (height * 0.74) / LOG.length;
-    fontSize = Math.max(
-      5,
-      Math.min(
-        lineHeight * 0.8,
-        (width * 0.88) / (Math.max(MAX_CHARS, 1) * 0.62)
-      )
-    );
-    textContext.font = `600 ${fontSize.toFixed(2)}px ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace`;
-    charWidth = textContext.measureText("M").width || fontSize * 0.6;
+    startY = H * 0.135;
+    lineHeight = (H * 0.74) / LOG.length;
+    fontSize = Math.max(5, Math.min(lineHeight * 0.8, (W * 0.88) / (Math.max(MAX_CHARS, 1) * 0.62)));
+    textCtx.font = `600 ${fontSize.toFixed(2)}px ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace`;
+    charWidth = textCtx.measureText("M").width || fontSize * 0.6;
   };
 
   const setStyle = (key: Segment["c"]) => {
-    const color = COLORS[key];
-    textContext.fillStyle = color.fill;
-    textContext.shadowColor = color.glow;
-    textContext.shadowBlur = fontSize * 0.55;
+    const c = COLORS[key];
+    textCtx.fillStyle = c.fill;
+    textCtx.shadowColor = c.glow;
+    textCtx.shadowBlur = fontSize * 0.55;
   };
 
   const drawScreen = (reveal: number) => {
-    textContext.setTransform(1, 0, 0, 1, 0, 0);
-    textContext.fillStyle = "#0a0a0a";
-    textContext.fillRect(0, 0, width, height);
-    textContext.textBaseline = "top";
-    textContext.font = `600 ${fontSize.toFixed(2)}px ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace`;
+    textCtx.setTransform(1, 0, 0, 1, 0, 0);
+    textCtx.fillStyle = "#0a0a0a";
+    textCtx.fillRect(0, 0, W, H);
+    textCtx.textBaseline = "top";
+    textCtx.font = `600 ${fontSize.toFixed(2)}px ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace`;
 
-    let remaining = reveal,
-      y = startY;
-    caretX = Math.floor((width - MAX_CHARS * charWidth) / 2);
+    let remaining = reveal, y = startY;
+    caretX = Math.floor((W - MAX_CHARS * charWidth) / 2);
     caretY = startY;
 
     for (const line of LOG) {
-      const length = lineLength(line),
-        visible = reveal === Infinity ? Infinity : Math.min(remaining, length);
-      let x = Math.floor((width - MAX_CHARS * charWidth) / 2),
-        drawn = 0;
+      const len = lineLength(line);
+      const vis = reveal === Infinity ? Infinity : Math.min(remaining, len);
+      let x = Math.floor((W - MAX_CHARS * charWidth) / 2), drawn = 0;
 
       for (const item of line) {
         let text = item.t;
-        if (visible !== Infinity) {
-          const left = visible - drawn;
+        if (vis !== Infinity) {
+          const left = vis - drawn;
           if (left <= 0) break;
           if (left < text.length) text = text.slice(0, left);
         }
         if (text.length) {
           setStyle(item.c);
-          textContext.fillText(text, x, y);
+          textCtx.fillText(text, x, y);
           x += charWidth * text.length;
         }
         drawn += item.t.length;
-        if (visible !== Infinity && drawn >= visible) break;
+        if (vis !== Infinity && drawn >= vis) break;
       }
 
       caretX = x;
       caretY = y;
-      if (visible !== Infinity) remaining -= visible;
+      if (vis !== Infinity) remaining -= vis;
       y += lineHeight;
-      if (visible !== Infinity && remaining <= 0) break;
+      if (vis !== Infinity && remaining <= 0) break;
     }
   };
 
   const drawCursor = () => {
-    textContext.shadowColor = COLORS.p.glow;
-    textContext.shadowBlur = fontSize * 0.6;
-    textContext.fillStyle = "#f87171";
-    textContext.fillRect(
-      caretX,
-      caretY + fontSize * 0.06,
-      Math.max(charWidth * 0.92, 4),
-      fontSize * 0.96
-    );
+    textCtx.shadowColor = COLORS.p.glow;
+    textCtx.shadowBlur = fontSize * 0.6;
+    textCtx.fillStyle = "#f87171";
+    textCtx.fillRect(caretX, caretY + fontSize * 0.06, Math.max(charWidth * 0.92, 4), fontSize * 0.96);
   };
 
   const uploadTexture = () => {
-    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.bindTexture(gl.TEXTURE_2D, tex);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    gl.texImage2D(
-      gl.TEXTURE_2D,
-      0,
-      gl.RGBA,
-      gl.RGBA,
-      gl.UNSIGNED_BYTE,
-      textCanvas
-    );
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, textCanvas);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
     textDirty = false;
   };
 
   const resize = () => {
-    const bounds = host.getBoundingClientRect(),
-      viewportWidth = Math.max(1, bounds.width),
-      viewportHeight = Math.max(1, bounds.height),
-      scale = viewportWidth < 700 ? 0.82 : 0.55,
-      bufferWidth = Math.min(Math.round(viewportWidth * scale), 920),
-      bufferHeight = Math.round(
-        (bufferWidth * viewportHeight) / viewportWidth
-      );
+    const bounds = host.getBoundingClientRect();
+    const vw = Math.max(1, bounds.width);
+    const vh = Math.max(1, bounds.height);
+    const scale = vw < 700 ? 0.82 : 0.55;
+    const bw = Math.min(Math.round(vw * scale), 920);
+    const bh = Math.round((bw * vh) / vw);
 
-    if (
-      canvas.width !== bufferWidth ||
-      canvas.height !== bufferHeight ||
-      width !== bufferWidth
-    ) {
-      canvas.width = bufferWidth;
-      canvas.height = bufferHeight;
-      textCanvas.width = bufferWidth;
-      textCanvas.height = bufferHeight;
-      width = bufferWidth;
-      height = bufferHeight;
+    if (canvas.width !== bw || canvas.height !== bh || W !== bw) {
+      canvas.width = bw;
+      canvas.height = bh;
+      textCanvas.width = bw;
+      textCanvas.height = bh;
+      W = bw;
+      H = bh;
       layout();
       lastReveal = -1;
       lastBlink = -1;
+      textDirty = true;
     }
-    gl.viewport(0, 0, bufferWidth, bufferHeight);
-    gl.uniform2f(uResolution, bufferWidth, bufferHeight);
+    gl.viewport(0, 0, bw, bh);
+    gl.uniform2f(uRes, bw, bh);
   };
 
-  const maybeRedrawText = (now: number) => {
-    const reveal = done ? Infinity : Math.floor(typed),
-      blink =
-        Math.floor((now - startedAt) / 420) % 2 === 0 ? 1 : 0,
-      due = !done
-        ? now - lastTextAt > 42
-        : blink !== lastBlink;
+  const render = (now: number) => {
+    const opts = getOptions();
 
-    if (
-      reveal === lastReveal &&
-      blink === lastBlink &&
-      !due
-    )
-      return;
-    if (
-      !done &&
-      now - lastTextAt <= 42 &&
-      reveal === lastReveal &&
-      blink === lastBlink
-    )
-      return;
+    // Advance typewriter
+    if (!done) {
+      typed += 4.4 * opts.typeSpeed;
+      if (typed >= TOTAL) { typed = TOTAL; done = true; }
+    }
 
-    drawScreen(reveal);
-    if (blink) drawCursor();
-    lastTextAt = now;
-    lastReveal = reveal;
-    lastBlink = blink;
-    textDirty = true;
+    // Redraw text when needed
+    const reveal = done ? Infinity : Math.floor(typed);
+    const blink = Math.floor((now - t0) / 420) % 2 === 0 ? 1 : 0;
+    const needsRedraw = reveal !== lastReveal || blink !== lastBlink;
+
+    if (needsRedraw) {
+      drawScreen(reveal);
+      if (blink) drawCursor();
+      lastReveal = reveal;
+      lastBlink = blink;
+      textDirty = true;
+    }
+
+    // Upload and draw
+    if (textDirty) uploadTexture();
+
+    gl.useProgram(prog);
+    gl.uniform1f(uTime, (now - t0) * 0.001 * opts.speed);
+    gl.uniform1f(uMotion, opts.motion);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
 
-  return {
-    resize,
-    render(now: number) {
-      const options = getOptions();
-      if (!done) {
-        typed += 4.4 * options.typeSpeed;
-        if (typed >= TOTAL) {
-          typed = TOTAL;
-          done = true;
-        }
-      }
-      maybeRedrawText(now);
-      if (textDirty) uploadTexture();
-      gl.useProgram(program);
-      gl.uniform1f(uTime, ((now - startedAt) * 0.001 * options.speed) );
-      gl.uniform1f(uMotion, options.motion);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
-    },
-    dispose() {
-      gl.deleteBuffer(buffer);
-      gl.deleteTexture(texture);
-      gl.deleteProgram(program);
-      gl.deleteShader(vertex);
-      gl.deleteShader(fragment);
-    },
+  const dispose = () => {
+    gl.deleteBuffer(buf);
+    gl.deleteTexture(tex);
+    gl.deleteProgram(prog);
+    gl.deleteShader(vs);
+    gl.deleteShader(fs);
   };
+
+  return { resize, render, dispose };
 }

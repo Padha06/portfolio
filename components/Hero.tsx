@@ -21,6 +21,11 @@ export default function Hero() {
         <div className="hero-bg-overlay" />
       </div>
 
+      {/* Mobile CRT Background — behind text */}
+      <div className="hero-crt-mobile">
+        <CrtBackground speed={0.3} motion={0.5} typeSpeed={0.5} opacity={0.35} />
+      </div>
+
       {/* Content */}
       <div className="hero-content">
         <div className="hero-container">
@@ -97,7 +102,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right column - CRT Matrix Effect */}
+          {/* Right column - CRT Effect (desktop only) */}
           <motion.div
             initial={{ opacity: 0, transform: "translateX(30px)" }}
             animate={{ opacity: 1, transform: "translateX(0px)" }}
