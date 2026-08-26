@@ -60,12 +60,12 @@
 
 /* Logo */
 .dock__logo {
-  width: 96px;
+  width: 48px;
   height: 36px;
-  overflow: hidden;
+  overflow: visible;
   background: transparent;
   border-color: transparent;
-  padding: 0 10px;
+  padding: 0;
 }
 
 .dock__logo-img {
@@ -75,6 +75,8 @@
   object-fit: contain;
   object-position: center;
   filter: brightness(0) invert(1);
+  transform: scale(3);
+  transform-origin: center center;
 }
 
 /* Nav links */
@@ -158,8 +160,13 @@
   }
 
   .dock__logo {
-    width: 72px !important;
+    width: 40px !important;
     height: 32px !important;
+    overflow: visible !important;
+  }
+
+  .dock__logo-img {
+    transform: scale(3);
   }
 
   .dock__link {
