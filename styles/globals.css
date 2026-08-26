@@ -1243,7 +1243,7 @@ footer a:focus-visible {
   position: absolute;
   bottom: 2rem;
   right: 2rem;
-  color: #444;
+  color: var(--color-faint);
   transition: color 200ms ease, transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
   z-index: 2;
 }
@@ -1939,10 +1939,15 @@ footer a:focus-visible {
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding: 0.75rem;
 }
 
 .aw-grid .sc-content-top {
   flex: 1;
+}
+
+.aw-grid .sc-title {
+  font-size: var(--text-sm);
 }
 
 .aw-grid .sc-desc {
@@ -2036,12 +2041,12 @@ footer a:focus-visible {
 }
 
 .sc-tag--domain {
-  color: #a3a3a3;
+  color: var(--color-secondary);
   background: rgba(0, 0, 0, 0.4);
 }
 
 .sc-tag--status {
-  color: #22c55e;
+  color: var(--color-success);
   background: rgba(34, 197, 94, 0.1);
   border-color: rgba(34, 197, 94, 0.2);
 }

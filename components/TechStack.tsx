@@ -121,7 +121,7 @@ export default function TechStack() {
                       className="w-3 h-3 rounded-full group-hover:scale-125 transition-transform"
                       style={{ backgroundColor: item.color }}
                     />
-                    <span className="font-dm text-sm font-medium text-primary-200 group-hover:text-white transition-colors">
+                    <span className="font-dm text-sm font-medium text-primary-300 group-hover:text-white transition-colors">
                       {item.name}
                     </span>
                   </div>

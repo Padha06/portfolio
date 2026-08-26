@@ -80,7 +80,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/5">
-          <p className="font-dm text-xs text-primary-600">
+          <p className="font-dm text-xs text-primary-500">
             © 2024-2026 Shubam Padha. Built with lots of coffee.
           </p>
 

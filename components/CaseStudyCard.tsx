@@ -224,10 +224,11 @@ export default function CaseStudyCard({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="absolute top-3 right-3 p-2 bg-black/50 backdrop-blur-sm rounded-full text-white hover:bg-accent hover:text-black transition-colors"
+              className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1.5 bg-black/60 backdrop-blur-sm rounded-full text-xs font-medium text-white hover:bg-accent hover:text-black transition-colors"
               aria-label="Visit live site"
             >
-              <ExternalLink size={16} />
+              <ExternalLink size={12} />
+              <span>Visit site</span>
             </a>
           )}
         </div>
@@ -339,7 +340,7 @@ export default function CaseStudyCard({
                     {techStack.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1.5 text-sm font-medium text-primary-200 bg-primary-800 rounded-full border border-primary-700"
+                        className="px-3 py-1.5 text-sm font-medium text-primary-300 bg-primary-800 rounded-full border border-primary-700"
                       >
                         {tech}
                       </span>
