@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import CrtBackground from './CrtBackground'
 
 export default function Hero() {
   return (
@@ -95,22 +96,15 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right column - Image */}
+          {/* Right column - CRT Matrix Effect */}
           <motion.div
             initial={{ opacity: 0, transform: "translateX(30px)" }}
             animate={{ opacity: 1, transform: "translateX(0px)" }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
             className="hero-image"
           >
-            <div className="hero-image-frame">
-              <Image
-                src="/hero-left-bg-new.png"
-                alt="Full-stack developer workspace"
-                fill
-                sizes="(max-width: 768px) 100vw, 40vw"
-                className="hero-image-img"
-                priority
-              />
+            <div className="hero-image-frame crt-frame">
+              <CrtBackground speed={0.8} opacity={0.9} />
               <div className="hero-image-overlay" />
             </div>
           </motion.div>
