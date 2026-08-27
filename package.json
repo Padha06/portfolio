@@ -12,6 +12,8 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "framer-motion": "^11.0.0",
+    "gifuct": "^0.0.1-security",
+    "gifuct-js": "^2.1.2",
     "lucide-react": "^1.33.0",
     "next": "^14.2.35",
     "react": "^18.2.0",
