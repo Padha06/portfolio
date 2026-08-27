@@ -149,19 +149,19 @@
 @media (max-width: 600px) {
   .header-inner {
     padding: 10px 14px;
-    gap: 8px;
-    justify-content: flex-start;
+    gap: 10px;
+    justify-content: center;
   }
 
   .header-logo img {
-    height: 26px;
+    height: 34px;
   }
 
   .dock-nav {
     position: relative;
     top: auto;
     left: auto;
-    transform: translateX(-12px);
+    transform: none;
     gap: 3px;
     height: 42px;
     padding: 4px;
