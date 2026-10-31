@@ -1,11 +1,12 @@
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
-import CaseStudies from '@/components/CaseStudies'
-import Artwork from '@/components/Artwork'
+import Marquee from '@/components/Marquee'
+import Work from '@/components/Work'
+import Systems from '@/components/Systems'
 import Services from '@/components/Services'
 import Process from '@/components/Process'
-import Skills from '@/components/Skills'
-import CTA from '@/components/CTA'
+import Stack from '@/components/Stack'
+import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -14,12 +15,13 @@ export default function Home() {
       <Header />
       <main id="main-content">
         <Hero />
-        <CaseStudies />
-        <Artwork />
+        <Marquee />
+        <Work />
+        <Systems />
         <Services />
         <Process />
-        <Skills />
-        <CTA />
+        <Stack />
+        <Contact />
       </main>
       <Footer />
     </>

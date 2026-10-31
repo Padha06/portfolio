@@ -1,191 +1,67 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
-
-const services = [
-  {
-    id: '01',
-    tag: 'SERVICE / 01',
-    category: 'WEB SYSTEM',
-    title: 'Websites that do more than look good.',
-    description: 'High-performance websites and digital experiences built for businesses, startups, and products — responsive, scalable, SEO-friendly, and designed to convert.',
-    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind'],
-    image: '/svc-web.jpg',
-    size: 'large' as const,
-  },
-  {
-    id: '02',
-    tag: 'SERVICE / 02',
-    category: 'WEB APPLICATION',
-    title: 'Software built around your workflow.',
-    description: 'Custom web applications that turn complex processes into simple, intuitive experiences — from dashboards and portals to complete business platforms.',
-    tech: ['React', 'Node.js', 'Python', '.NET', 'SQL'],
-    image: '/svc-app.jpg',
-    size: 'small' as const,
-  },
-  {
-    id: '03',
-    tag: 'SERVICE / 03',
-    category: 'MOBILE APPLICATION',
-    title: 'Your product, wherever your users are.',
-    description: 'Native and cross-platform mobile applications designed for performance, reliability, and real-world use — including field operations, workforce apps, and internal tools.',
-    tech: ['React Native', 'Kotlin', 'Android', 'REST APIs'],
-    image: '/svc-mobile.jpg',
-    size: 'small' as const,
-  },
-  {
-    id: '04',
-    tag: 'SERVICE / 04',
-    category: 'ERP & BUSINESS',
-    title: 'Make your business systems work harder.',
-    description: 'Custom ERP development, extensions, workflows, and business logic that adapt enterprise systems to your exact processes.',
-    tech: ['Dynamics 365 BC', 'AL', 'Power Apps', 'Dataverse'],
-    image: '/svc-erp.jpg',
-    size: 'large' as const,
-  },
-  {
-    id: '05',
-    tag: 'SERVICE / 05',
-    category: 'INTEGRATIONS',
-    title: 'Connect the systems that power your business.',
-    description: 'We connect websites, apps, ERP platforms, databases, cloud services, and third-party tools so your data moves where it needs to — automatically.',
-    tech: ['REST APIs', 'GraphQL', 'Webhooks', 'Azure', 'Dataverse'],
-    image: '/svc-integration.jpg',
-    size: 'large' as const,
-  },
-  {
-    id: '06',
-    tag: 'SERVICE / 06',
-    category: 'AUTOMATION',
-    title: 'Replace repetitive work with intelligent systems.',
-    description: 'From data automation to custom internal tools, we turn manual processes into reliable digital workflows that save time and reduce errors.',
-    tech: ['Power Automate', 'Python', 'SQL', 'APIs', 'Automation'],
-    image: '/svc-automation.jpg',
-    size: 'small' as const,
-  },
-]
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.06 },
-  },
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, transform: "translateY(40px)" },
-  visible: {
-    opacity: 1,
-    transform: "translateY(0px)",
-    transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1] },
-  },
-}
+import { Reveal, LineReveal, Eyebrow, ease } from './Reveal'
+import { services } from '@/lib/content'
 
 export default function Services() {
+  const [open, setOpen] = useState<number | null>(0)
+
   return (
-    <section id="services" className="srv-section">
-      <div className="container-custom">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, transform: "translateY(20px)" }}
-          whileInView={{ opacity: 1, transform: "translateY(0px)" }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-          className="srv-header"
-        >
-          <span className="srv-eyebrow">SERVICES</span>
-          <h2 className="srv-title">
-            We build more than websites.
-          </h2>
-          <p className="srv-desc">
-            From polished digital experiences to complex business systems, we
-            design, develop, integrate, and scale software around the way your
-            business actually works.
-          </p>
-        </motion.div>
-
-        {/* Asymmetric Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          className="srv-grid"
-        >
-          {services.slice(0, 4).map((service) => (
-            <motion.article
-              key={service.id}
-              variants={cardVariants}
-              className={`srv-card srv-card--${service.size}`}
-            >
-              {/* Background image */}
-              <div className="srv-card-bg">
-                <Image
-                  src={service.image}
-                  alt=""
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="srv-card-bg-img"
-                  priority={false}
-                />
-                <div className="srv-card-bg-overlay" />
-              </div>
-
-              {/* Content */}
-              <div className="srv-card-content">
-                {/* Background number */}
-                <div className="srv-card-number">{service.id}</div>
-
-                {/* System label */}
-                <div className="srv-card-system">
-                  <span className="srv-card-system-label">{service.tag}</span>
-                </div>
-
-                {/* Category */}
-                <div className="srv-card-category">{service.category}</div>
-
-                {/* Title */}
-                <h3 className="srv-card-title">{service.title}</h3>
-
-                {/* Description */}
-                <p className="srv-card-desc">{service.description}</p>
-
-                {/* Tech */}
-                <div className="srv-card-tech">
-                  {service.tech.map((t) => (
-                    <span key={t} className="srv-tech-pill">{t}</span>
-                  ))}
-                </div>
-
-                {/* Arrow */}
-                <div className="srv-card-arrow">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                  </svg>
-                </div>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, transform: "translateY(20px)" }}
-          whileInView={{ opacity: 1, transform: "translateY(0px)" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
-          className="srv-cta"
-        >
-          <div className="srv-cta-text">
-            <span className="srv-cta-label">Have a system in mind?</span>
-            <span className="srv-cta-heading">Let&apos;s build it.</span>
+    <section id="services" className="section">
+      <div className="container">
+        <div className="section-head section-head-split">
+          <div>
+            <Eyebrow index="03">Services</Eyebrow>
+            <LineReveal className="section-title" lines={[<>What I</>, <><em>build</em> for you.</>]} />
           </div>
-          <a href="#contact" className="srv-cta-btn">
-            START A PROJECT <span>&rarr;</span>
-          </a>
-        </motion.div>
+          <Reveal delay={0.15}>
+            <p className="section-lede">
+              Design and engineering under one roof — so the thing that looks good is also the thing
+              that works, scales and is easy to change later.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="services">
+          {services.map((s, i) => {
+            const isOpen = open === i
+            return (
+              <Reveal key={s.title} delay={i * 0.05} y={20}>
+                <div
+                  className={`service ${isOpen ? 'is-open' : ''}`}
+                  onMouseEnter={() => setOpen(i)}
+                >
+                  <button
+                    className="service-head"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpen(isOpen ? null : i)}
+                  >
+                    <span className="mono service-index">0{i + 1}</span>
+                    <span className="service-title">{s.title}</span>
+                    <span className="service-plus" aria-hidden="true" />
+                  </button>
+                  <motion.div
+                    className="service-body"
+                    initial={false}
+                    animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+                    transition={{ duration: 0.6, ease }}
+                  >
+                    <div className="service-body-inner">
+                      <p>{s.body}</p>
+                      <div className="tags">
+                        {s.tags.map((t) => (
+                          <span key={t} className="tag">{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </Reveal>
+            )
+          })}
+        </div>
       </div>
     </section>
   )
