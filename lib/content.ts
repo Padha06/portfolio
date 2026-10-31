@@ -2,7 +2,6 @@ export const contact = {
   email: 'contact@vaskoi.in',
   phone: '+91 96821 19375',
   phoneHref: 'tel:+919682119375',
-  github: 'https://github.com/Padha06',
 }
 
 export type Project = {

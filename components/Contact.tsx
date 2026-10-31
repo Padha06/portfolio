@@ -68,12 +68,6 @@ export default function Contact() {
                     {contact.phone} <ArrowUpRight />
                   </span>
                 </a>
-                <a href={contact.github} target="_blank" rel="noopener noreferrer" className="contact-line">
-                  <span className="label">GitHub</span>
-                  <span className="contact-line-value">
-                    @Padha06 <ArrowUpRight />
-                  </span>
-                </a>
               </div>
             </Reveal>
 
