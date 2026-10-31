@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter_Tight, Instrument_Serif, JetBrains_Mono } from 'next/font/google'
 import '@/styles/globals.css'
-import Preloader from '@/components/Preloader'
 import SmoothScroll from '@/components/SmoothScroll'
-import Cursor from '@/components/Cursor'
 
 const sans = Inter_Tight({
   subsets: ['latin'],
@@ -40,21 +38,18 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0b0b0d',
+  themeColor: '#111713',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
       <body>
-        <Preloader />
         <SmoothScroll />
-        <Cursor />
         <a href="#main-content" className="skip-nav">
           Skip to main content
         </a>
         {children}
-        <div className="grain" aria-hidden="true" />
       </body>
     </html>
   )
