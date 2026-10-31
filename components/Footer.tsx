@@ -1,7 +1,6 @@
 'use client'
 
 import LogoMark from './Logo'
-import { ArrowUpRight } from './Reveal'
 import { contact } from '@/lib/content'
 
 const nav = [
@@ -39,11 +38,6 @@ export default function Footer() {
               <ul>
                 <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
                 <li><a href={contact.phoneHref}>{contact.phone}</a></li>
-                <li>
-                  <a href={contact.github} target="_blank" rel="noopener noreferrer">
-                    GitHub <ArrowUpRight size={12} />
-                  </a>
-                </li>
               </ul>
             </div>
           </div>
