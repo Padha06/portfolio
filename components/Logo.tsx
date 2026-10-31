@@ -10,7 +10,7 @@ export default function LogoMark({ className = '', animate = false }: Props) {
     >
       <defs>
         <linearGradient id="vk-a" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#80643b" />
+          <stop offset="0" stopColor="#4b49a3" />
           <stop offset="1" stopColor="#a7a4c4" />
         </linearGradient>
         <linearGradient id="vk-b" x1="0" y1="0" x2="1" y2="1">

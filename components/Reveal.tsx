@@ -33,7 +33,7 @@ export function LineReveal({
   lines: React.ReactNode[]
   className?: string
   as?: 'h1' | 'h2' | 'h3' | 'p'
-  /** Pass a boolean to drive it manually (e.g. hero waits for the preloader). */
+  /** Pass a boolean to drive it manually instead of on scroll (e.g. the hero). */
   animate?: boolean
   delay?: number
 }) {
@@ -60,12 +60,11 @@ export function LineReveal({
   )
 }
 
-/** Small mono label with an index, used at the top of each section. */
+/** Small numbered pill label used at the top of each section. */
 export function Eyebrow({ index, children }: { index: string; children: React.ReactNode }) {
   return (
     <Reveal className="eyebrow" y={12}>
       <span className="eyebrow-index">{index}</span>
-      <span className="eyebrow-rule" />
       <span>{children}</span>
     </Reveal>
   )

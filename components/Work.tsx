@@ -1,137 +1,142 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { AnimatePresence, motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
 import { Reveal, LineReveal, Eyebrow, ArrowUpRight, ease } from './Reveal'
 import { featured, more, type Project } from '@/lib/content'
 
-function FeaturedRow({ project, index }: { project: Project; index: number }) {
-  const ref = useRef<HTMLAnchorElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
-  const imgY = useTransform(scrollYProgress, [0, 1], ['-6%', '6%'])
-  const flip = index % 2 === 1
+function StackCard({
+  project,
+  index,
+  total,
+  progress,
+}: {
+  project: Project
+  index: number
+  total: number
+  progress: MotionValue<number>
+}) {
+  // Cards underneath shrink slightly as later ones slide over them.
+  const scale = useTransform(progress, [index / total, 1], [1, 1 - (total - index) * 0.025])
 
   return (
-    <motion.a
-      ref={ref}
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`feature ${flip ? 'feature-flip' : ''}`}
-      data-cursor="Visit"
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-10% 0px' }}
-      transition={{ duration: 1.1, ease }}
-    >
-      <div className="feature-media">
-        <div className="browser">
-          <div className="browser-bar">
-            <span /><span /><span />
-            <div className="browser-url mono">{project.url.replace('https://', '')}</div>
+    <div className="stack-slot" style={{ top: `calc(104px + ${index * 14}px)` }}>
+      <motion.a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="stack-card"
+        style={{ scale }}
+      >
+        <div className="stack-info">
+          <div className="stack-meta">
+            <span className="stack-index">{String(index + 1).padStart(2, '0')}</span>
+            <span className="label">{project.category}</span>
           </div>
-          <div className="browser-view">
-            <motion.img
-              src={project.image}
-              alt={`${project.title} website`}
-              loading="lazy"
-              style={{ y: imgY }}
-            />
+          <div>
+            <h3 className="stack-title">{project.title}</h3>
+            <p className="stack-summary">{project.summary}</p>
+            <div className="tags">
+              {project.tags.map((t) => (
+                <span key={t} className="tag">{t}</span>
+              ))}
+            </div>
           </div>
+          <span className="link-arrow">
+            Visit live site <ArrowUpRight />
+          </span>
         </div>
-      </div>
-
-      <div className="feature-info">
-        <div className="feature-top">
-          <span className="mono feature-index">{String(index + 1).padStart(2, '0')}</span>
-          <span className="mono feature-cat">{project.category}</span>
+        <div className="stack-media">
+          <img src={project.image} alt={`${project.title} website`} loading="lazy" />
         </div>
-        <h3 className="feature-title">{project.title}</h3>
-        <p className="feature-summary">{project.summary}</p>
-        <div className="tags">
-          {project.tags.map((t) => (
-            <span key={t} className="tag">{t}</span>
-          ))}
-        </div>
-        <span className="link-arrow">
-          Visit live site <ArrowUpRight />
-        </span>
-      </div>
-    </motion.a>
+      </motion.a>
+    </div>
   )
 }
 
-function Tile({ project, i }: { project: Project; i: number }) {
+function ProjectIndex() {
+  const [hovered, setHovered] = useState<Project | null>(null)
+  const previewRef = useRef<HTMLDivElement>(null)
+
+  const onMove = (e: React.PointerEvent) => {
+    const el = previewRef.current
+    if (el) el.style.transform = `translate3d(${e.clientX + 24}px, ${e.clientY - 110}px, 0)`
+  }
+
   return (
-    <motion.a
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="tile"
-      data-cursor="Visit"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-8% 0px' }}
-      transition={{ duration: 0.9, delay: (i % 3) * 0.08, ease }}
-    >
-      <div className="tile-media">
-        {project.image ? (
-          <img src={project.image} alt={`${project.title} website`} loading="lazy" />
-        ) : (
-          <div className="tile-type">
-            <span className="mono">Haute Horlogerie</span>
-            <span className="tile-type-word">{project.title.toUpperCase()}</span>
-          </div>
-        )}
+    <div className="index" onPointerMove={onMove} onPointerLeave={() => setHovered(null)}>
+      {more.map((p, i) => (
+        <Reveal key={p.slug} y={14} delay={Math.min(i * 0.03, 0.2)}>
+          <a
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="index-row"
+            onPointerEnter={() => setHovered(p)}
+          >
+            <span className="index-title">{p.title}</span>
+            <span className="index-summary">{p.summary}</span>
+            <span className="index-cat label">{p.category}</span>
+            <span className="index-arrow">
+              <ArrowUpRight />
+            </span>
+          </a>
+        </Reveal>
+      ))}
+
+      <div ref={previewRef} className="index-preview" aria-hidden="true">
+        <AnimatePresence mode="popLayout">
+          {hovered && (
+            <motion.div
+              key={hovered.slug}
+              className="index-preview-card"
+              initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.35, ease }}
+            >
+              {hovered.image ? (
+                <img src={hovered.image} alt="" />
+              ) : (
+                <div className="index-preview-type">{hovered.title.toUpperCase()}</div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-      <div className="tile-info">
-        <div>
-          <h4 className="tile-title">{project.title}</h4>
-          <p className="tile-summary">{project.summary}</p>
-        </div>
-        <span className="tile-cat mono">{project.category}</span>
-      </div>
-    </motion.a>
+    </div>
   )
 }
 
 export default function Work() {
+  const stackRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: stackRef, offset: ['start start', 'end end'] })
+
   return (
     <section id="work" className="section">
       <div className="container">
         <div className="section-head">
           <Eyebrow index="01">Selected work</Eyebrow>
-          <LineReveal
-            className="section-title"
-            lines={[<>Brands I&apos;ve helped</>, <><em>launch &amp; grow.</em></>]}
-          />
-          <Reveal delay={0.15}>
+          <LineReveal className="section-title" lines={[<>Brands I&apos;ve helped</>, <><em>launch &amp; grow.</em></>]} />
+          <Reveal delay={0.1}>
             <p className="section-lede">
-              A selection of live sites and products — luxury retail, healthcare, deep tech and
-              industry. Every one designed, built and shipped end to end.
+              Live sites across luxury retail, healthcare, deep tech and industry — each designed,
+              built and shipped end to end.
             </p>
           </Reveal>
         </div>
 
-        <div className="features">
+        <div ref={stackRef} className="stack">
           {featured.map((p, i) => (
-            <FeaturedRow key={p.slug} project={p} index={i} />
+            <StackCard key={p.slug} project={p} index={i} total={featured.length} progress={scrollYProgress} />
           ))}
         </div>
 
-        <div className="more-head">
-          <Reveal>
-            <h3 className="more-title">More launches</h3>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <span className="mono more-count">{String(more.length).padStart(2, '0')} projects</span>
-          </Reveal>
+        <div className="index-head">
+          <h3>More launches</h3>
+          <span className="label">{more.length} projects</span>
         </div>
-        <div className="tiles">
-          {more.map((p, i) => (
-            <Tile key={p.slug} project={p} i={i} />
-          ))}
-        </div>
+        <ProjectIndex />
       </div>
     </section>
   )

@@ -1,66 +1,49 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Reveal, LineReveal, Eyebrow, ease } from './Reveal'
-import { services } from '@/lib/content'
+import { Reveal, LineReveal, Eyebrow } from './Reveal'
+import { services, process } from '@/lib/content'
 
 export default function Services() {
-  const [open, setOpen] = useState<number | null>(0)
-
   return (
     <section id="services" className="section">
-      <div className="container">
-        <div className="section-head section-head-split">
-          <div>
-            <Eyebrow index="03">Services</Eyebrow>
-            <LineReveal className="section-title" lines={[<>What I</>, <><em>build</em> for you.</>]} />
-          </div>
-          <Reveal delay={0.15}>
+      <div className="container services-grid">
+        <div className="services-intro">
+          <Eyebrow index="03">Services</Eyebrow>
+          <LineReveal className="section-title" lines={[<>What I</>, <><em>build</em> for you.</>]} />
+          <Reveal delay={0.1}>
             <p className="section-lede">
-              Design and engineering under one roof — so the thing that looks good is also the thing
-              that works, scales and is easy to change later.
+              Design and engineering under one roof — so what looks good also works, scales and is
+              easy to change later.
             </p>
+          </Reveal>
+          <Reveal delay={0.2} className="process">
+            {process.map((step, i) => (
+              <div key={step.title} className="process-step">
+                <span className="process-num">{i + 1}</span>
+                <div>
+                  <strong>{step.title}</strong>
+                  <span>{step.meta}</span>
+                </div>
+              </div>
+            ))}
           </Reveal>
         </div>
 
-        <div className="services">
-          {services.map((s, i) => {
-            const isOpen = open === i
-            return (
-              <Reveal key={s.title} delay={i * 0.05} y={20}>
-                <div
-                  className={`service ${isOpen ? 'is-open' : ''}`}
-                  onMouseEnter={() => setOpen(i)}
-                >
-                  <button
-                    className="service-head"
-                    aria-expanded={isOpen}
-                    onClick={() => setOpen(isOpen ? null : i)}
-                  >
-                    <span className="mono service-index">0{i + 1}</span>
-                    <span className="service-title">{s.title}</span>
-                    <span className="service-plus" aria-hidden="true" />
-                  </button>
-                  <motion.div
-                    className="service-body"
-                    initial={false}
-                    animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-                    transition={{ duration: 0.6, ease }}
-                  >
-                    <div className="service-body-inner">
-                      <p>{s.body}</p>
-                      <div className="tags">
-                        {s.tags.map((t) => (
-                          <span key={t} className="tag">{t}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
+        <div className="services-list">
+          {services.map((s, i) => (
+            <Reveal key={s.title} className="service" delay={i * 0.05} y={20}>
+              <span className="service-num">0{i + 1}</span>
+              <div>
+                <h3 className="service-title">{s.title}</h3>
+                <p className="service-body">{s.body}</p>
+                <div className="tags">
+                  {s.tags.map((t) => (
+                    <span key={t} className="tag">{t}</span>
+                  ))}
                 </div>
-              </Reveal>
-            )
-          })}
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
